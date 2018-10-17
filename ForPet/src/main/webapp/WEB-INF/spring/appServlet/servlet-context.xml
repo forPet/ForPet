@@ -24,5 +24,5 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.forpet.controller" />
+	<context:component-scan base-package="com.forpet.controller.*" />
 </beans:beans>

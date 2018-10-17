@@ -1,4 +1,4 @@
-package com.forpet.controller;
+package com.forpet.controller.booking;
 
 import java.text.DateFormat;
 import java.util.Date;
