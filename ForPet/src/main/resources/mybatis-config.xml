@@ -4,6 +4,19 @@ PUBLIC "-//maybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org//dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		
+		<typeAlias type="com.forpet.domain.BookingScheduleVO" alias="BookingScheduleVO"/>
+		<typeAlias type="com.forpet.domain.BookingServiceExtraVO" alias="BookingServiceExtraVO"/>
+		<typeAlias type="com.forpet.domain.BookingServiceVO" alias="BookingServiceVO"/>
+		<typeAlias type="com.forpet.domain.BookingVO" alias="BookingVO"/>
+		<typeAlias type="com.forpet.domain.PaymentVO" alias="PaymentVO"/>
+		<typeAlias type="com.forpet.domain.ReviewVO" alias="ReviewVO"/>
+		<typeAlias type="com.forpet.domain.SitterAnimalspecVO" alias="SitterAnimalspecVO"/>
+		<typeAlias type="com.forpet.domain.SitterCertificateVO" alias="SitterCertificateVO"/>
+		<typeAlias type="com.forpet.domain.SitterScheduleVO" alias="SitterScheduleVO"/>
+		<typeAlias type="com.forpet.domain.SitterServiceExtraVO" alias="SitterServiceExtraVO"/>
+		<typeAlias type="com.forpet.domain.SitterServiceVO" alias="SitterServiceVO"/>
+		<typeAlias type="com.forpet.domain.SitterVO" alias="SitterVO"/>
+		<typeAlias type="com.forpet.domain.UserPetVO" alias="UserPetVO"/>
+		<typeAlias type="com.forpet.domain.UserVO" alias="UserVO"/>
 	</typeAliases>
 </configuration>
