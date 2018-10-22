@@ -2,26 +2,26 @@ package com.forpet.domain;
 
 public class SitterVO {
 
-	private int sitterNumber;
-	private int userNumber;
+	private Integer sitterNumber;
+	private Integer userNumber;
 	private String introduce;
 	private String precautions;
 	private int totalServiceCnt;
 	private int totalServiceScore;
 
-	public int getSitterNumber() {
+	public Integer getSitterNumber() {
 		return sitterNumber;
 	}
 
-	public void setSitterNumber(int sitterNumber) {
+	public void setSitterNumber(Integer sitterNumber) {
 		this.sitterNumber = sitterNumber;
 	}
 
-	public int getUserNumber() {
+	public Integer getUserNumber() {
 		return userNumber;
 	}
 
-	public void setUserNumber(int userNumber) {
+	public void setUserNumber(Integer userNumber) {
 		this.userNumber = userNumber;
 	}
 
