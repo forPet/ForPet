@@ -1,0 +1,199 @@
+@-ms-viewport {
+  width: device-width;
+}
+
+html {
+  box-sizing: border-box;
+  -ms-overflow-style: scrollbar;
+}
+
+body {
+	font-family: arial;
+	margin: 0px; /* for IE6 / IE7 */
+}
+
+/* main container */
+#main_container {
+	  	width: 100%;
+ 		padding-right: 15px;
+ 	 	padding-left: 15px;
+ 		margin-right: auto;
+  		margin-left: auto;
+}
+		/* 상단 스케쥴 목록 테이블 용 컨테이너 */
+		#main_container #left {
+			width: 100%;
+			margin-left: auto; margin-right: auto;
+		}
+		/* 하단 스케쥴 테이블의 컨테이너 */
+		#main_container #right {
+			width: 100%;
+			/* 컨테이너를 중앙 정렬 */
+			margin-left: auto; margin-right: auto;
+		}
+
+/* 객체 드래그 (테이블 셀 안의 DIV 요소) */
+.redips-drag {
+	cursor: move;
+	margin-left: auto;
+	margin-right: auto;
+	z-index: 10;
+	text-align: center;
+	opacity: 0.7;
+	filter: alpha(opacity=70);
+	/* 너비가 없으면 IE6 / 7은 필터 / 불투명도를 요소에 적용하지 않을 것입니다 */
+	/* IE는 요소 레이아웃이 필요합니다 */
+	height: 80%;
+	width: 80%;
+	max-height: 35px;
+	max-width: 35px;
+	line-height: 35px;
+	/* 둥근 모서리 */
+	border-radius: 4px; /* Opera, Chrome */
+	-moz-border-radius: 4px; /* FF */
+}
+
+@media (min-width: 289px) {
+  #main_container {
+    max-width: 289px;
+    font-size:4px;
+  }
+}
+
+@media (min-width: 320px) {
+  #main_container {
+    max-width: 320px;
+    font-size:4px;
+  }
+}
+
+@media (min-width: 576px) {
+  #main_container {
+    max-width: 540px;
+    font-size:7px;
+  }
+}
+
+@media (min-width: 768px) {
+  #main_container {
+    max-width: 720px;
+    font-size:10px;
+  }
+}
+
+@media (min-width: 992px) {
+  #main_container {
+    max-width: 960px;
+    font-size:13px;
+  }
+}
+
+@media (min-width: 1200px) {
+  #main_container {
+    max-width: 1140px;
+    font-size: 16px;
+  }
+}
+
+/* 드래그 영역 */
+#redips-drag {
+	display: table;
+	width: 100%;
+}
+
+/* 표 셀 */
+div#redips-drag td {
+	width: 5%;
+	text-align: center;
+	padding-left: auto;
+	padding-right: auto;
+}
+
+/* 테이블 스타일 */
+#table1, #table2 {
+	border-collapse: collapse;
+}
+	/*  table1의 경계  */
+	#table1 td {
+		border: 1px solid #DDC5B5;
+	}
+#table3 {
+	padding-top: 20px;
+	height: 10px;
+}
+
+#table2 tr td {
+	border: 1px solid #DDC5B5;
+}
+
+#table1 {
+	height: 50px;
+}
+
+#table2 {
+	width: 70%;
+}
+
+/* 녹색 오브젝트 */
+.green {
+	border: 2px solid #31B404;
+	background-color: #31B404;
+}
+
+/* 주황 오브젝트 */
+.orange {
+	border: 2px solid #FF8000;
+	background-color: #FF8000;
+}
+
+/* 파랑 오브젝트 */
+.blue {
+	border: 2px solid #0080FF;
+	background-color: #0080FF;
+}
+
+/* 노랑 오브젝트 */
+.yellow {
+	border: 2px solid #FFFF00;
+	background-color: #FFFF00;
+}
+
+/* 빨강 오브젝트 */
+.red {
+	border: 2px solid #DF0101;
+	background-color: #DF0101;
+}
+
+/* 보라 오브젝트 */
+.purple {
+	border: 2px solid #7401DF;
+	background-color: #7401DF;
+}
+
+/* 메시지 행  */
+#message {
+	color: white;
+	background-color: #aaa;
+	text-align: center;
+	margin-top: 10px;
+	padding: auto;
+}
+
+
+/* 상단 테이블의 셀 (금지 된 셀) */
+.redips-mark {
+	height: 10px;
+}
+
+.contents {
+	height: 30px;
+}
+
+.selectColor {
+	height: 50px;
+}
+
+/* clear button */
+#button1 {
+	margin: auto;
+}

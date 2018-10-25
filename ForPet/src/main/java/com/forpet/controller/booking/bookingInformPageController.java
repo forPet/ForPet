@@ -16,19 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class bookingInformPageController {
 
 	private static final Logger logger = LoggerFactory.getLogger(bookingInformPageController.class);
-
-	@RequestMapping(value = "/test", method = RequestMethod.GET)
-	public void test(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
-		String formattedDate = dateFormat.format(date);
-
-		model.addAttribute("serverTime", formattedDate);
-
-	}
 	
 	@RequestMapping(value = "/bookingInformMain", method = RequestMethod.GET)
 	public void bookingInformMain(Locale locale, Model model) {
