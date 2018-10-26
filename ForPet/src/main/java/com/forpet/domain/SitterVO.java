@@ -9,6 +9,10 @@ public class SitterVO {
 	private int totalServiceCnt;
 	private int totalServiceScore;
 
+	private SitterServiceVO sitterServiceVO;
+	private SitterServiceExtraVO sitterServiceExtraVO;
+	private SitterScheduleVO sitterScheduleVO;
+
 	public Integer getSitterNumber() {
 		return sitterNumber;
 	}
@@ -57,10 +61,35 @@ public class SitterVO {
 		this.totalServiceScore = totalServiceScore;
 	}
 
+	public SitterServiceVO getSitterServiceVO() {
+		return sitterServiceVO;
+	}
+
+	public void setSitterServiceVO(SitterServiceVO sitterServiceVO) {
+		this.sitterServiceVO = sitterServiceVO;
+	}
+
+	public SitterServiceExtraVO getSitterServiceExtraVO() {
+		return sitterServiceExtraVO;
+	}
+
+	public void setSitterServiceExtraVO(SitterServiceExtraVO sitterServiceExtraVO) {
+		this.sitterServiceExtraVO = sitterServiceExtraVO;
+	}
+
+	public SitterScheduleVO getSitterScheduleVO() {
+		return sitterScheduleVO;
+	}
+
+	public void setSitterScheduleVO(SitterScheduleVO sitterScheduleVO) {
+		this.sitterScheduleVO = sitterScheduleVO;
+	}
+
 	@Override
 	public String toString() {
-		return "SitterVO [sitterNumber=" + sitterNumber + ", userNumber=" + userNumber + ", introduce=" + introduce
+		return "[sitterNumber=" + sitterNumber + ", userNumber=" + userNumber + ", introduce=" + introduce
 				+ ", precautions=" + precautions + ", totalServiceCnt=" + totalServiceCnt + ", totalServiceScore="
-				+ totalServiceScore + "]";
+				+ totalServiceScore + ", sitterServiceVO=" + sitterServiceVO + ", sitterServiceExtraVO=" + sitterServiceExtraVO
+				+ ", sitterScheduleVO=" + sitterScheduleVO + "]";
 	}
 }
