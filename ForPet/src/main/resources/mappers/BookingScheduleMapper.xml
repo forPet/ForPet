@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="forpet_BookingSchedule">
+
+	<resultMap id="partyTopResultMap" type="BookingVO">
+        <id property="userNumber" column="userNumber" />
+		<result property="userNumber" column="userNumber" />
+        <result property="bookingNumber" column="bookingNumber" />
+        <association property="bookingScheduleVO" column="userNumber" javaType="BookingScheduleVO">
+            <id property="userNumber" column="userNumber" />
+            <result property="title" column="title" />
+            <result property="start" column="start" />
+			<result property="end" column="end" />
+            <result property="description" column="description" />
+        </association>
+    </resultMap>
+
+	<select id="findCalendarListAll" resultType="BookingScheduleVO">
+		select tb.userNumber, tb.bookingNumber, tbs.title, tbs.start, tbs.end, tbs.description 
+		from tbl_booking as tb join tbl_booking_schedule as tbs
+		on tbs.bookingNumber = tb.bookingNumber
+		where userNumber= #{userNumber};
+	</select>
+
+</mapper>

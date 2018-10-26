@@ -20,11 +20,11 @@
     <link href="/resources/main/css/portfolio-item.css" rel="stylesheet">
     
     <!--  Calendar -->
-    <link href='http://fullcalendar.io/js/fullcalendar-2.1.1/fullcalendar.css' rel='stylesheet' />
-	<link href='http://fullcalendar.io/js/fullcalendar-2.1.1/fullcalendar.print.css' media='print' />
-	<script src='http://fullcalendar.io/js/fullcalendar-2.1.1/lib/moment.min.js'></script>
-	<script src='http://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery.min.js'></script>
-	<script src='http://fullcalendar.io/js/fullcalendar-2.1.1/fullcalendar.min.js'></script>
+    <link href='/resources/calendar/css/fullcalendar.css' rel='stylesheet' />
+	<link href='/resources/calendar/css/fullcalendar.print.css' media='print' />
+	<script src='/resources/calendar/lib/moment.min.js'></script>
+	<script src='/resources/calendar/lib/jquery.min.js'></script>
+	<script src='/resources/calendar/js/fullcalendar.min.js'></script>
 	<script src="/resources/calendar/js/ko.js"></script>
 	
 	<!-- timeline -->
@@ -210,44 +210,31 @@
 				center : 'title',
 				right : 'month,basicWeek,basicDay'
 			},
+	        monthNames : ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
+	        monthNamesShort : ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
+	        dayNames : ["일요일","월요일","화요일","수요일","목요일","금요일","토요일"],
+	        dayNamesShort : ["일","월","화","수","목","금","토"],
 			defaultDate : '2018-10-18',
 			editable : true,
-			eventLimit : true, // allow "more" link when too many events
-			events : [ {
-				id : 'All Day Event',
-				title : 'All Day Event',
-				start : '2018-10-01'
-			}, {
-				id : 'popo',
-				title : 'popo',
-				start : '2018-10-12T10:30:00',
-				end : '2018-10-13T12:30:00',
-				description : 'This is a cool event',
-				color : 'rgb(142, 67, 163)',
-				textColor : 'white'
-			}, {
-				id : 'popo2',
-				title : 'popo2',
-				//url: 'http://google.com/',
-				start : '2018-10-19'
-			} ]
-		});
-
-		$('#calendar').on('click', '.fc-day', function() {
-			var myPrompt = prompt('uno', 'due');
-			if (myPrompt != null && myPrompt != '') {
-				$('#calendar').fullCalendar('addEventSource', [ {
-					id : myPrompt,
-					title : myPrompt,
-					start : $(this).attr('data-date')
-				} ]);
-			}
-		});
-
-		$('#calendar').on('click', '.fc-content', function() {
-			var gugu = $(this).children('.fc-title').html();
-			$('#calendar').fullCalendar('removeEvents', gugu);
-		});
+			events: [{
+				"title": "Long Event",
+			    "start": "2018-10-07",
+			    "end": "2018-10-10"
+			}],
+			<c:forEach items="${list}" var="boardVO">
+				${boardVO.title}
+				<td><a
+					href='/sboard/read${pageMaker.makeSearch(pageMaker.cri.page)}&bno=${boardVO.bno}'>${boardVO.title} <strong>[ ${boardVO.replycnt} ]</strong></a></td>
+				<td>${boardVO.writer}</td>
+				<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
+						value="${boardVO.regdate}" /></td>
+				<td><span class="badge bg-red">${boardVO.viewcnt}</span></td>
+				<td><input type="checkbox" name="batchTarget"
+					value="${boardVO.bno}"></td>
+			</c:forEach>
+			selectable:true,
+			selectHelper:true
+			});
 	</script>
 
         <div class="col-md-4">

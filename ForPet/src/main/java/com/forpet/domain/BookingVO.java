@@ -1,6 +1,8 @@
 package com.forpet.domain;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BookingVO {
 
@@ -15,6 +17,8 @@ public class BookingVO {
 	private int totalPrice;
 	private String progressState;
 	
+	private List<BookingScheduleVO> bookingScheduleVO = new ArrayList<>();
+	
 	public int getTotalPrice() {
 		return totalPrice;
 	}
@@ -22,7 +26,6 @@ public class BookingVO {
 	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
 	}
-
 
 	public String getUserId() {
 		return userId;
