@@ -1,6 +1,8 @@
 package com.forpet.domain;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BookingVO {
 
@@ -13,6 +15,8 @@ public class BookingVO {
 	private int extraServicePrice;
 	private int toralPrice;
 	private String progressState;
+	
+	private List<BookingScheduleVO> bookingScheduleVO = new ArrayList<>();
 
 	public Integer getBookingNumber() {
 		return bookingNumber;
