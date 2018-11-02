@@ -5,24 +5,60 @@
 
 <mapper namespace="forpet_BookingSchedule">
 
-	<resultMap id="partyTopResultMap" type="BookingVO">
-        <id property="userNumber" column="userNumber" />
-		<result property="userNumber" column="userNumber" />
-        <result property="bookingNumber" column="bookingNumber" />
-        <association property="bookingScheduleVO" column="userNumber" javaType="BookingScheduleVO">
-            <id property="userNumber" column="userNumber" />
-            <result property="title" column="title" />
-            <result property="start" column="start" />
+	<resultMap id="bookingResultMap" type="BookingVO">
+		<id property="userNumber" column="userNumber" />
+        <collection property="bookingScheduleVO" ofType="BookingScheduleVO" >
+			<id property="bookingNumber" column="bookingNumber" />
+			<result property="title" column="title" />
+			<result property="start" column="start" />
 			<result property="end" column="end" />
-            <result property="description" column="description" />
-        </association>
+			<result property="description" column="description" />
+		</collection>
+		<collection property="sitterVO" ofType="SitterVO" >
+			<id property="sitterNumber" column="sitterNumber" />
+		</collection>
     </resultMap>
-
-	<select id="findCalendarListAll" resultType="BookingScheduleVO">
-		select tb.userNumber, tb.bookingNumber, tbs.title, tbs.start, tbs.end, tbs.description 
-		from tbl_booking as tb join tbl_booking_schedule as tbs
-		on tbs.bookingNumber = tb.bookingNumber
-		where userNumber= #{userNumber};
+	
+	<select id="findCalendarListAll" resultMap="bookingResultMap" >
+		SELECT TS.SITTERNUMBER, TB.USERNUMBER, TB.BOOKINGNUMBER, TBS.TITLE, TBS.START, TBS.END, TBS.DESCRIPTION
+		FROM TBL_BOOKING AS TB, TBL_BOOKING_SCHEDULE AS TBS, TBL_SITTER AS TS
+		WHERE TBS.BOOKINGNUMBER = TB.BOOKINGNUMBER AND TB.SITTERNUMBER = TS.SITTERNUMBER AND TS.SITTERNUMBER= #{SITTERNUMBER};
 	</select>
+
+	<resultMap id="bookingDetailMap" type="BookingVO">
+		<id property="userNumber" column="userNumber" />
+			<result property="bookingNumber" column="bookingNumber" />
+			<result property="bookingDate" column="bookingDate" />
+			<result property="progressState" column="progressState" />
+		<collection property="userVO" ofType="UserVO" >
+		<id property="userNumber" column="userNumber" />
+			<result property="userName" column="userName" />
+		</collection>
+		<collection property="userPetVO" ofType="UserPetVO" >
+		<id property="petNumber" column="petNumber" />
+			<result property="petName" column="petName" />
+			<result property="petType" column="petType" />
+			<result property="petGender" column="petGender" />
+			<result property="petDateOfBirth" column="petDateOfBirth" />
+		</collection>
+		<collection property="sitterVO" ofType="SitterVO" >
+			<id property="sitterNumber" column="sitterNumber" />
+		</collection>
+	</resultMap>
+
+	<select id="bookingDetailInform" resultMap="bookingDetailMap" >
+		SELECT TS.SITTERNUMBER, U.USERNAME, UP.PETNAME, TB.USERNUMBER, TB.BOOKINGDATE, TB.BOOKINGNUMBER , UP.PETTYPE, UP.PETGENDER, UP.PETDATEOFBIRTH 
+		FROM TBL_BOOKING AS TB, TBL_BOOKING_SCHEDULE AS TBS, TBL_USER AS U, TBL_USER_PET AS UP, TBL_SITTER AS TS
+		WHERE TBS.BOOKINGNUMBER = TB.BOOKINGNUMBER and U.USERNUMBER = TB.USERNUMBER AND U.USERNUMBER = UP.USERNUMBER AND TB.SITTERNUMBER = TS.SITTERNUMBER AND TB.BOOKINGNUMBER = #{bookingNumber};
+	</select>
+
+	<update id="bookingConfirm">
+		UPDATE TBL_BOOKING SET PROGRESSSTATE = '수락완료'
+		WHERE BOOKINGNUMBER = #{bookingNumber};
+	</update>
+
+	<delete id="bookingCancel">
+		DELETE FROM TBL_BOOKING_SCHEDULE WHERE BOOKINGNUMBER = #{bookingNumber};
+	</delete>
 
 </mapper>

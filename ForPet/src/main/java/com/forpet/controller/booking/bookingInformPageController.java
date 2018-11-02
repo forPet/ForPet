@@ -1,9 +1,5 @@
 package com.forpet.controller.booking;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
-
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -13,7 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.forpet.domain.BookingVO;
+import com.forpet.domain.SitterVO;
 import com.forpet.service.BookingScheduleService;
 
 @Controller
@@ -25,21 +24,40 @@ public class bookingInformPageController {
 	private static final Logger logger = LoggerFactory.getLogger(bookingInformPageController.class);
 	
 	@RequestMapping(value = "/bookingInformMain", method = RequestMethod.GET)
-	public void bookingInformMain(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
-		String formattedDate = dateFormat.format(date);
-
-		model.addAttribute("serverTime", formattedDate);
-		
+	public void CalendarListAll(@RequestParam("sitterNumber") int sitterNumber, Model model) throws Exception {
+		logger.info("show all list");
+		model.addAttribute("list", service.findCalendarListAll(sitterNumber));
 	}
 	
-	@RequestMapping(value = "/bookingInformMain", method = RequestMethod.GET)
-	public void CalendarListAll(@RequestParam("userNumber") int userNumber, Model model) throws Exception {
+	@RequestMapping(value = "/bookingInformDetail", method = RequestMethod.GET)
+	public void BookingDetailInform(@RequestParam("bookingNumber") int bookingNumber, Model model) throws Exception {
 		logger.info("show all list");
-		model.addAttribute("list", service.findCalendarListAll(userNumber));
+		model.addAttribute("bookingNumber", bookingNumber);
+		model.addAttribute("list", service.bookingDetailInform(bookingNumber));
 	}
+	
+	@RequestMapping(value = "/bookingConfirm", method = RequestMethod.GET)
+	public void BookingConfirmGET(@RequestParam("bookingNumber") int bookingNumber, Model model) throws Exception {
+		model.addAttribute("list", service.bookingDetailInform(bookingNumber));
+	}
+	
+	@RequestMapping(value = "/bookingConfirm", method = RequestMethod.POST)
+	public String BookingConfirmPOST(BookingVO vo, RedirectAttributes rttr) throws Exception {
+		
+		logger.info("update post...");
+		//update는 void로 아무런 정보가 없다 -> rttr.add..으로 정보를 넣어준 뒤 return 해준다
+		service.bookingConfirm(vo);
+		rttr.addFlashAttribute("msg", "success");
+		return "redirect:/bookingInformPage/bookingInformMain?sitterNumber=1";
+	}
+	
+	@RequestMapping(value = "/bookingCancel", method = RequestMethod.POST)
+	public String BookingCancel(@RequestParam("bookingNumber") int bookingNumber, SitterVO vo, RedirectAttributes rttr) throws Exception {
+		service.delete(bookingNumber);
+		rttr.addAttribute("sitterNumber", vo.getSitterNumber());
+		rttr.addFlashAttribute("msg", "success");
+		
+		return "redirect:/bookingInformPage/bookingInformMain";
+	}
+
 }

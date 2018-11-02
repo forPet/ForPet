@@ -8,8 +8,6 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
     <title>Portfolio Item - Start Bootstrap Template</title>
 
@@ -36,22 +34,22 @@
 	
 	<style>
 	.button {
-	width: 100%;
- 	text-align: center;
-}
+		width: 100%;
+ 		text-align: center;
+	}
 
-.btn {
-	width: 38%;
-	text-align: center;
-	padding : auto;
-}
+	.btn {
+		width: 38%;
+		text-align: center;
+		padding : auto;
+	}
 	
-#rightBtn {
-	margin-right: 10px;
-}
+	#rightBtn {
+		margin-right: 10px;
+	}
 	</style>
 
-  </head>
+	</head>
 
   <body>
     <!-- Navigation -->
@@ -216,52 +214,41 @@
 	        dayNamesShort : ["일","월","화","수","목","금","토"],
 			defaultDate : '2018-10-18',
 			editable : true,
-			events: [{
-				"title": "Long Event",
-			    "start": "2018-10-07",
-			    "end": "2018-10-10"
-			}],
-			<c:forEach items="${list}" var="boardVO">
-				${boardVO.title}
-				<td><a
-					href='/sboard/read${pageMaker.makeSearch(pageMaker.cri.page)}&bno=${boardVO.bno}'>${boardVO.title} <strong>[ ${boardVO.replycnt} ]</strong></a></td>
-				<td>${boardVO.writer}</td>
-				<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-						value="${boardVO.regdate}" /></td>
-				<td><span class="badge bg-red">${boardVO.viewcnt}</span></td>
-				<td><input type="checkbox" name="batchTarget"
-					value="${boardVO.bno}"></td>
-			</c:forEach>
+			events: [
+				<c:forEach items="${list}" var="BookingVO">
+					<c:forEach items="${BookingVO.bookingScheduleVO}" var="BookingScheduleVO">
+					{
+					title: '${BookingScheduleVO.title}',
+		    		start: '${BookingScheduleVO.start}',
+		   			end: '${BookingScheduleVO.end}',
+		   			BookingScheduleVO : '${BookingScheduleVO}',
+		   			bookingNumber: '${BookingScheduleVO.bookingNumber}'
+		   			},
+		   			</c:forEach>
+		    	</c:forEach>
+			],
 			selectable:true,
-			selectHelper:true
+			selectHelper:true,
+			eventClick: function(BookingScheduleVO) {
+				/* $(".col-md-4").show();  */
+				bookingInformDetail(BookingScheduleVO.bookingNumber);
+			  }
 			});
-	</script>
-
-        <div class="col-md-4">
-          <h3 class="my-3">예약 상세 정보</h3>
-          	<div class =sideBar>
-         	 	<a href="#">
-          	  	<img class="img-fluid" src="/resources/images/zizi.JPG" alt="">
-          		</a>
-      	  	</div>
-			<ul>
-            	<li class="b-inform">예약자</li>
-            	<li class="b-inform">반려동물 이름</li>
-            	<li class="b-inform">예약날짜</li>
-            	<li class="b-inform">부가사항</li>
-        	</ul>
-        	<div class="button">
-        		<button id="rightBtn" type="button" class="btn btn-outline-success btn-lg">  수  락  </button>
-        		<button type="button" class="btn btn-outline-danger btn-lg">  거  절  </button>
-        	</div>
-        </div>
-
-      </div>
-      <!-- /.row -->
-
+		</script>
+		
+		<script>
+		$(".col-md-4").hide();
+		</script>
+		
+       <div class="col-md-4 ajaxBooking">  </div>
     </div>
-    <!-- /.container -->
-
+      <!-- /.row -->
+ 	</body>
+ 	
+<!--  	<script>
+		$(".col-md-4").hide();
+	</script>
+ -->
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
@@ -274,6 +261,22 @@
     <script src="/resources/main/vendor/jquery/jquery.min.js"></script>
     <script src="/resources/main/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+<script>
+  function bookingInformDetail(bookingNumber) {
+	     $.ajax({
+	         url: "bookingInformDetail",
+	         data: {
+	            "bookingNumber" : bookingNumber
+	         },
+	         type: 'GET',
+	         success: resultPaging
+	      });
+  }
+
+  function resultPaging(msg) {
+     $(".ajaxBooking").html(msg);
+  }
+</script>
   </body>
 
 </html>
