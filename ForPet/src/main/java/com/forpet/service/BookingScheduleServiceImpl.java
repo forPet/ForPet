@@ -4,10 +4,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
-import com.forpet.domain.BookingScheduleVO;
+import com.forpet.domain.BookingVO;
 import com.forpet.persistence.BookingScheduleDAO;
 
 @Service
@@ -17,9 +16,22 @@ public class BookingScheduleServiceImpl implements BookingScheduleService {
 	private BookingScheduleDAO bsDAO;
 
 	@Override
-	public List<BookingScheduleVO> findCalendarListAll(Integer userNumber) throws Exception {
-		List<BookingScheduleVO> list = bsDAO.findCalendarListAll(userNumber);
-		return list;
+	public List<BookingVO> findCalendarListAll(Integer sitterNumber) throws Exception {
+		return bsDAO.findCalendarListAll(sitterNumber);
+	}
+
+	@Override
+	public List<BookingVO> bookingDetailInform(Integer bookingNumber) throws Exception {
+		return bsDAO.bookingDetailInform(bookingNumber);
+	}
+
+	@Override
+	public void bookingConfirm(BookingVO vo) throws Exception {
+		bsDAO.bookingConfirm(vo);
 	}
 	
+	@Override
+	public void delete(Integer bookingNumber) throws Exception {
+		bsDAO.delete(bookingNumber);
+	}
 }

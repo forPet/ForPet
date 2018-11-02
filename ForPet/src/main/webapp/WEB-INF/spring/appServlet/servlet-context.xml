@@ -22,4 +22,5 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.forpet.controller.*" />
+	<context:component-scan base-package="com.forpet.test" />
 </beans:beans>

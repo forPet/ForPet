@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.forpet.domain.BookingScheduleVO;
+import com.forpet.domain.BookingVO;
 
 @Repository
 public class BookingScheduleDAOImpl implements BookingScheduleDAO {
@@ -18,8 +18,23 @@ public class BookingScheduleDAOImpl implements BookingScheduleDAO {
 	private static final String namespace = "forpet_BookingSchedule";
 
 	@Override
-	public List<BookingScheduleVO> findCalendarListAll(Integer userNumber) throws Exception {
-		List<BookingScheduleVO> ret = sqlSession.selectList(namespace + ".findCalendarListAll", userNumber);
-		return ret;
+	public  List<BookingVO> findCalendarListAll(Integer sitterNumber) throws Exception {
+		return sqlSession.selectList(namespace + ".findCalendarListAll", sitterNumber);
 	}
+
+	@Override
+	public List<BookingVO> bookingDetailInform(Integer bookingNumber) throws Exception {
+		return sqlSession.selectList(namespace + ".bookingDetailInform", bookingNumber);
+	}
+
+	@Override
+	public void bookingConfirm(BookingVO vo) throws Exception {
+		sqlSession.selectOne(namespace + ".bookingConfirm", vo);
+	}
+	
+	@Override
+	public void delete(Integer bookingNumber) throws Exception {
+		sqlSession.selectOne(namespace + ".bookingCancel", bookingNumber);
+	}
+
 }

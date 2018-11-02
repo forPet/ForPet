@@ -18,10 +18,9 @@ public class bookingIn {
 	@Inject
 	private BookingScheduleDAO dao;
 	
-	private static Logger logger = LoggerFactory.getLogger(bookingIn.class);
-	
 	@Test
 	public void test() throws Exception {
-		dao.findCalendarListAll(1);
+
 	}
+
 }

@@ -15,23 +15,7 @@ public class UserVO {
 	private String userAddress;
 	private SitterVO sitterVO;
 	private SitterServiceVO sitterServiceVO;
-	
-	public SitterServiceVO getSitterServiceVO() {
-		return sitterServiceVO;
-	}
 
-	public void setSitterServiceVO(SitterServiceVO sitterServiceVO) {
-		this.sitterServiceVO = sitterServiceVO;
-	}
-
-	public SitterVO getSitterVO() {
-		return sitterVO;
-	}
-	
-	public void setSitterVO(SitterVO sitterVO) {
-		this.sitterVO = sitterVO;
-	}
-	
 	public Integer getUserNumber() {
 		return userNumber;
 	}
@@ -104,10 +88,27 @@ public class UserVO {
 		this.userAddress = userAddress;
 	}
 
+	public SitterVO getSitterVO() {
+		return sitterVO;
+	}
+
+	public void setSitterVO(SitterVO sitterVO) {
+		this.sitterVO = sitterVO;
+	}
+
+	public SitterServiceVO getSitterServiceVO() {
+		return sitterServiceVO;
+	}
+
+	public void setSitterServiceVO(SitterServiceVO sitterServiceVO) {
+		this.sitterServiceVO = sitterServiceVO;
+	}
+
 	@Override
 	public String toString() {
 		return "UserVO [userNumber=" + userNumber + ", userName=" + userName + ", userId=" + userId + ", userPassword="
-				+ userPassword + ", userGender=" + userGender + ", userDateOfBirth=" + userDateOfBirth + ", userPhoneNumber="
-				+ userPhoneNumber + ", userEmail=" + userEmail + ", userAddress=" + userAddress + "]";
+				+ userPassword + ", userGender=" + userGender + ", userDateOfBirth=" + userDateOfBirth
+				+ ", userPhoneNumber=" + userPhoneNumber + ", userEmail=" + userEmail + ", userAddress=" + userAddress
+				+ ", sitterVO=" + sitterVO + ", sitterServiceVO=" + sitterServiceVO + "]";
 	}
 }

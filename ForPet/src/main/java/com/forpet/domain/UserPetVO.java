@@ -1,6 +1,6 @@
 package com.forpet.domain;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class UserPetVO {
 	
