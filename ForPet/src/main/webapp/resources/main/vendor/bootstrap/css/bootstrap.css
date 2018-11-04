@@ -479,7 +479,7 @@ mark,
 
 .img-fluid {
   max-width: 100%;
-  height: auto;
+  height: 360px;
 }
 
 .img-thumbnail {
@@ -7486,9 +7486,12 @@ button.bg-dark:focus {
   margin: 1.5rem !important;
 }
 
-.mt-4,
-.my-4 {
+.mt-4{
   margin-top: 1.5rem !important;
+}
+
+.my-4 {
+  margin-top: 2.5rem !important;
 }
 
 .mr-4,
