@@ -7,9 +7,10 @@
 
 	<resultMap id="bookingResultMap" type="BookingVO">
 		<id property="userNumber" column="userNumber" />
+		<result property="progressState" column="progressState" />
+		<result property="bookingNumber" column="bookingNumber" />
         <collection property="bookingScheduleVO" ofType="BookingScheduleVO" >
-			<id property="bookingNumber" column="bookingNumber" />
-			<result property="title" column="title" />
+			<id property="title" column="title" />
 			<result property="start" column="start" />
 			<result property="end" column="end" />
 			<result property="description" column="description" />
@@ -20,7 +21,7 @@
     </resultMap>
 	
 	<select id="findCalendarListAll" resultMap="bookingResultMap" >
-		SELECT TS.SITTERNUMBER, TB.USERNUMBER, TB.BOOKINGNUMBER, TBS.TITLE, TBS.START, TBS.END, TBS.DESCRIPTION
+		SELECT TS.SITTERNUMBER, TB.USERNUMBER, TB.BOOKINGNUMBER, TBS.TITLE, TBS.START, TBS.END, TBS.DESCRIPTION, TB.PROGRESSSTATE
 		FROM TBL_BOOKING AS TB, TBL_BOOKING_SCHEDULE AS TBS, TBL_SITTER AS TS
 		WHERE TBS.BOOKINGNUMBER = TB.BOOKINGNUMBER AND TB.SITTERNUMBER = TS.SITTERNUMBER AND TS.SITTERNUMBER= #{SITTERNUMBER};
 	</select>
@@ -60,5 +61,10 @@
 	<delete id="bookingCancel">
 		DELETE FROM TBL_BOOKING_SCHEDULE WHERE BOOKINGNUMBER = #{bookingNumber};
 	</delete>
+	
+	<update id="bookingCancelReturnResult">
+		UPDATE TBL_BOOKING SET PROGRESSSTATE = '예약거절'
+		WHERE BOOKINGNUMBER = #{bookingNumber};
+	</update>
 
 </mapper>

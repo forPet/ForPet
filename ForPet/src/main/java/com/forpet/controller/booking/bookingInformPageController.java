@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.forpet.domain.BookingVO;
-import com.forpet.domain.SitterVO;
-import com.forpet.service.BookingScheduleService;
+import com.forpet.service.BookingSchedule.BookingScheduleService;
 
 @Controller
 @RequestMapping("/bookingInformPage/*")
@@ -22,7 +21,7 @@ public class bookingInformPageController {
 	private BookingScheduleService service;
 
 	private static final Logger logger = LoggerFactory.getLogger(bookingInformPageController.class);
-	
+
 	@RequestMapping(value = "/bookingInformMain", method = RequestMethod.GET)
 	public void CalendarListAll(@RequestParam("sitterNumber") int sitterNumber, Model model) throws Exception {
 		logger.info("show all list");
@@ -38,6 +37,7 @@ public class bookingInformPageController {
 	
 	@RequestMapping(value = "/bookingConfirm", method = RequestMethod.GET)
 	public void BookingConfirmGET(@RequestParam("bookingNumber") int bookingNumber, Model model) throws Exception {
+		model.addAttribute("bookingNumber", bookingNumber);
 		model.addAttribute("list", service.bookingDetailInform(bookingNumber));
 	}
 	
@@ -48,16 +48,24 @@ public class bookingInformPageController {
 		//update는 void로 아무런 정보가 없다 -> rttr.add..으로 정보를 넣어준 뒤 return 해준다
 		service.bookingConfirm(vo);
 		rttr.addFlashAttribute("msg", "success");
-		return "redirect:/bookingInformPage/bookingInformMain?sitterNumber=1";
+		return "";
 	}
 	
 	@RequestMapping(value = "/bookingCancel", method = RequestMethod.POST)
-	public String BookingCancel(@RequestParam("bookingNumber") int bookingNumber, SitterVO vo, RedirectAttributes rttr) throws Exception {
-		service.delete(bookingNumber);
-		rttr.addAttribute("sitterNumber", vo.getSitterNumber());
+	public String BookingCancel(@RequestParam("bookingNumber") int bookingNumber, RedirectAttributes rttr) throws Exception {
+		service.bookingCancel(bookingNumber);
 		rttr.addFlashAttribute("msg", "success");
+		return "";
+	}
+	
+	@RequestMapping(value = "/bookingCancelReturnResult", method = RequestMethod.POST)
+	public String bookingCancelReturnResult(BookingVO vo, RedirectAttributes rttr) throws Exception {
 		
-		return "redirect:/bookingInformPage/bookingInformMain";
+		logger.info("update post...");
+		//update는 void로 아무런 정보가 없다 -> rttr.add..으로 정보를 넣어준 뒤 return 해준다
+		service.bookingCancelReturnResult(vo);
+		rttr.addFlashAttribute("msg", "success");
+		return "";
 	}
 
 }

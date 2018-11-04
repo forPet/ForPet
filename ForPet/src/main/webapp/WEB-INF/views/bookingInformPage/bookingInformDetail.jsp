@@ -3,7 +3,7 @@
 	pageEncoding="UTF-8"%>
 	
 <form role="form" action="/bookingInformPage/bookingInformDetail" method="get">
-	<input type='hidden' name='bookingNumber' value="${BookingScheduleVO.bookingNumber}">
+	<input type='hidden' name='bookingNumber' value="${BookingVO.bookingNumber}">
 </form>
 
 <script type="text/javascript">
@@ -12,25 +12,21 @@
 		console.log(formObj);
 		$(".btn-outline-success").on("click", function() {
 			var sNum = $('#sNum').val();
-			alert(sNum);
-			formObj.attr("action", "/bookingInformPage/bookingConfirm?bookingNumber=${bookingNumber}");
-			formObj.attr("method", "post");
-			formObj.submit();
+			bookingConfirm('${bookingNumber}', sNum);
+			alert("수락이 완료되었습니다.");
 		});
 		$(".btn-outline-danger").on("click", function() {
 			var sNum = $('#sNum').val();
-			alert(sNum);
-			formObj.attr("action", "/bookingInformPage/bookingCancel?bookingNumber=${bookingNumber}");
-			formObj.attr("method", "post");
-			formObj.submit();
+			bookingCancel('${bookingNumber}', sNum);
+			bookingCancelReturnResult('${bookingNumber}', sNum);
+			alert("거절이 완료되었습니다.");
 		});
 	});
 </script>
 
 <h3 class="my-3">예약 상세 정보</h3>
 <div class=sideBar>
-	<a href="#"> <img class="img-fluid"
-		src="/resources/images/zizi.JPG" alt="">
+	<a href="#"> <img class="img-fluid" src="/resources/images/zizi.JPG" alt="">
 	</a>
 </div>
 <ul>
@@ -54,3 +50,55 @@
 	<button id="rightBtn" type="button" class="btn btn-outline-success btn-lg">수 락</button>
 	<button type="button" class="btn btn-outline-danger btn-lg">거 절</button>
 </div>
+
+<!-- 예약 수락 시 예약 상태 응답 ajax -->
+<script>
+  function bookingConfirm(bookingNumber, sitterNumber) {
+	     $.ajax({
+	         url: "bookingConfirm",
+	         async: false,
+	         data: {
+	            "bookingNumber" : bookingNumber,
+	            "sitterNumber" : sitterNumber
+	         },
+	         type: 'POST',
+	         success:
+	        	 location.href = "/bookingInformPage/bookingInformMain?sitterNumber=" + sitterNumber
+	      });
+	     return false;
+  }
+</script>
+
+<!-- 예약 거절 시 스케쥴 삭제 ajax -->
+<script>
+  function bookingCancel(bookingNumber, sitterNumber) {
+	     $.ajax({
+	         url: "bookingCancel",
+	         async: false,
+	         data: {
+	        	 "bookingNumber" : bookingNumber,
+		         "sitterNumber" : sitterNumber
+	         },
+	         type: 'POST',
+	       	 success: 
+		        	 location.href = "/bookingInformPage/bookingInformMain?sitterNumber=" + sitterNumber
+	      });
+  }
+</script>
+
+<!-- 예약 거절 시 예약상테 수정 ajax -->
+<script>
+  function bookingCancelReturnResult(bookingNumber, sitterNumber) {
+	     $.ajax({
+	         url: "bookingCancelReturnResult",
+	         async: false,
+	         data: {
+	        	 "bookingNumber" : bookingNumber,
+		         "sitterNumber" : sitterNumber
+	         },
+	         type: 'POST',
+	         success: 
+	        	 location.href = "/bookingInformPage/bookingInformMain?sitterNumber=" + sitterNumber
+	      });
+  }
+</script>
