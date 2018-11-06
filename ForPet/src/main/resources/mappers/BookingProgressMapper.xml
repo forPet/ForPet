@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="forpet_BookingProgress">
+
+	<resultMap id="insertMovieMap" type="BookingVO">
+		<id property="userNumber" column="userNumber" />
+			<result property="bookingNumber" column="bookingNumber" />
+		<collection property="movieVO" ofType="MovieVO" >
+			<id property="movieNumber" column="movieNumber" />
+		</collection>
+    </resultMap>
+	
+	<insert id="insertMovie">
+		INSERT INTO TBL_MOVIE (bookingNumber, movieName) VALUE (#{bookingNumber}, #{movieName});
+	</insert>
+
+</mapper>

@@ -67,8 +67,29 @@
 	max-width: 100%;
 }
 
-
+.schedule input[type="file"] { 
+	position: absolute; 
+	padding: 0; 
+	margin: -1px; 
+	overflow: hidden; 
+	clip:rect(0,0,0,0); 
+	border: 0; 
+} 
+	
+.schedule label { 
+	display: inline-block; 
+	width: 100%; 
+	height: 100%;
+	color: #999; 
+	font-size: inherit; 
+	line-height: normal; 
+	vertical-align: middle; 
+	background-color: #fdfdfd; 
+	cursor: pointer; 
+	margin-bottom : 0;
+}
 </style>
+
 </head>
 <body>
 	<!-- Navigation -->
@@ -120,7 +141,7 @@
 			<div id='calendar'></div>
 			<div id="main_container" style="margin-top: 20px">
 			<!-- tables inside this DIV could have draggable content -->
-			<form id="frm" name="frm" enctype="multipart/form-data" method="post" action="bookingProgressMain">
+			<form id="frm" name="frm" enctype="multipart/form-data" method="post" >
 				<div id="redips-drag">
 					<div id="right">
 						<table id="table2">
@@ -186,7 +207,8 @@
 							<tbody>
 									<tr>
 										<td class="schedule">
-											<input type="file" name="file" />
+											<label for="file"> </label>
+											<input type="file" id="file" name="file" />
 										</td>
 										<td class="schedule"></td>
 										<td class="schedule"></td>
@@ -250,10 +272,22 @@
 		</div>
 		<!-- /.container -->
 	</footer>
+	
+	<!-- /bookingProgressPage/bookingProgressMain GET의  bookingNumber 값 불러오기 -->
+	<form role="form" action="/bookingProgressPage/bookingProgressMain" method="get">
+		<input type='hidden' name='bookingNumber' value="${BookingVO.bookingNumber}">
+	</form>	
+
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="/resources/main/vendor/jquery/jquery.min.js"></script>
 	<script src="/resources/main/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
+	<script>
+		$("#upload").click(function(){
+			alert("동영상 업로드를 완료했습니다");
+		});
+	</script>
 	
 
 </body>

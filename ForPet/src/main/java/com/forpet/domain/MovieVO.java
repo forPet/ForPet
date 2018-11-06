@@ -6,9 +6,8 @@ public class MovieVO {
 
 	private Integer movieNumber;
 	private Integer bookingNumber;
-	private Integer sitterNumber;
 	private String movieName;
-	private Date shootinTime;
+	private Date shootingTime;
 	
 	public Integer getMovieNumber() {
 		return movieNumber;
@@ -22,28 +21,22 @@ public class MovieVO {
 	public void setBookingNumber(Integer bookingNumber) {
 		this.bookingNumber = bookingNumber;
 	}
-	public Integer getSitterNumber() {
-		return sitterNumber;
-	}
-	public void setSitterNumber(Integer sitterNumber) {
-		this.sitterNumber = sitterNumber;
-	}
 	public String getMovieName() {
 		return movieName;
 	}
 	public void setMovieName(String movieName) {
 		this.movieName = movieName;
 	}
-	public Date getShootinTime() {
-		return shootinTime;
+	public Date getShootingTime() {
+		return shootingTime;
 	}
-	public void setShootinTime(Date shootinTime) {
-		this.shootinTime = shootinTime;
+	public void setShootingTime(Date shootinTime) {
+		this.shootingTime = shootinTime;
 	}
 	@Override
 	public String toString() {
-		return "MovieVO [movieNumber=" + movieNumber + ", bookingNumber=" + bookingNumber + ", sitterNumber="
-				+ sitterNumber + ", movieName=" + movieName + ", shootinTime=" + shootinTime + "]";
+		return "MovieVO [movieNumber=" + movieNumber + ", bookingNumber=" + bookingNumber + 
+				", movieName=" + movieName + ", shootingTime=" + shootingTime + "]";
 	}
 
 }
