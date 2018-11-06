@@ -92,7 +92,7 @@
 	</nav>
 
 	<!-- Page Content -->
-	<div class="container" style="padding-bottom: 40px">
+	<div class="container" style="padding-bottom: 40px; padding-bottom: 40px;">
 		<!-- Portfolio Item Row -->
 		<div class="row" style="padding-top: 40px">
 			<!-- calendar call  -->
@@ -108,28 +108,22 @@
 								</colgroup>
 								<tbody>
 									<tr class="contents">
-										<td class="redips-mark">아침식사</td>
-										<td class="redips-mark">점심식사</td>
-										<td class="redips-mark">저녁식사</td>
+										<td class="redips-mark">식사</td>
 										<td class="redips-mark">산책</td>
 										<td class="redips-mark">자유시간</td>
-										<td class="redips-mark">기타</td>
+										<td class="redips-mark">병원</td>
+										<td class="redips-mark">미용</td>
+										<td class="redips-mark">취침</td>
 										<td class="redips-mark">삭제</td>
 									</tr>
 									<tr class="selectColor">
 										<!-- clone 2 elements + last element -->
-										<td class="redips-mark"><div
-												class="redips-drag redips-clone green"></div></td>
-										<td class="redips-mark"><div
-												class="redips-drag redips-clone orange"></div></td>
-										<td class="redips-mark"><div
-												class="redips-drag redips-clone blue"></div></td>
-										<td class="redips-mark"><div
-												class="redips-drag redips-clone yellow"></div></td>
-										<td class="redips-mark"><div
-												class="redips-drag redips-clone red"></div></td>
-										<td class="redips-mark"><div
-												class="redips-drag redips-clone purple"></div></td>
+										<td class="redips-mark"><div class="redips-drag redips-clone green"></div></td>
+										<td class="redips-mark"><div class="redips-drag redips-clone orange"></div></td>
+										<td class="redips-mark"><div class="redips-drag redips-clone blue"></div></td>
+										<td class="redips-mark"><div class="redips-drag redips-clone yellow"></div></td>
+										<td class="redips-mark"><div class="redips-drag redips-clone red"></div></td>
+										<td class="redips-mark"><div class="redips-drag redips-clone purple"></div></td>
 										<td class="redips-trash" title="Trash">휴지통</td>
 									</tr>
 								</tbody>
@@ -240,22 +234,23 @@
 			eventClick: function(BookingVO) {
 				switch(BookingVO.progressState){
 				/* $(".col-md-4").show();  */
-					case '예약중': bookingInformDetail(BookingVO.bookingNumber);
-					break;
 					case '수락완료': bookingConfirm(BookingVO.bookingNumber);
+					break;
+					case '예약중': bookingInformDetail(BookingVO.bookingNumber);
 					break;
 				}
 			  }
 			});
 		</script>
 
-			<script>
+		<script>
 		$(".col-md-4").hide();
 		</script>
 
-			<div class="col-md-4 ajaxBooking"></div>
-		</div>
+		<div class="col-md-4 ajaxBooking"></div>
+	</div>
 		<!-- /.row -->
+		</div>
 
 
 <!-- Footer -->
@@ -283,12 +278,6 @@
 	      });
   	}
 
-  	function resultPaging(msg) {
-     	$(".ajaxBooking").html(msg);
-  	}
-	</script>
-
-<script>
   	function bookingConfirm(bookingNumber) {
 	     $.ajax({
 	         url: "bookingConfirm",
@@ -303,7 +292,7 @@
   	function resultPaging(msg) {
      	$(".ajaxBooking").html(msg);
   	}
-	</script>
+</script>
 	
 </body>
 
