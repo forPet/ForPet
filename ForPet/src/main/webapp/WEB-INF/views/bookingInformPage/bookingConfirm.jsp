@@ -11,8 +11,8 @@
 		var formObj = $("form[role='form']");
 		console.log(formObj);
 		$("#confirmBtn").on("click", function() {
+			moveBookingProgress('${bookingNumber}');
 			alert("예약 진행 페이지로 이동합니다.");
-			location.href = "/bookingProgressPage/bookingProgressMain";
 		});
 	});
 </script>
@@ -29,9 +29,9 @@
 			<c:forEach items="${BookingVO.userVO}" var="UserVO">
 				<c:forEach items="${BookingVO.sitterVO}" var="SitterVO">
 				<input type='hidden' id='sNum' name='sitterNumber' value="${SitterVO.sitterNumber}">
-				<li class="b-inform">예약자</li>${UserVO.userName}
-            	<li class="b-inform">반려동물 이름</li>${UserPetVO.petName}
-            	<li class="b-inform">예약날짜</li>${BookingVO.bookingDate}
+				<li class="b-inform">예약자 : ${UserVO.userName}</li>
+            	<li class="b-inform">반려동물 이름 : ${UserPetVO.petName}</li>
+            	<li class="b-inform">예약날짜 : ${BookingVO.bookingDate}</li>
 	            <li class="b-inform">부가사항</li>
 	           	 			종류 : ${UserPetVO.petType}<br>
 	            			성별 : ${UserPetVO.petGender} 
@@ -43,4 +43,19 @@
 <div class="my-3">
 	<button id="confirmBtn" type="button" class="btn btn-outline-success btn-lg">예약 진행 확인</button>
 </div>
+<script>
+  function moveBookingProgress(bookingNumber) {
+	     $.ajax({
+	         url: "bookingProgressMain",
+	         async: false,
+	         data: {
+	        	 "bookingNumber" : bookingNumber,
+	         },
+	         type: 'POST',
+	         success: 
+	        	 location.href = "/bookingProgressPage/bookingProgressMain?bookingNumber=" + bookingNumber
+	      });
+  }
+</script>
+
 

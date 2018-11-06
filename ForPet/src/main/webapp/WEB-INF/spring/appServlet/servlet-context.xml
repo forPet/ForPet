@@ -21,6 +21,17 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- RMultipartResulover 설정-->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="100000000" />
+		<beans:property name="maxInMemorySize" value="100000000" />
+	</beans:bean>
+	
+	<!-- 파일업로드 디렉토리 설정 -->
+	<beans:bean id="uploadPath" class="java.lang.String">
+		<beans:constructor-arg value="D:\dev\project\ForPet\ForPet\src\main\webapp\resources\movies" />
+	</beans:bean>
+	
 	<context:component-scan base-package="com.forpet.controller.*" />
 	<context:component-scan base-package="com.forpet.test" />
 </beans:beans>

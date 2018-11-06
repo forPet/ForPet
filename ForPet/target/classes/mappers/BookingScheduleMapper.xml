@@ -7,13 +7,13 @@
 
 	<resultMap id="bookingResultMap" type="BookingVO">
 		<id property="userNumber" column="userNumber" />
-		<result property="progressState" column="progressState" />
-		<result property="bookingNumber" column="bookingNumber" />
+			<result property="bookingNumber" column="bookingNumber" />
+			<result property="progressState" column="progressState" />
         <collection property="bookingScheduleVO" ofType="BookingScheduleVO" >
 			<id property="title" column="title" />
-			<result property="start" column="start" />
-			<result property="end" column="end" />
-			<result property="description" column="description" />
+				<result property="start" column="start" />
+				<result property="end" column="end" />
+				<result property="description" column="description" />
 		</collection>
 		<collection property="sitterVO" ofType="SitterVO" >
 			<id property="sitterNumber" column="sitterNumber" />
@@ -32,15 +32,15 @@
 			<result property="bookingDate" column="bookingDate" />
 			<result property="progressState" column="progressState" />
 		<collection property="userVO" ofType="UserVO" >
-		<id property="userNumber" column="userNumber" />
-			<result property="userName" column="userName" />
-		</collection>
+			<id property="userNumber" column="userNumber" />
+				<result property="userName" column="userName" />
+			</collection>
 		<collection property="userPetVO" ofType="UserPetVO" >
-		<id property="petNumber" column="petNumber" />
-			<result property="petName" column="petName" />
-			<result property="petType" column="petType" />
-			<result property="petGender" column="petGender" />
-			<result property="petDateOfBirth" column="petDateOfBirth" />
+			<id property="petNumber" column="petNumber" />
+				<result property="petName" column="petName" />
+				<result property="petType" column="petType" />
+				<result property="petGender" column="petGender" />
+				<result property="petDateOfBirth" column="petDateOfBirth" />
 		</collection>
 		<collection property="sitterVO" ofType="SitterVO" >
 			<id property="sitterNumber" column="sitterNumber" />
