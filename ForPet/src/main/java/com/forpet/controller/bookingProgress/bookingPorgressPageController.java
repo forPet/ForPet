@@ -1,6 +1,7 @@
 package com.forpet.controller.bookingProgress;
 
 import java.io.File;
+import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.forpet.domain.BookingVO;
+import com.forpet.domain.MovieVO;
 import com.forpet.service.BookingProgress.MovieUploadService;
 
 @Controller
@@ -34,10 +37,9 @@ public class bookingPorgressPageController {
 	public void CalendarListAll(@RequestParam("bookingNumber") int bookingNumber, Model model) throws Exception {
 		logger.info("show all list");
 	}
-
 	
 	@RequestMapping(value="/bookingProgressMain", method = RequestMethod.POST)
-	public void insertMoviePOST(MultipartFile file, Model model) throws Exception{
+	public void insertMoviePOST(@RequestParam("bookingNumber") int bookingNumber, MovieVO mVo, MultipartFile file, Model model) throws Exception{
 		
 		logger.info("Name :" + file.getOriginalFilename());
 		logger.info("Name :" + file.getSize());
@@ -46,6 +48,9 @@ public class bookingPorgressPageController {
 		String savedName = uploadFile(file.getOriginalFilename(), file.getBytes());
 
 		model.addAttribute("savedName", savedName);
+		mVo.setMovieName(savedName);
+		mVo.setBookingNumber(bookingNumber);
+		muService.insertMovie(mVo);
 	}
 
 	private String uploadFile(String originalName, byte[] fileData) throws Exception {

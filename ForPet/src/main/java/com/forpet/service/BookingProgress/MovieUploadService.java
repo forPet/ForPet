@@ -1,11 +1,9 @@
 package com.forpet.service.BookingProgress;
 
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
+import com.forpet.domain.MovieVO;
 
 public interface MovieUploadService {
 	
-	public void insertMovie(Map<String, Object> map, HttpServletRequest request) throws Exception;
-
+	public void insertMovie(MovieVO mVo) throws Exception;
+	
 }

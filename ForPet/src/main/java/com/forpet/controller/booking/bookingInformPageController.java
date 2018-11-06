@@ -31,14 +31,12 @@ public class bookingInformPageController {
 	@RequestMapping(value = "/bookingInformDetail", method = RequestMethod.GET)
 	public void BookingDetailInform(@RequestParam("bookingNumber") int bookingNumber, Model model) throws Exception {
 		logger.info("show all list");
-		System.out.println("get1");
 		model.addAttribute("bookingNumber", bookingNumber);
 		model.addAttribute("list", service.bookingDetailInform(bookingNumber));
 	}
 	
 	@RequestMapping(value = "/bookingConfirm", method = RequestMethod.GET)
 	public void BookingConfirmGET(@RequestParam("bookingNumber") int bookingNumber, Model model) throws Exception {
-		System.out.println("get2");
 		model.addAttribute("bookingNumber", bookingNumber);
 		model.addAttribute("list", service.bookingDetailInform(bookingNumber));
 	}

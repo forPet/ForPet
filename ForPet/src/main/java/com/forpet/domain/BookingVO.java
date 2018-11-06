@@ -20,6 +20,7 @@ public class BookingVO {
 	private List<UserVO> userVO;
 	private List<UserPetVO> userPetVO;
 	private List<SitterVO> sitterVO;
+	private MovieVO movieVO;
 	
 	public Integer getBookingNumber() {
 		return bookingNumber;
@@ -105,7 +106,13 @@ public class BookingVO {
 	public void setSitterVO(List<SitterVO> sitterVO) {
 		this.sitterVO = sitterVO;
 	}
-	
+
+	public MovieVO getMovieVO() {
+		return movieVO;
+	}
+	public void setMovieVO(MovieVO movieVO) {
+		this.movieVO = movieVO;
+	}
 	@Override
 	public String toString() {
 		return "BookingVO [bookingNumber=" + bookingNumber + ", userNumber=" + userNumber + ", bookingDate="
@@ -113,7 +120,7 @@ public class BookingVO {
 				+ ", ServicePrice=" + ServicePrice + ", extraServicePrice=" + extraServicePrice + ", toralPrice="
 				+ toralPrice + ", progressState=" + progressState + ", bookingVO=" + bookingVO + ", bookingScheduleVO="
 				+ bookingScheduleVO + ", userVO=" + userVO + ", userPetVO=" + userPetVO + ", sitterVO=" + sitterVO
-				+ "]";
+				+ ", movieVO=" + movieVO + "]";
 	}
 
 }
