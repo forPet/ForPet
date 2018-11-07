@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.forpet.mapper.ListPage.ListPageMapper">
+
+	<resultMap type="UserVO" id="SitterList">
+		<id property="userNumber" column="userNumber" />
+		<result property="userName" column="userName" />
+		<result property="userAddress" column="userAddress" />
+		<association property="sitterVO" column="userNumber"
+			javaType="SitterVO">
+			<result property="introduce" column="introduce" />
+			<result property="totalServiceCnt" column="totalServiceCnt" />
+			<result property="totalServiceScore" column="totalServiceScore" />
+		</association>
+	</resultMap>
+
+	<select id="SitterListPage" resultMap="SitterList">
+
+		SELECT u.userName, s.introduce, u.userAddress,
+		s.totalServiceCnt, s.totalServiceScore
+		FROM tbl_sitter as s, tbl_user as u
+		WHERE u.userAddress like concat("%",#{keyword},"%") and u.userNumber =
+		s.userNumber
+		order by totalServiceScore desc
+
+	</select>
+
+	<select id="ScoreSortingList" resultMap="SitterList">
+
+		SELECT
+		u.userNumber,
+		u.userName, s.introduce, u.userAddress,
+		s.totalServiceCnt, 
+		max(s.totalServiceScore)
+		FROM
+		tbl_sitter as s, tbl_user as u
+		WHERE
+		u.userNumber = s.userNumber
+		order by totalServiceScore desc;
+	</select>
+
+</mapper>
