@@ -10,6 +10,7 @@ public class BookingScheduleVO {
 	private String userId;
 	private String title;
 	private String description;
+	private String scheduleType;
 
 	public Integer getBookingNumber() {
 		return bookingNumber;
@@ -59,9 +60,17 @@ public class BookingScheduleVO {
 		this.description = description;
 	}
 
+	public String getScheduleType() {
+		return scheduleType;
+	}
+
+	public void setScheduleType(String scheduleType) {
+		this.scheduleType = scheduleType;
+	}
+
 	@Override
 	public String toString() {
 		return "BookingScheduleVO [bookingNumber=" + bookingNumber + ", start=" + start + ", end=" + end + ", userId="
-				+ userId + ", title=" + title + ", description=" + description + "]";
+				+ userId + ", title=" + title + ", description=" + description + ", scheduleType=" + scheduleType + "]";
 	}
 }

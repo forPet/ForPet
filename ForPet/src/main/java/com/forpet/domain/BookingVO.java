@@ -22,14 +22,6 @@ public class BookingVO {
 	private List<UserPetVO> userPetVO;
 	private List<SitterVO> sitterVO;
 	private MovieVO movieVO;
-	
-	public MovieVO getMovieVO() {
-		return movieVO;
-	}
-
-	public void setMovieVO(MovieVO movieVO) {
-		this.movieVO = movieVO;
-	}
 
 	public Integer getBookingNumber() {
 		return bookingNumber;
@@ -149,6 +141,14 @@ public class BookingVO {
 
 	public void setSitterVO(List<SitterVO> sitterVO) {
 		this.sitterVO = sitterVO;
+	}
+
+	public MovieVO getMovieVO() {
+		return movieVO;
+	}
+
+	public void setMovieVO(MovieVO movieVO) {
+		this.movieVO = movieVO;
 	}
 
 	@Override
