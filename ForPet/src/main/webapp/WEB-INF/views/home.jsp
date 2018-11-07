@@ -5,73 +5,47 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- 부트스트랩 -->
-
+<script type="text/javascript"
+	src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=H3Mmx7aYz6AaNJ92XKAA&submodules=geocoder"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 <style type="text/css">
-
-
 .jumbotron {
-	background-image: url('../../resources/img/OrangeCat.png');
-	background-size: cover;
-	width: 1500px;
-	height: 500px;
+		background-image: url('../../resources/img/OrangeCat.png');
+		background-size: cover;
+		width: 1500px;
+		height: 500px;
 }
-
 </style>
 
 <title>펫을 위한 믿을 수 있는 펫시터</title>
 </head>
 
 <body>
-	<nav class="navbar navbar-default" id="col">
-		
-
-	<div class="container-fluid">
-		<button type="button" class="navbar-toggle collapsed"
-			data-toggle="collapsed" data-target="#bs-example-navbar-collapse-1"
-			aria-expanded="false">
-			<span class="sr-only"></span> <span class="icon-bar"></span> <span
-				class="icon-bar"></span> <span class="icon-bar"></span>
-		</button>
-		<a class="navbar-brand" href="home.jsp"><Strong>ForPet</Strong></a>
+	<div class="container">
+		<h3>회원가입</h3>
+		<a href="signUp/signUpPage">회원가입</a> <a href="userPage/login">로그인</a>
+		<a href="userPage/userInfo">개인 정보</a>
 	</div>
-
-
-	<ul class="nav navbar-nav navbar-right">
-		<li><a href="/board/listAll">펫시터 찾기</a></li>
-		<li><a href="#">소개</a></li>
-		<li><a href="#">FAQ</a></li>
-
-		<li class="dropdown"><a href="#" class="dropdown-toggle"
-			data-toggle="dropdown" role="button" aria-haspopup="true"
-			aria-expanded="false">로그인<span class="caret"></span></a>
-			<ul class="dropdown-menu">
-				<li><a href="#">로그인</a></li>
-				<li><a href="#">회원 가입</a></li>
-			</ul></li>
-	</ul>
-	</nav>
 
 	<div class="container">
 		<div class="jumbotron">
 
 			<div class="center-column">
+
+
 				<h1>
 					<strong>펫을 위한</strong>
 				</h1>
-				<h1>믿을 수 있는 펫시터</h1>
+				<h2>믿을 수 있는 펫시터</h2>
 				<div id="index-search-box">
 					<div
 						class="col-xl-12 offset-xl-0 col-lg-10 offset-lg-1 col-md-10 offset-md-1">
 						<div class="index-search">
-							<input type="text" placeholder="원하는 지역을 검색해 보세요"
-								autocomplete="off">
-							<div class="index-search-result" style="display: none;">
-								<ul>
-								</ul>
-							</div>
+							<input id="address" type="text" name='keyword'
+								placeholder="원하는 지역을 검색해 보세요"> <input id="submit"
+								type="button" value="검색">
 						</div>
 					</div>
 				</div>
@@ -100,8 +74,27 @@
 			</div>
 		</div>
 	</div>
+
+	<script>
+		
+		$('#submit').on("click", function (e) {
+				var keyword = $("#address").val();
+				self.location = "/board/listPage"
+					+ "?keyword="+ keyword;
+		});
+				
+		$('#address').on('keydown', function(e) {
+			var keyCode = e.which;
+
+			if (keyCode === 13) { // Enter Key
+				var keyword = $("#address").val();
+				self.location = "/board/listPage"
+					+ "?keyword="+ keyword;
+				}
+		});
+
+		
+	</script> 
 	</footer>
-
-
 </body>
 </html>
