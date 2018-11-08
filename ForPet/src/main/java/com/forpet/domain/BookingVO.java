@@ -15,13 +15,13 @@ public class BookingVO {
 	private int extraServicePrice;
 	private int totalPrice;
 	private String progressState;
-
 	private List<BookingVO> bookingVO;
 	private List<BookingScheduleVO> bookingScheduleVO;
 	private List<UserVO> userVO;
 	private List<UserPetVO> userPetVO;
 	private List<SitterVO> sitterVO;
-	private MovieVO movieVO;
+	private List<MovieVO> movieVO;
+	private List<TimelineVO> timelineVO;
 
 	public Integer getBookingNumber() {
 		return bookingNumber;
@@ -143,12 +143,20 @@ public class BookingVO {
 		this.sitterVO = sitterVO;
 	}
 
-	public MovieVO getMovieVO() {
+	public List<MovieVO> getMovieVO() {
 		return movieVO;
 	}
 
-	public void setMovieVO(MovieVO movieVO) {
+	public void setMovieVO(List<MovieVO> movieVO) {
 		this.movieVO = movieVO;
+	}
+
+	public List<TimelineVO> getTimelineVO() {
+		return timelineVO;
+	}
+
+	public void setTimelineVO(List<TimelineVO> timelineVO) {
+		this.timelineVO = timelineVO;
 	}
 
 	@Override
@@ -158,6 +166,6 @@ public class BookingVO {
 				+ ", ServicePrice=" + ServicePrice + ", extraServicePrice=" + extraServicePrice + ", totalPrice="
 				+ totalPrice + ", progressState=" + progressState + ", bookingVO=" + bookingVO + ", bookingScheduleVO="
 				+ bookingScheduleVO + ", userVO=" + userVO + ", userPetVO=" + userPetVO + ", sitterVO=" + sitterVO
-				+ ", movieVO=" + movieVO + "]";
+				+ ", movieVO=" + movieVO + ", timelineVO=" + timelineVO + "]";
 	}
 }

@@ -1,9 +1,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <form role="form" action="/bookingInformPage/bookingInformDetail" method="get">
 	<input type='hidden' name='bookingNumber' value="${BookingVO.bookingNumber}">
 </form>
+
+<style>
+.main-fluid {
+	width: 100%;
+	height: 250px;
+}
+</style>
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -17,6 +25,9 @@
 		$(".btn-outline-danger").on("click", function() {
 			var sNum = $('#sNum').val();
 			clickCancel('${bookingNumber}', sNum);
+			var popUrl = "/bookingInformPage/reasonForRefusal?bookingNumber=" + ${bookingNumber};
+			var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+			window.open(popUrl,"",popOption);
 			clickCancelReturnResult('${bookingNumber}', sNum);
 			alert("거절이 완료되었습니다.");
 		});
@@ -25,7 +36,7 @@
 
 <h3 class="my-3">예약 상세 정보</h3>
 <div class=sideBar>
-	<a href="#"> <img class="img-fluid" src="/resources/images/zizi.JPG" alt="">
+	<a href="#"> <img class="main-fluid" src="/resources/images/zizi.JPG" alt="">
 	</a>
 </div>
 <ul>

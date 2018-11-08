@@ -13,16 +13,14 @@
 <title>Portfolio Item - Start Bootstrap Template</title>
 
 <!-- Bootstrap core CSS -->
-<link href="/resources/main/vendor/bootstrap/css/bootstrap.css"
-	rel="stylesheet">
+<link href="/resources/main/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link href="/resources/main/css/portfolio-item.css" rel="stylesheet">
 
 <!--  Calendar -->
 <link href='/resources/calendar/css/fullcalendar.css' rel='stylesheet' />
-<link href='/resources/calendar/css/fullcalendar.print.css'
-	media='print' />
+<link href='/resources/calendar/css/fullcalendar.print.css' media='print' />
 <script src='/resources/calendar/lib/moment.min.js'></script>
 <script src='/resources/calendar/lib/jquery.min.js'></script>
 <script src='/resources/calendar/js/fullcalendar.min.js'></script>
@@ -30,12 +28,9 @@
 
 <!-- timeline -->
 <meta name="author" content="Darko Bunic" />
-<meta name="description"
-	content="Drag and drop table content with JavaScript" />
-<link rel="stylesheet" href="/resources/timeline/css/style.css"
-	type="text/css" media="screen" />
-<script type="text/javascript"
-	src="/resources/timeline/js/redips-drag-min.js"></script>
+<meta name="description" content="Drag and drop table content with JavaScript" />
+<link rel="stylesheet" href="/resources/timeline/css/style.css" type="text/css" media="screen" />
+<script type="text/javascript" src="/resources/timeline/js/redips-drag-min.js"></script>
 <script type="text/javascript" src="/resources/timeline/js/script.js"></script>
 
 <style>
@@ -263,8 +258,7 @@
 
 <!-- Bootstrap core JavaScript -->
 <script src="/resources/main/vendor/jquery/jquery.min.js"></script>
-<script
-	src="/resources/main/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/resources/main/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <script>
   	function bookingInformDetail(bookingNumber) {
