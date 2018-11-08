@@ -67,5 +67,10 @@ public class bookingInformPageController {
 		rttr.addFlashAttribute("msg", "success");
 		return "";
 	}
+	
+	@RequestMapping(value = "/reasonForRefusal", method = RequestMethod.GET)
+	public void reasonForRefusal(@RequestParam("bookingNumber") int bookingNumber, Model model) throws Exception {
+		logger.info("show all list");
+	}
 
 }

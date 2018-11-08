@@ -3,7 +3,6 @@ package com.forpet.persistence.BookingSchedule;
 import java.util.List;
 
 import com.forpet.domain.BookingVO;
-import com.forpet.domain.UserVO;
 
 public interface BookingScheduleDAO {
 	

@@ -6,6 +6,13 @@
 	<input type='hidden' name='bookingNumber' value="${BookingVO.bookingNumber}">
 </form>
 
+<style>
+.main-fluid {
+	width: 100%;
+	height: 250px;
+}
+</style>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		var formObj = $("form[role='form']");
@@ -19,8 +26,7 @@
 
 <h3 class="my-3">예약 상세 정보</h3>
 <div class=sideBar>
-	<a href="#"> <img class="img-fluid"
-		src="/resources/images/zizi.JPG" alt="">
+	<a href="#"> <img class="main-fluid" src="/resources/images/zizi.JPG" alt="">
 	</a>
 </div>
 <ul>
@@ -51,7 +57,7 @@
 	         data: {
 	        	 "bookingNumber" : bookingNumber,
 	         },
-	         type: 'POST',
+	         type: 'GET',
 	         success: 
 	        	 location.href = "/bookingProgressPage/bookingProgressMain?bookingNumber=" + bookingNumber
 	      });

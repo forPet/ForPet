@@ -5,16 +5,61 @@
 
 <mapper namespace="forpet_BookingProgress">
 
-	<resultMap id="insertMovieMap" type="BookingVO">
-		<id property="userNumber" column="userNumber" />
-			<result property="bookingNumber" column="bookingNumber" />
-		<collection property="movieVO" ofType="MovieVO" >
-			<id property="movieNumber" column="movieNumber" />
-		</collection>
-    </resultMap>
-	
 	<insert id="insertMovie">
 		INSERT INTO TBL_MOVIE (bookingNumber, movieName) VALUE (#{bookingNumber}, #{movieName});
 	</insert>
+
+	<resultMap id="findByTimelineMap" type="BookingVO">
+		<id property="bookingNumber" column="bookingNumber" />
+		<collection property="timelineVO" ofType="TimelineVO" >
+			<id property="bookingNumber" column="bookingNumber" />
+			<result property="six" column="six" />
+			<result property="seven" column="seven" />
+			<result property="eight" column="eight" />
+			<result property="nine" column="nine" />
+			<result property="ten" column="ten" />
+			<result property="oneOne" column="oneOne" />
+			<result property="oneTwo" column="oneTwo" />
+			<result property="oneThree" column="oneThree" />
+			<result property="oneFour" column="oneFour" />
+			<result property="oneFive" column="oneFive" />
+			<result property="oneSix" column="oneSix" />
+			<result property="oneSeven" column="oneSeven" />
+			<result property="oneEight" column="oneEight" />
+			<result property="oneNine" column="oneNine" />
+			<result property="twoZero" column="twoZero" />
+			<result property="twoOne" column="twoOne" />
+			<result property="twoTwo" column="twoTwo" />
+			<result property="twoThree" column="twoThree" />
+		</collection>
+		<collection property="movieVO" ofType="MovieVO" >
+			<id property="movieNumber" column="movieNumber" />
+			<result property="shootingTime" column="shootingTime" />
+		</collection>
+    </resultMap>
+
+	<select id="findByTimeline" resultMap="findByTimelineMap" >
+		SELECT * FROM TBL_BOOKING AS TB, TBL_TIMELINE AS TT, TBL_MOVIE AS TM
+		WHERE TB.BOOKINGNUMBER = TT.BOOKINGNUMBER AND TT.BOOKINGNUMBER= #{bookingNumber};
+	</select>
+
+	<resultMap id="findMovieMap" type="BookingVO">
+		<id property="bookingNumber" column="bookingNumber" />
+		<collection property="movieVO" ofType="MovieVO" >
+			<id property="movieNumber" column="movieNumber" />
+			<result property="movieName" column="movieName" />
+			<result property="shootingTime" column="shootingTime" />
+		</collection>
+    </resultMap>
+
+	<select id="findMovie" resultMap="findMovieMap" >
+		SELECT TM.BOOKINGNUMBER, MOVIENUMBER, MOVIENAME, SHOOTINGTIME FROM TBL_BOOKING AS TB, TBL_MOVIE AS TM
+		WHERE TB.BOOKINGNUMBER = TM.BOOKINGNUMBER AND TB.BOOKINGNUMBER= #{BOOKINGNUMBER};
+	</select>
+
+	<select id="findBymovieNumber" resultMap="findMovieMap" >
+		SELECT * FROM TBL_MOVIE AS TM
+		WHERE TM.MOVIENAME = #{movieName};
+	</select>
 
 </mapper>

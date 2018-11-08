@@ -1,7 +1,6 @@
 package com.forpet.controller.bookingProgress;
 
 import java.io.File;
-import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.forpet.domain.BookingVO;
 import com.forpet.domain.MovieVO;
 import com.forpet.service.BookingProgress.MovieUploadService;
 
@@ -34,8 +32,10 @@ public class bookingPorgressPageController {
 	private static final Logger logger = LoggerFactory.getLogger(bookingPorgressPageController.class);
 
 	@RequestMapping(value = "/bookingProgressMain", method = RequestMethod.GET)
-	public void CalendarListAll(@RequestParam("bookingNumber") int bookingNumber, Model model) throws Exception {
+	public void CalendarListAll(int bookingNumber, Model model) throws Exception {
 		logger.info("show all list");
+		model.addAttribute("list", muService.findByTimeline(bookingNumber));
+		model.addAttribute("bookingNumber", bookingNumber);
 	}
 	
 	@RequestMapping(value="/bookingProgressMain", method = RequestMethod.POST)
@@ -51,6 +51,7 @@ public class bookingPorgressPageController {
 		mVo.setMovieName(savedName);
 		mVo.setBookingNumber(bookingNumber);
 		muService.insertMovie(mVo);
+		model.addAttribute("list", muService.findByTimeline(bookingNumber));
 	}
 
 	private String uploadFile(String originalName, byte[] fileData) throws Exception {
@@ -65,5 +66,17 @@ public class bookingPorgressPageController {
 		
 		return savedName;
 	}
-
+	
+	@RequestMapping(value = "/showSixHourMovie", method = RequestMethod.GET)
+	public void showSixHourMovie(int bookingNumber, Model model) throws Exception {
+		logger.info("show all list");
+		model.addAttribute("bookingNumber", bookingNumber);
+		model.addAttribute("list", muService.findMovie(bookingNumber));
+	}
+	
+	@RequestMapping(value = "/showMovieMain", method = RequestMethod.GET)
+	public void showMovieMain(String movieName, Model model) throws Exception {
+		model.addAttribute("list", muService.showMovie(movieName));
+	}
+	
 }
