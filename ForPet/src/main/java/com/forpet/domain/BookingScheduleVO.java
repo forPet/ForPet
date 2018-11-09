@@ -1,13 +1,13 @@
 package com.forpet.domain;
 
-import java.sql.Time;
+import java.util.Date;
 
 public class BookingScheduleVO {
 
 	private Integer bookingNumber;
 	private String scheduleType;
-	private Time startHour;
-	private Time endHour;
+	private Date startHour;
+	private Date endHour;
 
 	public Integer getBookingNumber() {
 		return bookingNumber;
@@ -25,19 +25,19 @@ public class BookingScheduleVO {
 		this.scheduleType = scheduleType;
 	}
 
-	public Time getStartHour() {
+	public Date getStartHour() {
 		return startHour;
 	}
 
-	public void setStartHour(Time startHour) {
+	public void setStartHour(Date startHour) {
 		this.startHour = startHour;
 	}
 
-	public Time getEndHour() {
+	public Date getEndHour() {
 		return endHour;
 	}
 
-	public void setEndHour(Time endHour) {
+	public void setEndHour(Date endHour) {
 		this.endHour = endHour;
 	}
 

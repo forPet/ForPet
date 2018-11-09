@@ -5,14 +5,41 @@ import java.sql.Timestamp;
 public class BookingVO {
 
 	private Integer bookingNumber;
+	private String userId;
 	private Integer userNumber;
+	private Integer sitterNumber;
 	private Timestamp bookingDate;
 	private String pickupAddress;
 	private String bookingAddress;
 	private int ServicePrice;
 	private int extraServicePrice;
-	private int toralPrice;
+	private int totalPrice;
+
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
 	private String progressState;
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public Integer getSitterNumber() {
+		return sitterNumber;
+	}
+
+	public void setSitterNumber(Integer sitterNumber) {
+		this.sitterNumber = sitterNumber;
+	}
 
 	public Integer getBookingNumber() {
 		return bookingNumber;
@@ -70,14 +97,6 @@ public class BookingVO {
 		this.extraServicePrice = extraServicePrice;
 	}
 
-	public int getToralPrice() {
-		return toralPrice;
-	}
-
-	public void setToralPrice(int toralPrice) {
-		this.toralPrice = toralPrice;
-	}
-
 	public String getProgressState() {
 		return progressState;
 	}
@@ -88,9 +107,9 @@ public class BookingVO {
 
 	@Override
 	public String toString() {
-		return "BookingVO [bookingNumber=" + bookingNumber + ", userNumber=" + userNumber + ", bookingDate=" + bookingDate
-				+ ", pickupAddress=" + pickupAddress + ", bookingAddress=" + bookingAddress + ", ServicePrice=" + ServicePrice
-				+ ", extraServicePrice=" + extraServicePrice + ", toralPrice=" + toralPrice + ", progressState=" + progressState
-				+ "]";
+		return "BookingVO [bookingNumber=" + bookingNumber + ", userId=" + userId + ", userNumber=" + userNumber
+				+ ", sitterNumber=" + sitterNumber + ", bookingDate=" + bookingDate + ", pickupAddress=" + pickupAddress
+				+ ", bookingAddress=" + bookingAddress + ", ServicePrice=" + ServicePrice + ", extraServicePrice="
+				+ extraServicePrice + ", totalPrice=" + totalPrice + ", progressState=" + progressState + "]";
 	}
 }

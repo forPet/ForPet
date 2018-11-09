@@ -51,6 +51,7 @@
 					</div>
 				</div>
 			</div>
+			<a href="http://localhost:8080/booking/payment123?sitterNumber=1&userNumber=2"> patment 이동</a>
 
 		</div>
 	</div>

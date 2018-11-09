@@ -8,8 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.forpet.domain.PaymentVO;
+import com.forpet.domain.BookingVO;
+import com.forpet.domain.UserVO;
 import com.forpet.service.booking.Payment_Service;
 
 @Controller	
@@ -19,15 +21,24 @@ public class PaymentController {
 	
 	@Inject
 	private Payment_Service service;
-	@RequestMapping(value = "/payment", method = RequestMethod.GET)
-	public void payment(Model model) throws Exception {
-//		model.addAttribute("sitterInfo", service.sitterInfo(1));
-		model.addAttribute("sitterService", service.sitterServiceSel(1));
-		model.addAttribute("sitterExtra", service.sitterExtra(1));
+	
+	@RequestMapping(value = "/payment123", method = RequestMethod.GET)
+	public void paymentGET(Model model, @RequestParam("sitterNumber") int sitterNumber, @RequestParam("userNumber") int userNumber) throws Exception {
+		model.addAttribute("sitterExtra", service.sitterExtra(sitterNumber));
+		System.out.println("GET클릭");
+	}
+	
+	@RequestMapping(value = "/payment123", method = RequestMethod.POST)
+	public void paymentPOST(BookingVO vo, Model model, @RequestParam("userNumber") int userNumber) throws Exception {
+		UserVO userVo = service.userIdSelect(userNumber);
+		String UserId = userVo.getUserId();
+		vo.setUserId(UserId);
+		System.out.println(vo);
+		service.payment(vo);
 	}
 	
 	@RequestMapping(value = "/asd", method = RequestMethod.GET)
-	public void test(PaymentVO payment, Model model) throws Exception {
+	public void test(Model model) throws Exception {
 		logger.info("Show all list...");
 //	List<BoardVO> allBoard = service.findAllBoard();
 //	model.addAttribute("allBoard", allBoard);

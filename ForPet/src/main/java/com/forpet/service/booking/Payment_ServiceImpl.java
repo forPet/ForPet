@@ -6,8 +6,9 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.forpet.domain.PaymentVO;
+import com.forpet.domain.BookingVO;
 import com.forpet.domain.SitterVO;
+import com.forpet.domain.UserVO;
 import com.forpet.persistence.booking.PaymentDAO;
 
 @Service
@@ -16,7 +17,7 @@ public class Payment_ServiceImpl implements Payment_Service{
 	private PaymentDAO dao;
 	
 	@Override
-	public void payment(PaymentVO vo) throws Exception {
+	public void payment(BookingVO vo) throws Exception {
 		dao.payment(vo);
 	}
 
@@ -33,5 +34,10 @@ public class Payment_ServiceImpl implements Payment_Service{
 	@Override
 	public List<SitterVO> sitterExtra(int vo) throws Exception {
 		return dao.sitterExtra(vo);
+	}
+
+	@Override
+	public UserVO userIdSelect(int vo) throws Exception {
+		return dao.userIdSelect(vo);
 	}
 }

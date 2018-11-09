@@ -3,8 +3,23 @@
 
 <mapper namespace="com.forpet.Payment_Mapper">
 	<insert id = "payment">
-		insert into tbl_payment(bookingNumber, paymentDate, paymentType, paymentPrice) 
-		values(#{bookingNumber}, now(), #{paymentType}, #{paymentPrice});
+		insert
+			into tbl_booking (
+			userId,
+			userNumber,
+			sitterNumber,
+			bookingDate,
+			pickupAddress,
+			bookingAddress,
+			ServicePrice,
+			extraServicePrice,
+			totalPrice,
+			progressState
+			)
+		values(
+			#{userId}, #{userNumber}, #{sitterNumber}, now(), '강서',
+			'강남', #{ServicePrice}, #{extraServicePrice}, #{totalPrice}, '예약중'
+		);
 	</insert>
   
 	<resultMap id="sitterinfo" type="SitterVO">
@@ -21,7 +36,7 @@
 		<association property="sitterScheduleVO" column="sitterNumber" javaType="SitterScheduleVO">
 			<result property="scheduleType" column="scheduleType" />
 			<result property="startHour" column="startHour" />
-			<result property="endHour" column="endHour" />
+			<result property="endHour" column="endHour" /> 
 		</association>
 	</resultMap>
 	
@@ -31,7 +46,7 @@
   	       tbl_sitter_service_extra extra 
   	    on service.sitterNumber = extra.sitterNumber JOIN
  		       tbl_sitter_schedule sche
-  	    on sche.sitterNumber = extra.sitterNumber
+  	    on sche.sitterNumber = extra.sitterNumber 
   	WHERE service.sitterNumber = #{sitterNumber};
 	</select>
 	
@@ -45,5 +60,9 @@
 		SELECT extra.extraServiceType, extra.extraServiceName, extra.extraSerivcePrice
 			FROM tbl_sitter_service_extra extra 
   	WHERE extra.sitterNumber = #{sitterNumber};
+	</select>
+	
+	<select id="userIdSelect" resultType="UserVO">
+		select userId from tbl_user where userNumber = #{userNumber};
 	</select>
 </mapper>
