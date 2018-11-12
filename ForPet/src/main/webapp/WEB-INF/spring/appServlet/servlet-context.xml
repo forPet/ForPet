@@ -29,7 +29,7 @@
 	
 	<!-- 파일업로드 디렉토리 설정 -->
 	<beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg value="D:\dev\project\ForPet\ForPet\src\main\webapp\resources\movie" />
+		<beans:constructor-arg value="D:\tools\project\ForPet\ForPet\src\main\webapp\resources\movies" />
 	</beans:bean>
 	
 	<context:component-scan base-package="com.forpet.controller.*" />

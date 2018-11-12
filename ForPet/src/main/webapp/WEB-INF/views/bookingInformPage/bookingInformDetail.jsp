@@ -34,7 +34,7 @@
 	});
 </script>
 
-<h3 class="my-3">예약 상세 정보</h3>
+<h3 class="my-3" id="infrmDetailMain">예약 상세 정보</h3>
 <div class=sideBar>
 	<a href="#"> <img class="main-fluid" src="/resources/images/zizi.JPG" alt="">
 	</a>

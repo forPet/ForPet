@@ -234,6 +234,8 @@
 					case '예약중': bookingInformDetail(BookingVO.bookingNumber);
 					break;
 				}
+				 var divLoc = $('#infrmDetailMain').offset();
+			        $('html, body').animate({scrollTop: divLoc.top-100}, "slow");
 			  }
 			});
 		</script>
