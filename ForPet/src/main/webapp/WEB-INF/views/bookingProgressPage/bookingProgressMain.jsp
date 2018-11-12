@@ -75,7 +75,8 @@
 
 .schedule input[type="button"] { 
 	border: 0; 
-	background-color: white; 
+	background-color: white;
+	cursor: pointer; 
 }  
 	
 .schedule label { 
@@ -151,7 +152,7 @@
 				<div id="redips-drag">		
 					<!-- sitterTimeline -->
 					<div id="left">
-					<table id="table3">
+						<table id="table3">
 							<colgroup>
 								<col width="250"/>
 							</colgroup>
@@ -269,10 +270,9 @@
 				
 				<!--  user timeline -->
 				<div id="redips-drag">
-		
 					<!-- left container -->
 					<div id="left">
-					<table id="table3">
+						<table id="table3">
 							<h3>userTimeline</h3>
 							<colgroup>
 								<col width="250"/>
@@ -324,7 +324,7 @@
 													<input class="showMovie" type="button" id="ten" name="button" value="${TimelineVO.ten}"/>
 												</td>
 												<td class="schedule">
-													<input idclass"showMovie" type="button" id="oneOne" name="button" value="${TimelineVO.oneOne}"/>
+													<input class="showMovie" type="button" id="oneOne" name="button" value="${TimelineVO.oneOne}"/>
 												</td>
 												<td class="schedule">
 													<input class="showMovie" type="button" id="oneTwo" name="button" value="${TimelineVO.oneTwo}"/>
