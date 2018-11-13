@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.forpet.domain.BookingScheduleVO;
 import com.forpet.domain.BookingVO;
 import com.forpet.domain.UserVO;
 import com.forpet.service.booking.Payment_Service;
@@ -22,19 +23,24 @@ public class PaymentController {
 	@Inject
 	private Payment_Service service;
 	
-	@RequestMapping(value = "/payment123", method = RequestMethod.GET)
-	public void paymentGET(Model model, @RequestParam("sitterNumber") int sitterNumber, @RequestParam("userNumber") int userNumber) throws Exception {
+	@RequestMapping(value = "/customBooking", method = RequestMethod.GET)
+	public void customBookingGet(Model model, @RequestParam("sitterNumber") int sitterNumber, @RequestParam("userNumber") int userNumber) throws Exception {
 		model.addAttribute("sitterExtra", service.sitterExtra(sitterNumber));
 		System.out.println("GET클릭");
 	}
 	
-	@RequestMapping(value = "/payment123", method = RequestMethod.POST)
-	public void paymentPOST(BookingVO vo, Model model, @RequestParam("userNumber") int userNumber) throws Exception {
-		UserVO userVo = service.userIdSelect(userNumber);
-		String UserId = userVo.getUserId();
-		vo.setUserId(UserId);
+	@RequestMapping(value = "/customBooking", method = RequestMethod.POST)
+	public String customBookingPost(BookingScheduleVO vo2, BookingVO vo, Model model, @RequestParam("userNumber") int userNumber) throws Exception {
+//		UserVO userVo = service.userIdSelect(userNumber);
+//		String UserId = userVo.getUserId();
+//		vo.setUserId(UserId);
+		System.out.println(vo2);
 		System.out.println(vo);
-		service.payment(vo);
+//		service.payment(vo);
+		
+		model.addAttribute("vo", vo);
+		
+		return "redirect:/userPage/myPage";
 	}
 	
 	@RequestMapping(value = "/asd", method = RequestMethod.GET)

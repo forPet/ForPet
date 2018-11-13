@@ -28,7 +28,7 @@ ul {
 	margin-left: auto;
 }
 
-#payment_button {
+#reservation_button {
 	display: table;
 	margin-right: auto;
 	margin-left: auto;
@@ -49,39 +49,33 @@ ul {
 	<h1>펫시팅 예약 신청</h1>
 	<p> 원하시는 부가서비스 및 날짜만 알려주시면 예약을 도와드리겠습니다.</p>
 	</div>
-	<div class="boarder_box">
-		<div style="margin: 50px">
-			<h3><span> 동물을 픽업할 지역을 알려주세요. </span></h3>
-			<form role="form" method="post">
-				<input type="text" name="pickupAddress" size= "70" placeholder="원하시는 지역을 적어주세요 공백이면 유저집으로 들어갑니다">
-			</form>
+	<form method="post" >
+		<div class="boarder_box">
+			<div style="margin: 50px">
+				<h3><span> 동물을 픽업할 지역을 알려주세요. </span></h3>
+				<input type="text" name="pickupAddress" placeholder="공백시 사용자의 집으로 배정됩니다" size= "70">
+			</div>
 		</div>
-	</div>
-	<div class="boarder_box">
-		<div style="margin: 50px">
-			<h3><span> 펫시팅 날짜를 알려주세요. </span></h3>
-			<form role="form" method="post">
+		<div class="boarder_box">
+			<div style="margin: 50px">
+				<h3><span> 펫시팅 날짜를 알려주세요. </span></h3>
 				<div style="margin: 0px 20px 0px 0px">
-					<input type="text" class="datepicker" name="startHour" placeholder="펫시팅 시작일" size="50" style="margin: 0px 50px 0px 0px">
-					<input type="text" class="datepicker" name="endHour" placeholder="펫시팅 종료일" size="50" style="margin: 0px 50px 0px 0px">
+					<input type="text" class="datepicker" name="start" placeholder="펫시팅 시작일" size="50" style="margin: 0px 50px 0px 0px">
+					<input type="text" class="datepicker" name="end" placeholder="펫시팅 종료일" size="50" style="margin: 0px 50px 0px 0px">
 				</div>
-			</form>
+			</div>
 		</div>
-	</div>
-	<div class="boarder_box">
-		<div style="margin: 50px">
-			<h3><span> 펫시터에게 전할 말을 남겨주세요(약먹이기 등등..) </span></h3>
-			<form role="form" method="post">
+		<div class="boarder_box">
+			<div style="margin: 50px">
+				<h3><span> 펫시터에게 전할 말을 남겨주세요(약먹이기 등등..) </span></h3>
 				<div style="margin: 0px 20px 0px 0px">
 					<input type="text" name="asd" placeholder="요청사항" size="50" style="margin: 0px 50px 0px 0px" size="70"><br>
 				</div>
-			</form>
+			</div>
 		</div>
-	</div>
-	<div class="boarder_box">
-		<div style="margin: 50px">
-			<h3><span>추가 부가서비스를 선택해주세요</span></h3>
-			<form role="form" method="post">
+		<div class="boarder_box">
+			<div style="margin: 50px">
+				<h3><span>추가 부가서비스를 선택해주세요</span></h3>
 				<c:forEach items="${sitterExtra}" var="extra">
 					<table>
 						<tr>	
@@ -96,23 +90,25 @@ ul {
 						</tr>
 					</table>
 				</c:forEach>
-			</form>
+			</div>
 		</div>
-	</div>
-	<div class="boarder_box">
-		<h3><span>결제 정보</span></h3>
-		<form role="form" method="post">
-			<input id="extra_price" name="extraServicePrice" value=0 style="border-style: none;">
-			<input id="sitter_price" name="ServicePrice" value=17000 style="border-style: none;">
-			<input id="total_price" name="totalPrice" value=17000 style="border-style: none;">
+		<div class="boarder_box">
+			<div style="margin: 50px">
+				<h3><span>결제 정보</span></h3>
+				<ul style="list-style: none;" readonly>
+					<li> 부가서비스 금액 : <input id="extra_price" name="extraServicePrice" readonly value=0 style="border-style: none;"></li>
+					<li> 펫 시팅  금액 : <input id="sitter_price" name="ServicePrice" value=17000 readonly style="border-style: none;"></li>
+					<li> 총합 : <input id="total_price" name="totalPrice" value=17000 readonly style="border-style: none;"></li>
+				</ul>
+			</div>
 			<div>
-				<div id="payment_button">
+				<div id="reservation_button">
 					<button type="button" id="cancle">취소</button>
-					<button type="submit" id="payment">결제</button>
+					<button type="submit" id="reservation">예약하기</button>
 				</div>
 			</div>
-		</form>
-	</div>
+		</div>
+	</form>
 </body>
 <script>
 $(document).ready(function() {
@@ -120,12 +116,15 @@ $(document).ready(function() {
 		var extra_price = parseInt($("#extra_price").val());
 		var division = $(this).attr("division");
 		var total_price = parseInt($("#total_price").val());
-		
 		var extra_cnt = parseInt($(".extra_cnt" + division).val());
 		var cnt = parseInt($(".cnt" + division).val());
 		var sell_price = parseInt($(".sell_price" + division).val());
 		
-		console.log(sell_price);
+		console.log(cnt);
+		console.log(extra_cnt);
+		
+		cnt += extra_cnt;
+		extra_Service_Count(cnt, division);
 		
 		extra_price += sell_price;
 		extraPrice(extra_price);
@@ -133,9 +132,31 @@ $(document).ready(function() {
 		total_price += sell_price;
 		total_Price(total_price);
 		
-		$("span#test123").val(extra_price + "원");
 	});
 });
+
+$(".price_del").on("click", function() {
+	var extra_price = parseInt($("#extra_price").val());
+	var division = $(this).attr("division");
+	var total_price = parseInt($("#total_price").val());
+	var extra_cnt = parseInt($(".extra_cnt" + division).val());
+	var cnt = parseInt($(".cnt" + division).val());
+	var sell_price = parseInt($(".sell_price" + division).val());
+		
+	cnt -= extra_cnt
+	
+	extra_price -= sell_price;
+	total_price -= sell_price;
+	
+  if(extra_price < 0 ||  cnt < 0)
+		console.error("놉!");
+	else {
+		extraPrice(extra_price);
+		extra_Service_Count(cnt, division);
+  	total_Price(total_price);
+	}
+});
+
 $(function() {
 	$(".datepicker").datepicker({
 		minDate : -20,
@@ -149,6 +170,14 @@ function total_Price(total_price) {
 
 function extraPrice(extra_price) {
 	document.getElementById("extra_price").value = extra_price;
+}
+
+function extraPrice(extra_price) {
+	document.getElementById("extra_price").value = extra_price;
+}
+
+function extra_Service_Count(cnt, division) {
+	$(".cnt" + division).val(cnt);
 }
 	
 </script>
