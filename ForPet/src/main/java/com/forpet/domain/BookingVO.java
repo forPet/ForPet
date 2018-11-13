@@ -14,7 +14,8 @@ public class BookingVO {
 	private int ServicePrice;
 	private int extraServicePrice;
 	private int totalPrice;
-
+	private String progressState;
+	
 	public int getTotalPrice() {
 		return totalPrice;
 	}
@@ -23,7 +24,6 @@ public class BookingVO {
 		this.totalPrice = totalPrice;
 	}
 
-	private String progressState;
 
 	public String getUserId() {
 		return userId;
