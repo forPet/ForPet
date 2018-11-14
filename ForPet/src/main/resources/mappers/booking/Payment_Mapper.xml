@@ -10,15 +10,14 @@
 			sitterNumber,
 			bookingDate,
 			pickupAddress,
-			bookingAddress,
 			ServicePrice,
 			extraServicePrice,
 			totalPrice,
 			progressState
 			)
 		values(
-			#{userId}, #{userNumber}, #{sitterNumber}, now(), '강서',
-			'강남', #{ServicePrice}, #{extraServicePrice}, #{totalPrice}, '예약중'
+			#{userId}, #{userNumber}, #{sitterNumber}, now(), #{pickupAddress},
+			#{ServicePrice}, #{extraServicePrice}, #{totalPrice}, '예약중'
 		);
 	</insert>
   

@@ -10,7 +10,6 @@ public class BookingVO {
 	private Integer sitterNumber;
 	private Timestamp bookingDate;
 	private String pickupAddress;
-	private String bookingAddress;
 	private int ServicePrice;
 	private int extraServicePrice;
 	private int totalPrice;
@@ -73,14 +72,6 @@ public class BookingVO {
 		this.pickupAddress = pickupAddress;
 	}
 
-	public String getBookingAddress() {
-		return bookingAddress;
-	}
-
-	public void setBookingAddress(String bookingAddress) {
-		this.bookingAddress = bookingAddress;
-	}
-
 	public int getServicePrice() {
 		return ServicePrice;
 	}
@@ -109,7 +100,7 @@ public class BookingVO {
 	public String toString() {
 		return "BookingVO [bookingNumber=" + bookingNumber + ", userId=" + userId + ", userNumber=" + userNumber
 				+ ", sitterNumber=" + sitterNumber + ", bookingDate=" + bookingDate + ", pickupAddress=" + pickupAddress
-				+ ", bookingAddress=" + bookingAddress + ", ServicePrice=" + ServicePrice + ", extraServicePrice="
-				+ extraServicePrice + ", totalPrice=" + totalPrice + ", progressState=" + progressState + "]";
+				+ ", ServicePrice=" + ServicePrice + ", extraServicePrice=" + extraServicePrice + ", totalPrice=" + totalPrice
+				+ ", progressState=" + progressState + "]";
 	}
 }
