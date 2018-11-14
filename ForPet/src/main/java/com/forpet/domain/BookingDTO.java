@@ -28,8 +28,7 @@ public class BookingDTO {
 	}
 
 	public String getStart() {
-		String newStart = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(start);
-		System.out.println(newStart);
+		String newStart = new SimpleDateFormat("yyyy-MM-dd").format(start);
 		return newStart;
 	}
 
@@ -38,7 +37,7 @@ public class BookingDTO {
 	}
 
 	public String getEnd() {
-		String newEnd = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(end);
+		String newEnd = new SimpleDateFormat("yyyy-MM-dd").format(end);
 		return newEnd;
 	}
 
