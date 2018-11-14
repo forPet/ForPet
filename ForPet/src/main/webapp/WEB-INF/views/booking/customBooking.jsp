@@ -67,9 +67,10 @@ ul {
 		</div>
 		<div class="boarder_box">
 			<div style="margin: 50px">
-				<h3><span> 펫시터에게 전할 말을 남겨주세요(약먹이기 등등..) </span></h3>
+				<h3><span> 펫시터에게 전할 요청사항을 남겨주세요 </span></h3>
 				<div style="margin: 0px 20px 0px 0px">
-					<input type="text" name="asd" placeholder="요청사항" size="50" style="margin: 0px 50px 0px 0px" size="70"><br>
+					<input type="text" name="title" placeholder="애완동물 이름을 적어주세요" size="50" style="margin: 0px 50px 0px 0px" size="70">
+					<input type="text" name="description" placeholder="요청사항" size="50" style="margin: 0px 50px 0px 0px" size="70">
 				</div>
 			</div>
 		</div>
