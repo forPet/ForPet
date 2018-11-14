@@ -26,7 +26,8 @@
 	<div class="container">
 		<h3>회원가입</h3>
 		<a href="signUp/signUpPage">회원가입</a> <a href="userPage/login">로그인</a>
-		<a href="userPage/userInfo">개인 정보</a>
+		<a href="userPage/myPage">개인 정보</a>
+		<a href="board/listPage">펫시터 목록</a>
 	</div>
 
 	<div class="container">
@@ -76,7 +77,6 @@
 	</div>
 
 	<script>
-		
 		$('#submit').on("click", function (e) {
 				var keyword = $("#address").val();
 				self.location = "/board/listPage"
@@ -92,8 +92,6 @@
 					+ "?keyword="+ keyword;
 				}
 		});
-
-		
 	</script> 
 	</footer>
 </body>

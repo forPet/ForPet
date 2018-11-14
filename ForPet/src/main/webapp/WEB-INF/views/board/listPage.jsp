@@ -37,6 +37,7 @@
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="#">소개</a></li>
 			<li><a href="#">FAQ</a></li>
+			<li><a href="../userPage/myPage">개인 정보</a></li>
 
 			<li class="dropdown"><a href="#" class="dropdown-toggle"
 				data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -60,17 +61,18 @@
 				</div>
 
 				<div id="Sitter_List" style="float: left;">
-					<c:forEach items="${SitterListPage}" var="UserVO">
+					<c:forEach items="${SitterListPage}" var="listDTO">
 						<div>
 							<div>
-								<span>${UserVO.userAddress}</span>
+								<span>${listDTO.userAddress}</span>
 							</div>
 							<div>
-								<span>${UserVO.userName}</span> <span>${UserVO.sitterVO.introduce}</span>
+								<span>${listDTO.userName}</span> 
+								<span>${listDTO.introduce}</span>
 							</div>
 							<div>
-								<span>${UserVO.sitterVO.totalServiceScore}</span><!--  메인페이지에서 검색 할 경우와, 검색없이 리스트페이지로 바로 이동시 같은 시터의 시터평점이 다르게 나오는 현상 있음.  -->
-								<span>${UserVO.sitterVO.totalServiceCnt}</span>
+								<span>${listDTO.totalServiceScore}</span>  
+								<span>${listDTO.totalServiceCnt}</span>
 							</div>
 						</div>
 					</c:forEach>
@@ -82,7 +84,6 @@
 			</div>
 		</div>
 	</div>
-
 	<!-- Script -->
 	<script>
  		var map = new naver.maps.Map("map", {
@@ -103,35 +104,27 @@
 				$.ajax({
 					type: "GET",
 					url: "/board/sitterAllList",
-					data: {
-							"keyword" : keyword
-					 },
-					success: sitterAllList
+					data: {"keyword" : keyword},
+					success : sitterAllList
 					
 					});
 				});
-			$('#address').on('keydown', function(e) {
-				var keyCode = e.which;
-
-				if (keyCode === 13) { // Enter Key
+						
+			$('#address').keypress(function (e){
+				if (e.which == 13) {
+					var keyword = $("#address").val();
 					$.ajax({
 						type: "GET",
 						url: "/board/sitterAllList",
-						data: {
-								"keyword" : keyword
-						 },
-						success: sitterAllList
-						
+						data: {"keyword" : keyword},
+						success : sitterAllList
 						});
 				}
 			});
-			
-			});
-			
+		});
 			 function sitterAllList(msg) {
       $("#Sitter_List").html(msg);
    }
-		
 	</script>
 </body>
 </html>

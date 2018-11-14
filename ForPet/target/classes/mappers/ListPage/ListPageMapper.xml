@@ -5,41 +5,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.forpet.mapper.ListPage.ListPageMapper">
 
-	<resultMap type="UserVO" id="SitterList">
-		<id property="userNumber" column="userNumber" />
-		<result property="userName" column="userName" />
-		<result property="userAddress" column="userAddress" />
-		<association property="sitterVO" column="userNumber"
-			javaType="SitterVO">
-			<result property="introduce" column="introduce" />
-			<result property="totalServiceCnt" column="totalServiceCnt" />
-			<result property="totalServiceScore" column="totalServiceScore" />
-		</association>
-	</resultMap>
-
-	<select id="SitterListPage" resultMap="SitterList">
-
-		SELECT u.userName, s.introduce, u.userAddress,
-		s.totalServiceCnt, s.totalServiceScore
-		FROM tbl_sitter as s, tbl_user as u
-		WHERE u.userAddress like concat("%",#{keyword},"%") and u.userNumber =
-		s.userNumber
-		order by totalServiceScore desc
-
+	<select id="SitterListPage" resultType="listDTO">
+		SELECT u.userName userName, s.introduce introduce, u.userAddress userAddress,
+		s.totalServiceCnt totalServiceCnt, s.totalServiceScore totalServiceScore
+		FROM tbl_sitter as s left join tbl_user as u on s.userNumber = u.userNumber 
+    WHERE u.userAddress like concat("%", #{keyword} ,"%");
 	</select>
 
-	<select id="ScoreSortingList" resultMap="SitterList">
-
-		SELECT
-		u.userNumber,
-		u.userName, s.introduce, u.userAddress,
-		s.totalServiceCnt, 
-		max(s.totalServiceScore)
-		FROM
-		tbl_sitter as s, tbl_user as u
-		WHERE
-		u.userNumber = s.userNumber
-		order by totalServiceScore desc;
+	<select id="ScoreSortingList" resultType="listDTO">
+		SELECT u.userName userName, s.introduce introduce, u.userAddress userAddress,
+		s.totalServiceCnt totalServiceCnt, s.totalServiceScore totalServiceScore
+		FROM tbl_sitter as s left join tbl_user as u on s.userNumber = u.userNumber
+		order by totalServiceCnt desc;
 	</select>
 
 </mapper>

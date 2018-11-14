@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.forpet.domain.UserVO;
+import com.forpet.domain.listDTO;
 import com.forpet.persistence.listPage.ListPageDAO;
 
 @Service
@@ -16,7 +17,7 @@ public class ListPageSerciveImpl implements ListPageSercive {
 	private ListPageDAO dao;
 	
 	@Override
-	public List<UserVO> SitterListPage(String keyword) throws Exception {
+	public List<listDTO> SitterListPage(String keyword) throws Exception {
 		return dao.SitterListPage(keyword);
 	}
 
