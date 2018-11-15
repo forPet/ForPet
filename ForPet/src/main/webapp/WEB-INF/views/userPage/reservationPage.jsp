@@ -39,15 +39,13 @@
 	  </thead>
 	<c:forEach items="${reservationSearch}" var="reservation">
 	  <tbody>
-	    <tr>
-	    	<a href="asd/asd">
-		      <td> <input type="checkbox"></td>
-		      <td>${reservation.bookingDate}</td>
-		      <td>${reservation.title}</td>
-		      <td>${reservation.start}</td>
-		      <td>${reservation.end}</td>
-		      <td>${reservation.progressState}</td>
-	      </a>
+	    <tr onClick = "location.href='/userPage/MyPage/detail'">
+	      <td><input type="checkbox"></td>
+	      <td>${reservation.bookingDate}</td>
+	      <td>${reservation.title}</td>
+	      <td>${reservation.start}</td>
+	      <td>${reservation.end}</td>
+	      <td>${reservation.progressState}</td>
 	    </tr>
 	  </tbody>
   </c:forEach>

@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.forpet.service.userPage.MyPageService;
 
 @Controller
-@RequestMapping("/userPage/*")
-public class MyPageController {
+@RequestMapping("/userPage/MyPage*")
+public class MyPageDetailController {
 
 	@Inject
 	private MyPageService service;
 	
-	@RequestMapping(value = "/reservationPage", method = RequestMethod.GET)
-	public void SitterListPage(Model model, @RequestParam("userNumber") int userNumber) throws Exception {
-		model.addAttribute("reservationSearch", service.reservationSearch(userNumber));
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
+	public void SitterListPage(Model model) throws Exception {
+		
 	}
 }
