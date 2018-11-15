@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.forpet.Payment_Mapper">
-	<insert id = "payment">
+	<insert id = "payment" useGeneratedKeys="true" keyProperty="bookingNumber">
 		insert
 			into tbl_booking (
 			userId,
@@ -19,6 +19,10 @@
 			#{userId}, #{userNumber}, #{sitterNumber}, now(), #{pickupAddress},
 			#{ServicePrice}, #{extraServicePrice}, #{totalPrice}, '예약중'
 		);
+	</insert>
+	
+	<insert id="bookingScheduleInsert" >
+		insert into tbl_booking_schedule(bookingNumber, title, start, end, description) values(#{bookingNumber},#{title},#{start},#{end},#{description});
 	</insert>
   
 	<resultMap id="sitterinfo" type="SitterVO">
