@@ -52,7 +52,7 @@
 				</div>
 			</div>
 			<a href="http://localhost:8080/booking/customBooking?sitterNumber=1&userNumber=2"> patment 이동</a>
-
+			<a href="http://localhost:8080/userPage/reservationPage?userNumber=2"> MyPage 이동</a>
 		</div>
 	</div>
 	<footer style="background-color: #b2ddef; color: #000000">
