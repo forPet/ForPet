@@ -190,7 +190,6 @@
 								<col width="250"/>
 							</colgroup>
 							<h3>sitterTimeline</h3>
-							
 							<!--  진행바 -->
 							<div id="pbar_outerdiv" style="width: 100%; height: 30px; border: 1px solid grey; z-index: 1; position: relative; border-radius: 5px; -moz-border-radius: 5px;">
 							<div id="pbar_innerdiv" style="background-color: lightblue; z-index: 2; height: 100%; width: 0%;"></div>

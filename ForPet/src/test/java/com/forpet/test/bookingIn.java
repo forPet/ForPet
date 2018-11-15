@@ -23,7 +23,7 @@ public class bookingIn {
 	
 	@Test
 	public void test() throws Exception {
-		mDao.findByTimeline(1);
+		mDao.findByTimeline(6);
 	}
 
 }

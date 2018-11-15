@@ -14,9 +14,7 @@ body {
 
 /* main container */
 #main_container {
-	  	width: 100%;
- 		padding-right: 15px;
- 	 	padding-left: 15px;
+	  	width: 100%;;
  		margin-right: auto;
   		margin-left: auto;
 }
@@ -115,7 +113,7 @@ div#redips-drag td {
 }
 	/*  table1ÀÇ °æ°è  */
 	#table1 td {
-		border: 1px solid #DDC5B5;
+		border: 1px solid #FF8000;
 	}
 #table3 {
 	padding-top: 20px;
@@ -123,7 +121,7 @@ div#redips-drag td {
 }
 
 #table2 tr td {
-	border: 1px solid #DDC5B5;
+	border: 1px solid #FF8000;
 }
 
 #table1 {
@@ -197,3 +195,4 @@ div#redips-drag td {
 #button1 {
 	margin: auto;
 }
+
