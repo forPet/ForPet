@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.forpet.domain.BookingScheduleVO;
 import com.forpet.domain.BookingVO;
 import com.forpet.domain.SitterVO;
 import com.forpet.domain.UserVO;
@@ -39,5 +40,15 @@ public class Payment_ServiceImpl implements Payment_Service{
 	@Override
 	public UserVO userIdSelect(int vo) throws Exception {
 		return dao.userIdSelect(vo);
+	}
+
+	@Override
+	public BookingVO bookingNumSelect(String userId) throws Exception {
+		return dao.bookingNumSelect(userId);
+	}
+
+	@Override
+	public void bookingScheduleInsert(BookingScheduleVO vo) throws Exception {
+		dao.bookingScheduleInsert(vo);
 	}
 }

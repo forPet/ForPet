@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.forpet.domain.BookingScheduleVO;
 import com.forpet.domain.BookingVO;
 import com.forpet.domain.SitterVO;
 import com.forpet.domain.UserVO;
@@ -41,5 +42,15 @@ public class PaymentImpl implements PaymentDAO {
 	@Override
 	public UserVO userIdSelect(int vo) throws Exception {
 		return session.selectOne(namespace + ".userIdSelect", vo);
+	}
+
+	@Override
+	public BookingVO bookingNumSelect(String userId) throws Exception {
+		return session.selectOne(namespace + ".bookingNumSelect", userId);
+	}
+
+	@Override
+	public void bookingScheduleInsert(BookingScheduleVO vo) throws Exception {
+		session.insert(namespace + ".bookingScheduleInsert", vo);
 	}
 }

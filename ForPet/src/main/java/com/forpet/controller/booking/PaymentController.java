@@ -30,17 +30,17 @@ public class PaymentController {
 	}
 	
 	@RequestMapping(value = "/customBooking", method = RequestMethod.POST)
-	public String customBookingPost(BookingScheduleVO vo2, BookingVO vo, Model model, @RequestParam("userNumber") int userNumber) throws Exception {
-//		UserVO userVo = service.userIdSelect(userNumber);
-//		String UserId = userVo.getUserId();
-//		vo.setUserId(UserId);
-		System.out.println(vo2);
-		System.out.println(vo);
-//		service.payment(vo);
+	public String customBookingPost(BookingScheduleVO bookingScheduleVO, BookingVO bookingVO, Model model, @RequestParam("userNumber") int userNumber) throws Exception {
+		UserVO userVo = service.userIdSelect(userNumber);
+		String userId = userVo.getUserId();
+		bookingVO.setUserId(userId);
 		
-		model.addAttribute("vo", vo);
+		service.payment(bookingVO);
 		
-		return "redirect:/userPage/myPage";
+		int lastbookingnumber = bookingVO.getBookingNumber();
+		bookingScheduleVO.setBookingNumber(lastbookingnumber);
+		service.bookingScheduleInsert(bookingScheduleVO);
+		return "redirect:/userPage/MyPage";
 	}
 	
 	@RequestMapping(value = "/asd", method = RequestMethod.GET)

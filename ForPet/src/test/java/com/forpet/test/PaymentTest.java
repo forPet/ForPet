@@ -43,8 +43,13 @@ public class PaymentTest {
 		dao.sitterExtra(1);
 	}
 	
-	@Test
+	//@Test
 	public void test() throws Exception {
 		dao2.reservationSearch(2);
+	}
+	
+	@Test
+	public void test2() throws Exception {
+		dao.bookingNumSelect("yyyyy0115");
 	}
 }
