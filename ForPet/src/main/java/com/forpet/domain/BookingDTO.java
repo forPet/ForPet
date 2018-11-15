@@ -19,13 +19,14 @@ public class BookingDTO {
 		return newBookingDate;
 	}
 
-	public void setBookingDate(Date bookingDate) {
-		this.bookingDate = bookingDate;
-	}
-
 	public String getStart() {
 		String newStart = new SimpleDateFormat("yyyy-MM-dd").format(start);
 		return newStart;
+	}
+
+	public String getEnd() {
+		String newEnd = new SimpleDateFormat("yyyy-MM-dd").format(end);
+		return newEnd;
 	}
 
 	public Integer getSitterNumber() {
@@ -76,17 +77,16 @@ public class BookingDTO {
 		this.progressState = progressState;
 	}
 
+	public void setBookingDate(Date bookingDate) {
+		this.bookingDate = bookingDate;
+	}
+
 	public void setStart(Date start) {
 		this.start = start;
 	}
 
 	public void setEnd(Date end) {
 		this.end = end;
-	}
-
-	public String getEnd() {
-		String newEnd = new SimpleDateFormat("yyyy-MM-dd").format(end);
-		return newEnd;
 	}
 
 	@Override

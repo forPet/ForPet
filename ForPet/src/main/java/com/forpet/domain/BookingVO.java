@@ -16,6 +16,7 @@ public class BookingVO {
 	private int totalPrice;
 	private String progressState;
 	private String comment;
+
 	private List<BookingVO> bookingVO;
 	private List<BookingScheduleVO> bookingScheduleVO;
 	private List<UserVO> userVO;
