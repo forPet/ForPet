@@ -15,6 +15,7 @@ public class BookingVO {
 	private int extraServicePrice;
 	private int totalPrice;
 	private String progressState;
+	private String comment;
 	private List<BookingVO> bookingVO;
 	private List<BookingScheduleVO> bookingScheduleVO;
 	private List<UserVO> userVO;
@@ -103,6 +104,14 @@ public class BookingVO {
 		this.progressState = progressState;
 	}
 
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
 	public List<BookingVO> getBookingVO() {
 		return bookingVO;
 	}
@@ -164,8 +173,8 @@ public class BookingVO {
 		return "BookingVO [bookingNumber=" + bookingNumber + ", userId=" + userId + ", userNumber=" + userNumber
 				+ ", sitterNumber=" + sitterNumber + ", bookingDate=" + bookingDate + ", pickupAddress=" + pickupAddress
 				+ ", ServicePrice=" + ServicePrice + ", extraServicePrice=" + extraServicePrice + ", totalPrice="
-				+ totalPrice + ", progressState=" + progressState + ", bookingVO=" + bookingVO + ", bookingScheduleVO="
-				+ bookingScheduleVO + ", userVO=" + userVO + ", userPetVO=" + userPetVO + ", sitterVO=" + sitterVO
-				+ ", movieVO=" + movieVO + ", timelineVO=" + timelineVO + "]";
+				+ totalPrice + ", progressState=" + progressState + ", comment=" + comment + ", bookingVO=" + bookingVO
+				+ ", bookingScheduleVO=" + bookingScheduleVO + ", userVO=" + userVO + ", userPetVO=" + userPetVO
+				+ ", sitterVO=" + sitterVO + ", movieVO=" + movieVO + ", timelineVO=" + timelineVO + "]";
 	}
 }

@@ -60,17 +60,19 @@ public class bookingInformPageController {
 	
 	@RequestMapping(value = "/bookingCancelReturnResult", method = RequestMethod.POST)
 	public String bookingCancelReturnResult(BookingVO vo, RedirectAttributes rttr) throws Exception {
-		
-		logger.info("update post...");
-		//update는 void로 아무런 정보가 없다 -> rttr.add..으로 정보를 넣어준 뒤 return 해준다
 		service.bookingCancelReturnResult(vo);
 		rttr.addFlashAttribute("msg", "success");
 		return "";
 	}
 	
-	@RequestMapping(value = "/reasonForRefusal", method = RequestMethod.GET)
-	public void reasonForRefusal(@RequestParam("bookingNumber") int bookingNumber, Model model) throws Exception {
-		logger.info("show all list");
+	@RequestMapping(value = "/cancelComment", method = RequestMethod.POST)
+	public String cancelComment(BookingVO vo, RedirectAttributes rttr) throws Exception {
+		logger.info("update post...");
+		//update는 void로 아무런 정보가 없다 -> rttr.add..으로 정보를 넣어준 뒤 return 해준다
+		service.cancelComment(vo);
+		rttr.addFlashAttribute("msg", "success");
+		return "";
 	}
+
 
 }

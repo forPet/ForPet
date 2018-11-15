@@ -211,27 +211,25 @@
 			defaultDate : currentDate,
 			editable : true,
 			events: [
-				<c:forEach items="${list}" var="BookingVO">
-					<c:forEach items="${BookingVO.bookingScheduleVO}" var="BookingScheduleVO">
+				<c:forEach items="${list}" var="BookingDTO">
 					{
-					title: '${BookingScheduleVO.title}',
-		    		start: '${BookingScheduleVO.start}',
-		   			end: '${BookingScheduleVO.end}',
-		   			bookingNumber: '${BookingVO.bookingNumber}',
-		   			BookingVO : '${BookingVO}',
-		   			progressState: '${BookingVO.progressState}'
+					title: '${BookingDTO.title}',
+		    		start: '${BookingDTO.start}',
+		   			end: '${BookingDTO.end}',
+		   			bookingNumber: '${BookingDTO.bookingNumber}',
+		   			BookingDTO : '${BookingDTO}',
+		   			progressState: '${BookingDTO.progressState}'
 		   			},
-		   			</c:forEach>
 		    	</c:forEach>
 			],
 			selectable:true,
 			selectHelper:true,
-			eventClick: function(BookingVO) {
-				switch(BookingVO.progressState){
+			eventClick: function(BookingDTO) {
+				switch(BookingDTO.progressState){
 				/* $(".col-md-4").show();  */
-					case '수락완료': bookingConfirm(BookingVO.bookingNumber);
+					case '수락완료': bookingConfirm(BookingDTO.bookingNumber);
 					break;
-					case '예약중': bookingInformDetail(BookingVO.bookingNumber);
+					case '예약중': bookingInformDetail(BookingDTO.bookingNumber);
 					break;
 				}
 				 var divLoc = $('#infrmDetailMain').offset();

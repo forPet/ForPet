@@ -17,7 +17,7 @@
 	<c:forEach items="${list}" var="BookingVO">
 		<c:forEach items="${BookingVO.movieVO}" var="MovieVO" varStatus="theCount">
 			<div class="col-md-movie" id="movieMain${theCount.index}">
-				<video class="movie-fluid" src="/resources/movies/${MovieVO.movieName}" controls="controls"></video>
+				<video class="movie-fluid" src="/resources/movie/${MovieVO.movieName}.mp4" controls="controls"></video>
 			</div>
 		</c:forEach>
 	</c:forEach>

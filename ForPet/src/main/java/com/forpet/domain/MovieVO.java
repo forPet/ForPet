@@ -1,5 +1,6 @@
 package com.forpet.domain;
 
+import java.sql.Time;
 import java.sql.Timestamp;
 
 public class MovieVO {
@@ -8,7 +9,7 @@ public class MovieVO {
 	private Integer bookingNumber;
 	private String movieType;
 	private String movieName;
-	private Timestamp shootingTime;
+	private String shootingTime;
 	
 	public Integer getMovieNumber() {
 		return movieNumber;
@@ -34,11 +35,11 @@ public class MovieVO {
 	public void setMovieName(String movieName) {
 		this.movieName = movieName;
 	}
-	public Timestamp getShootingTime() {
+	public String getShootingTime() {
 		return shootingTime;
 	}
-	public void setShootingTime(Timestamp shootingTime) {
-		this.shootingTime = shootingTime;
+	public void setShootingTime(String string) {
+		this.shootingTime = string;
 	}
 	
 	@Override

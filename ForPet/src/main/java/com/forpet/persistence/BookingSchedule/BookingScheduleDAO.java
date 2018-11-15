@@ -15,5 +15,7 @@ public interface BookingScheduleDAO {
 	public void bookingCancel(Integer bookingNumber) throws Exception;
 	
 	public void bookingCancelReturnResult (BookingVO vo) throws Exception;
+	
+	public void cancelComment(BookingVO vo) throws Exception;
 
 }

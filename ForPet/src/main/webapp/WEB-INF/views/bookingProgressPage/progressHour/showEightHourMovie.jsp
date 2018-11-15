@@ -20,7 +20,7 @@
 		      <div style = "border:2px;" class="col-md-3 col-sm-6 mb-4">
 		      		<input type='hidden' id="mName${theCount.index}" name='movieName' value="${MovieVO.movieName}">
 		      		<input type='hidden' id="mNumber${theCount.index}" name='movieNumber' value="${MovieVO.movieNumber}">
-		        	<video class="movie-fluid" id="selectMovie${theCount.index}"  src="/resources/movies/${MovieVO.movieName}"></video>
+		        	<video class="movie-fluid" id="selectMovie${theCount.index}"  src="/resources/movie/${MovieVO.movieName}.mp4"></video>
 		      </div>
        	</c:forEach>
     </c:forEach>
