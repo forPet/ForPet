@@ -5,9 +5,13 @@ import java.util.Date;
 
 public class BookingDTO {
 	private Date bookingDate;
-	private String title;
 	private Date start;
 	private Date end;
+	private Integer sitterNumber;
+	private Integer userNumber;
+	private Integer bookingNumber;
+	private String title;
+	private String description;
 	private String progressState;
 
 	public String getBookingDate() {
@@ -15,8 +19,38 @@ public class BookingDTO {
 		return newBookingDate;
 	}
 
-	public void setBookingDate(Date bookingDate) {
-		this.bookingDate = bookingDate;
+	public String getStart() {
+		String newStart = new SimpleDateFormat("yyyy-MM-dd").format(start);
+		return newStart;
+	}
+
+	public String getEnd() {
+		String newEnd = new SimpleDateFormat("yyyy-MM-dd").format(end);
+		return newEnd;
+	}
+
+	public Integer getSitterNumber() {
+		return sitterNumber;
+	}
+
+	public void setSitterNumber(Integer sitterNumber) {
+		this.sitterNumber = sitterNumber;
+	}
+
+	public Integer getUserNumber() {
+		return userNumber;
+	}
+
+	public void setUserNumber(Integer userNumber) {
+		this.userNumber = userNumber;
+	}
+
+	public Integer getBookingNumber() {
+		return bookingNumber;
+	}
+
+	public void setBookingNumber(Integer bookingNumber) {
+		this.bookingNumber = bookingNumber;
 	}
 
 	public String getTitle() {
@@ -27,22 +61,12 @@ public class BookingDTO {
 		this.title = title;
 	}
 
-	public String getStart() {
-		String newStart = new SimpleDateFormat("yyyy-MM-dd").format(start);
-		return newStart;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setStart(Date start) {
-		this.start = start;
-	}
-
-	public String getEnd() {
-		String newEnd = new SimpleDateFormat("yyyy-MM-dd").format(end);
-		return newEnd;
-	}
-
-	public void setEnd(Date end) {
-		this.end = end;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getProgressState() {
@@ -53,9 +77,22 @@ public class BookingDTO {
 		this.progressState = progressState;
 	}
 
+	public void setBookingDate(Date bookingDate) {
+		this.bookingDate = bookingDate;
+	}
+
+	public void setStart(Date start) {
+		this.start = start;
+	}
+
+	public void setEnd(Date end) {
+		this.end = end;
+	}
+
 	@Override
 	public String toString() {
-		return "BookingDTO [bookingDate=" + bookingDate + ", title=" + title + ", start=" + start + ", end=" + end
-				+ ", progressState=" + progressState + "]";
+		return "BookingDTO [bookingDate=" + bookingDate + ", start=" + start + ", end=" + end + ", sitterNumber="
+				+ sitterNumber + ", userNumber=" + userNumber + ", bookingNumber=" + bookingNumber + ", title=" + title
+				+ ", description=" + description + ", progressState=" + progressState + "]";
 	}
 }

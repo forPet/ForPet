@@ -1,6 +1,7 @@
 package com.forpet.domain;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 public class BookingVO {
 
@@ -14,31 +15,15 @@ public class BookingVO {
 	private int extraServicePrice;
 	private int totalPrice;
 	private String progressState;
-	
-	public int getTotalPrice() {
-		return totalPrice;
-	}
+	private String comment;
 
-	public void setTotalPrice(int totalPrice) {
-		this.totalPrice = totalPrice;
-	}
-
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
-	public Integer getSitterNumber() {
-		return sitterNumber;
-	}
-
-	public void setSitterNumber(Integer sitterNumber) {
-		this.sitterNumber = sitterNumber;
-	}
+	private List<BookingVO> bookingVO;
+	private List<BookingScheduleVO> bookingScheduleVO;
+	private List<UserVO> userVO;
+	private List<UserPetVO> userPetVO;
+	private List<SitterVO> sitterVO;
+	private List<MovieVO> movieVO;
+	private List<TimelineVO> timelineVO;
 
 	public Integer getBookingNumber() {
 		return bookingNumber;
@@ -48,12 +33,28 @@ public class BookingVO {
 		this.bookingNumber = bookingNumber;
 	}
 
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
 	public Integer getUserNumber() {
 		return userNumber;
 	}
 
 	public void setUserNumber(Integer userNumber) {
 		this.userNumber = userNumber;
+	}
+
+	public Integer getSitterNumber() {
+		return sitterNumber;
+	}
+
+	public void setSitterNumber(Integer sitterNumber) {
+		this.sitterNumber = sitterNumber;
 	}
 
 	public Timestamp getBookingDate() {
@@ -88,6 +89,14 @@ public class BookingVO {
 		this.extraServicePrice = extraServicePrice;
 	}
 
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
 	public String getProgressState() {
 		return progressState;
 	}
@@ -96,11 +105,77 @@ public class BookingVO {
 		this.progressState = progressState;
 	}
 
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public List<BookingVO> getBookingVO() {
+		return bookingVO;
+	}
+
+	public void setBookingVO(List<BookingVO> bookingVO) {
+		this.bookingVO = bookingVO;
+	}
+
+	public List<BookingScheduleVO> getBookingScheduleVO() {
+		return bookingScheduleVO;
+	}
+
+	public void setBookingScheduleVO(List<BookingScheduleVO> bookingScheduleVO) {
+		this.bookingScheduleVO = bookingScheduleVO;
+	}
+
+	public List<UserVO> getUserVO() {
+		return userVO;
+	}
+
+	public void setUserVO(List<UserVO> userVO) {
+		this.userVO = userVO;
+	}
+
+	public List<UserPetVO> getUserPetVO() {
+		return userPetVO;
+	}
+
+	public void setUserPetVO(List<UserPetVO> userPetVO) {
+		this.userPetVO = userPetVO;
+	}
+
+	public List<SitterVO> getSitterVO() {
+		return sitterVO;
+	}
+
+	public void setSitterVO(List<SitterVO> sitterVO) {
+		this.sitterVO = sitterVO;
+	}
+
+	public List<MovieVO> getMovieVO() {
+		return movieVO;
+	}
+
+	public void setMovieVO(List<MovieVO> movieVO) {
+		this.movieVO = movieVO;
+	}
+
+	public List<TimelineVO> getTimelineVO() {
+		return timelineVO;
+	}
+
+	public void setTimelineVO(List<TimelineVO> timelineVO) {
+		this.timelineVO = timelineVO;
+	}
+
 	@Override
 	public String toString() {
 		return "BookingVO [bookingNumber=" + bookingNumber + ", userId=" + userId + ", userNumber=" + userNumber
 				+ ", sitterNumber=" + sitterNumber + ", bookingDate=" + bookingDate + ", pickupAddress=" + pickupAddress
-				+ ", ServicePrice=" + ServicePrice + ", extraServicePrice=" + extraServicePrice + ", totalPrice=" + totalPrice
-				+ ", progressState=" + progressState + "]";
+				+ ", ServicePrice=" + ServicePrice + ", extraServicePrice=" + extraServicePrice + ", totalPrice="
+				+ totalPrice + ", progressState=" + progressState + ", comment=" + comment + ", bookingVO=" + bookingVO
+				+ ", bookingScheduleVO=" + bookingScheduleVO + ", userVO=" + userVO + ", userPetVO=" + userPetVO
+				+ ", sitterVO=" + sitterVO + ", movieVO=" + movieVO + ", timelineVO=" + timelineVO + "]";
 	}
 }

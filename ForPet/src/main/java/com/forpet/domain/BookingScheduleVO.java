@@ -5,10 +5,12 @@ import java.util.Date;
 public class BookingScheduleVO {
 
 	private Integer bookingNumber;
-	private String title;
 	private Date start;
 	private Date end;
+	private String userId;
+	private String title;
 	private String description;
+	private String scheduleType;
 
 	public Integer getBookingNumber() {
 		return bookingNumber;
@@ -16,14 +18,6 @@ public class BookingScheduleVO {
 
 	public void setBookingNumber(Integer bookingNumber) {
 		this.bookingNumber = bookingNumber;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
 	}
 
 	public Date getStart() {
@@ -42,6 +36,22 @@ public class BookingScheduleVO {
 		this.end = end;
 	}
 
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	public String getDescription() {
 		return description;
 	}
@@ -50,9 +60,17 @@ public class BookingScheduleVO {
 		this.description = description;
 	}
 
+	public String getScheduleType() {
+		return scheduleType;
+	}
+
+	public void setScheduleType(String scheduleType) {
+		this.scheduleType = scheduleType;
+	}
+
 	@Override
 	public String toString() {
-		return "BookingScheduleVO [bookingNumber=" + bookingNumber + ", title=" + title + ", start=" + start + ", end="
-				+ end + ", description=" + description + "]";
+		return "BookingScheduleVO [bookingNumber=" + bookingNumber + ", start=" + start + ", end=" + end + ", userId="
+				+ userId + ", title=" + title + ", description=" + description + ", scheduleType=" + scheduleType + "]";
 	}
 }
