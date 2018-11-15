@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.forpet.mapper.UserPage.signupMapper">
+
+<insert id="signUp" parameterType="UserVO">
+	insert into tbl_user(
+		userName, 
+		userId, 
+		userPassword, 
+		userGender, 
+		userDateOfBirth, 
+		userPhoneNumber, 
+		userEmail, 
+		userAddress
+	)values(
+		#{userName}, 
+		#{userId}, 
+		#{userPassword}, 
+		#{userGender}, 
+		#{userDateOfBirth}, 
+		#{userPhoneNumber}, 
+		#{userEmail}, 
+		#{userAddress}
+	)
+</insert>
+
+<select id="SignupIdCeheck" resultType="String">
+	select 
+		userId 
+	from 
+		tbl_user
+	where 
+		userId = #{userId}
+</select>
+
+<!-- <insert id="SitterSignUp" parameterType="SitterSignUpDTO">
+insert into tbl_sitter(
+	userNumber,
+	userId,
+	introduce,
+	precautions,
+	serviceType,
+	servicePrice
+)values(
+	#{userNumber},
+	#{userId},
+	#{introduce},
+	#{precautions},
+	#{serviceType},
+	#{servicePrice}
+)
+</insert>  -->
+
+</mapper>

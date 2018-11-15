@@ -1,5 +1,7 @@
 package com.forpet.domain;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class UserVO {
@@ -13,8 +15,6 @@ public class UserVO {
 	private String userPhoneNumber;
 	private String userEmail;
 	private String userAddress;
-	private SitterVO sitterVO;
-	private SitterServiceVO sitterServiceVO;
 
 	public Integer getUserNumber() {
 		return userNumber;
@@ -60,8 +60,9 @@ public class UserVO {
 		return userDateOfBirth;
 	}
 
-	public void setUserDateOfBirth(Date userDateOfBirth) {
-		this.userDateOfBirth = userDateOfBirth;
+	public void setUserDateOfBirth(String userDateOfBirth) throws ParseException {
+		Date date = new SimpleDateFormat("yyyy-MM-dd").parse(userDateOfBirth);
+		this.userDateOfBirth = date;
 	}
 
 	public String getUserPhoneNumber() {
@@ -88,27 +89,14 @@ public class UserVO {
 		this.userAddress = userAddress;
 	}
 
-	public SitterVO getSitterVO() {
-		return sitterVO;
-	}
-
-	public void setSitterVO(SitterVO sitterVO) {
-		this.sitterVO = sitterVO;
-	}
-
-	public SitterServiceVO getSitterServiceVO() {
-		return sitterServiceVO;
-	}
-
-	public void setSitterServiceVO(SitterServiceVO sitterServiceVO) {
-		this.sitterServiceVO = sitterServiceVO;
+	public void setUserDateOfBirth(Date userDateOfBirth) {
+		this.userDateOfBirth = userDateOfBirth;
 	}
 
 	@Override
 	public String toString() {
 		return "UserVO [userNumber=" + userNumber + ", userName=" + userName + ", userId=" + userId + ", userPassword="
-				+ userPassword + ", userGender=" + userGender + ", userDateOfBirth=" + userDateOfBirth
-				+ ", userPhoneNumber=" + userPhoneNumber + ", userEmail=" + userEmail + ", userAddress=" + userAddress
-				+ ", sitterVO=" + sitterVO + ", sitterServiceVO=" + sitterServiceVO + "]";
+				+ userPassword + ", userGender=" + userGender + ", userDateOfBirth=" + userDateOfBirth + ", userPhoneNumber="
+				+ userPhoneNumber + ", userEmail=" + userEmail + ", userAddress=" + userAddress + "]";
 	}
 }
