@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.forpet.Payment_Mapper">
+	<insert id = "payment" useGeneratedKeys="true" keyProperty="bookingNumber">
+		insert
+			into tbl_booking (
+			userId,
+			userNumber,
+			sitterNumber,
+			bookingDate,
+			pickupAddress,
+			ServicePrice,
+			extraServicePrice,
+			totalPrice,
+			progressState
+			)
+		values(
+			#{userId}, #{userNumber}, #{sitterNumber}, now(), #{pickupAddress},
+			#{ServicePrice}, #{extraServicePrice}, #{totalPrice}, '예약중'
+		);
+	</insert>
+	
+	<insert id="bookingScheduleInsert" >
+		insert into tbl_booking_schedule(bookingNumber, title, start, end, description) values(#{bookingNumber},#{title},#{start},#{end},#{description});
+	</insert>
+  
+	<resultMap id="sitterinfo" type="SitterVO">
+		<id property="sitterNumber" column="sitterNumber" />
+		<association property="sitterServiceVO" column="sitterNumber" javaType="SitterServiceVO">
+			<result property="serviceType" column="serviceType" />
+			<result property="servicePrice" column="servicePrice" />
+		</association>
+		<association property="sitterServiceExtraVO" column="sitterNumber" javaType="SitterServiceExtraVO">
+			<result property="extraServiceType" column="extraServiceType" />
+			<result property="extraServiceName" column="extraServiceName" />
+			<result property="extraSerivcePrice" column="extraSerivcePrice" />
+		</association>
+		<association property="sitterScheduleVO" column="sitterNumber" javaType="SitterScheduleVO">
+			<result property="scheduleType" column="scheduleType" />
+			<result property="startHour" column="startHour" />
+			<result property="endHour" column="endHour" /> 
+		</association>
+	</resultMap>
+	
+	<select id="sitterSelect" parameterType="int" resultMap="sitterinfo">
+		SELECT DISTINCT extra.sitterNumber, extra.extraServiceType, extra.extraServiceName, extra.extraSerivcePrice, service.serviceType, service.servicePrice, sche.scheduleType, sche.startHour, sche.endHour
+  	  FROM tbl_sitter_service service JOIN 
+  	       tbl_sitter_service_extra extra 
+  	    on service.sitterNumber = extra.sitterNumber JOIN
+ 		       tbl_sitter_schedule sche
+  	    on sche.sitterNumber = extra.sitterNumber 
+  	WHERE service.sitterNumber = #{sitterNumber};
+	</select>
+	
+	<select id="sitterServiceSel" resultType="SitterServiceVO">
+		SELECT * 
+			FROM tbl_sitter_service
+  	WHERE sitterNumber = #{sitterNumber};
+	</select>
+	
+	<select id="sitterExtra" resultType="SitterServiceExtraVO">
+		SELECT extra.extraServiceType, extra.extraServiceName, extra.extraSerivcePrice
+			FROM tbl_sitter_service_extra extra 
+  	WHERE extra.sitterNumber = #{sitterNumber};
+	</select>
+	
+	<select id="userIdSelect" resultType="UserVO">
+		select userId from tbl_user where userNumber = #{userNumber};
+	</select>
+</mapper>

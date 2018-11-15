@@ -1,13 +1,14 @@
 package com.forpet.domain;
 
-import java.sql.Time;
+import java.util.Date;
 
 public class BookingScheduleVO {
 
 	private Integer bookingNumber;
-	private String scheduleType;
-	private Time startHour;
-	private Time endHour;
+	private String title;
+	private Date start;
+	private Date end;
+	private String description;
 
 	public Integer getBookingNumber() {
 		return bookingNumber;
@@ -17,33 +18,41 @@ public class BookingScheduleVO {
 		this.bookingNumber = bookingNumber;
 	}
 
-	public String getScheduleType() {
-		return scheduleType;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setScheduleType(String scheduleType) {
-		this.scheduleType = scheduleType;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public Time getStartHour() {
-		return startHour;
+	public Date getStart() {
+		return start;
 	}
 
-	public void setStartHour(Time startHour) {
-		this.startHour = startHour;
+	public void setStart(Date start) {
+		this.start = start;
 	}
 
-	public Time getEndHour() {
-		return endHour;
+	public Date getEnd() {
+		return end;
 	}
 
-	public void setEndHour(Time endHour) {
-		this.endHour = endHour;
+	public void setEnd(Date end) {
+		this.end = end;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	@Override
 	public String toString() {
-		return "BookingScheduleVO [bookingNumber=" + bookingNumber + ", scheduleType=" + scheduleType + ", startHour="
-				+ startHour + ", endHour=" + endHour + "]";
+		return "BookingScheduleVO [bookingNumber=" + bookingNumber + ", title=" + title + ", start=" + start + ", end="
+				+ end + ", description=" + description + "]";
 	}
 }
