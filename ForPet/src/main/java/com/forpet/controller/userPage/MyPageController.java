@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.forpet.service.userPage.MyPageService;
 
 @Controller
-@RequestMapping("/userPage/*")
+@RequestMapping("/myPage/*")
 public class MyPageController {
 
 	@Inject

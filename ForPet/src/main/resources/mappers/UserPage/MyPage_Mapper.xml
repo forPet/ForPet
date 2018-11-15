@@ -4,6 +4,6 @@
 <mapper namespace="com.forpet.MyPage_Mapper">
 	
 	<select id="reservationSearch" resultType="BookingDTO">
-	select a.bookingDate bookingDate, b.title title, b.start start, b.end end, a.progressState progressState from tbl_booking a, tbl_booking_schedule b where a.bookingNumber = b.bookingNumber and a.userNumber = #{userNumber};
+	select a.bookingNumber bookingNumber, a.bookingDate bookingDate, b.title title, b.start start, b.end end, a.progressState progressState from tbl_booking a, tbl_booking_schedule b where a.bookingNumber = b.bookingNumber and a.userNumber = #{userNumber};
 	</select>
 </mapper>

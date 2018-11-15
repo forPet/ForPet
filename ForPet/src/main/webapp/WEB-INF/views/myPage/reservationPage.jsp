@@ -39,7 +39,7 @@
 	  </thead>
 	<c:forEach items="${reservationSearch}" var="reservation">
 	  <tbody>
-	    <tr onClick = "location.href='/userPage/MyPage/detail'">
+	    <tr onClick = "location.href='/myPage/reservation/detail?bookingNumber=${reservation.bookingNumber}'">
 	      <td><input type="checkbox"></td>
 	      <td>${reservation.bookingDate}</td>
 	      <td>${reservation.title}</td>

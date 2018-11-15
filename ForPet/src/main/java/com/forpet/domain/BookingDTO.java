@@ -4,12 +4,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class BookingDTO {
+	private Integer bookingNumber;
 	private Date bookingDate;
 	private Date start;
 	private Date end;
 	private Integer sitterNumber;
 	private Integer userNumber;
-	private Integer bookingNumber;
 	private String title;
 	private String description;
 	private String progressState;
@@ -29,6 +29,14 @@ public class BookingDTO {
 		return newEnd;
 	}
 
+	public Integer getBookingNumber() {
+		return bookingNumber;
+	}
+
+	public void setBookingNumber(Integer bookingNumber) {
+		this.bookingNumber = bookingNumber;
+	}
+
 	public Integer getSitterNumber() {
 		return sitterNumber;
 	}
@@ -43,14 +51,6 @@ public class BookingDTO {
 
 	public void setUserNumber(Integer userNumber) {
 		this.userNumber = userNumber;
-	}
-
-	public Integer getBookingNumber() {
-		return bookingNumber;
-	}
-
-	public void setBookingNumber(Integer bookingNumber) {
-		this.bookingNumber = bookingNumber;
 	}
 
 	public String getTitle() {
@@ -91,8 +91,8 @@ public class BookingDTO {
 
 	@Override
 	public String toString() {
-		return "BookingDTO [bookingDate=" + bookingDate + ", start=" + start + ", end=" + end + ", sitterNumber="
-				+ sitterNumber + ", userNumber=" + userNumber + ", bookingNumber=" + bookingNumber + ", title=" + title
-				+ ", description=" + description + ", progressState=" + progressState + "]";
+		return "BookingDTO [bookingNumber=" + bookingNumber + ", bookingDate=" + bookingDate + ", start=" + start + ", end="
+				+ end + ", sitterNumber=" + sitterNumber + ", userNumber=" + userNumber + ", title=" + title + ", description="
+				+ description + ", progressState=" + progressState + "]";
 	}
 }
