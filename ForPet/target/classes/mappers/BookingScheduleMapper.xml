@@ -4,24 +4,9 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="forpet_BookingSchedule">
-
-	<resultMap id="bookingResultMap" type="BookingVO">
-		<id property="userNumber" column="userNumber" />
-			<result property="bookingNumber" column="bookingNumber" />
-			<result property="progressState" column="progressState" />
-        <collection property="bookingScheduleVO" ofType="BookingScheduleVO" >
-			<id property="title" column="title" />
-				<result property="start" column="start" />
-				<result property="end" column="end" />
-				<result property="description" column="description" />
-		</collection>
-		<collection property="sitterVO" ofType="SitterVO" >
-			<id property="sitterNumber" column="sitterNumber" />
-		</collection>
-    </resultMap>
 	
-	<select id="findCalendarListAll" resultMap="bookingResultMap" >
-		SELECT TS.SITTERNUMBER, TB.USERNUMBER, TB.BOOKINGNUMBER, TBS.TITLE, TBS.START, TBS.END, TBS.DESCRIPTION, TB.PROGRESSSTATE
+	<select id="findCalendarListAll" resultType="BookingDTO" >
+		SELECT TS.SITTERNUMBER sitterNumber, TB.USERNUMBER userNumber, TB.BOOKINGNUMBER bookingNumber, TBS.TITLE title, TBS.START start, TBS.END end, TBS.DESCRIPTION description, TB.PROGRESSSTATE progressState
 		FROM TBL_BOOKING AS TB, TBL_BOOKING_SCHEDULE AS TBS, TBL_SITTER AS TS
 		WHERE TBS.BOOKINGNUMBER = TB.BOOKINGNUMBER AND TB.SITTERNUMBER = TS.SITTERNUMBER AND TS.SITTERNUMBER= #{sitterNumber};
 	</select>
@@ -48,9 +33,9 @@
 	</resultMap>
 
 	<select id="bookingDetailInform" resultMap="bookingDetailMap" >
-SELECT TS.SITTERNUMBER, U.USERNAME, UP.PETNAME, TB.USERNUMBER, TB.BOOKINGDATE, TB.BOOKINGNUMBER , UP.PETTYPE, UP.PETGENDER, UP.PETDATEOFBIRTH 
-FROM TBL_BOOKING AS TB, TBL_USER AS U, TBL_USER_PET AS UP, TBL_SITTER AS TS
-WHERE U.USERNUMBER = TB.USERNUMBER AND U.USERNUMBER = UP.USERNUMBER AND TB.SITTERNUMBER = TS.SITTERNUMBER AND TB.BOOKINGNUMBER = #{bookingNumber};
+	SELECT TS.SITTERNUMBER, U.USERNAME, UP.PETNAME, TB.USERNUMBER, TB.BOOKINGDATE, TB.BOOKINGNUMBER , UP.PETTYPE, UP.PETGENDER, UP.PETDATEOFBIRTH 
+	FROM TBL_BOOKING AS TB, TBL_USER AS U, TBL_USER_PET AS UP, TBL_SITTER AS TS
+	WHERE U.USERNUMBER = TB.USERNUMBER AND U.USERNUMBER = UP.USERNUMBER AND TB.SITTERNUMBER = TS.SITTERNUMBER AND TB.BOOKINGNUMBER = #{bookingNumber};
 	</select>
 
 	<update id="bookingConfirm">
@@ -65,6 +50,10 @@ WHERE U.USERNUMBER = TB.USERNUMBER AND U.USERNUMBER = UP.USERNUMBER AND TB.SITTE
 	<update id="bookingCancelReturnResult">
 		UPDATE TBL_BOOKING SET PROGRESSSTATE = '예약거절'
 		WHERE BOOKINGNUMBER = #{bookingNumber};
+	</update>
+	
+	<update id="cancelComment">
+		UPDATE TBL_BOOKING SET COMMENT = #{comment} WHERE BOOKINGNUMBER = #{bookingNumber}; 
 	</update>
 
 </mapper>

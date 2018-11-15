@@ -14,6 +14,7 @@ public class BookingVO {
 	private int extraServicePrice;
 	private int toralPrice;
 	private String progressState;
+	private String comment;
 	
 	private List<BookingVO> bookingVO;
 	private List<BookingScheduleVO> bookingScheduleVO;
@@ -119,13 +120,22 @@ public class BookingVO {
 	public void setTimelineVO(List<TimelineVO> timelineVO) {
 		this.timelineVO = timelineVO;
 	}
+	
+	public String getComment() {
+		return comment;
+	}
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+	
 	@Override
 	public String toString() {
 		return "BookingVO [bookingNumber=" + bookingNumber + ", userNumber=" + userNumber + ", bookingDate="
 				+ bookingDate + ", pickupAddress=" + pickupAddress + ", bookingAddress=" + bookingAddress
 				+ ", ServicePrice=" + ServicePrice + ", extraServicePrice=" + extraServicePrice + ", toralPrice="
-				+ toralPrice + ", progressState=" + progressState + ", bookingVO=" + bookingVO + ", bookingScheduleVO="
-				+ bookingScheduleVO + ", userVO=" + userVO + ", userPetVO=" + userPetVO + ", sitterVO=" + sitterVO
-				+ ", movieVO=" + movieVO + ", timelineVO=" + timelineVO + "]";
+				+ toralPrice + ", progressState=" + progressState + ", comment=" + comment + ", bookingVO=" + bookingVO
+				+ ", bookingScheduleVO=" + bookingScheduleVO + ", userVO=" + userVO + ", userPetVO=" + userPetVO
+				+ ", sitterVO=" + sitterVO + ", movieVO=" + movieVO + ", timelineVO=" + timelineVO + "]";
 	}
+
 }

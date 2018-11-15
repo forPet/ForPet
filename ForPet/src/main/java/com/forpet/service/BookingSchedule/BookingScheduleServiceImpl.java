@@ -40,4 +40,9 @@ public class BookingScheduleServiceImpl implements BookingScheduleService {
 		bsDAO.bookingCancelReturnResult(vo);
 	}
 
+	@Override
+	public void cancelComment(BookingVO vo) throws Exception {
+		bsDAO.cancelComment(vo);
+	}
+
 }

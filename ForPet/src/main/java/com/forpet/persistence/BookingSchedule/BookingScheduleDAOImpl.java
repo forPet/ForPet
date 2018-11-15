@@ -43,4 +43,9 @@ public class BookingScheduleDAOImpl implements BookingScheduleDAO {
 		
 	}
 
+	@Override
+	public void cancelComment(BookingVO vo) throws Exception {
+		sqlSession.selectOne(namespace + ".cancelComment", vo);
+	}
+	
 }

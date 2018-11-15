@@ -25,9 +25,9 @@
 		$(".btn-outline-danger").on("click", function() {
 			var sNum = $('#sNum').val();
 			clickCancel('${bookingNumber}', sNum);
-			var popUrl = "/bookingInformPage/reasonForRefusal?bookingNumber=" + ${bookingNumber};
-			var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
-			window.open(popUrl,"",popOption);
+			var comment = prompt( '거절 사유를 입력하세요', '' );
+		    document.write( comment );
+		    cancelComment('${bookingNumber}', sNum, comment)
 			clickCancelReturnResult('${bookingNumber}', sNum);
 			alert("거절이 완료되었습니다.");
 		});
@@ -105,6 +105,24 @@
 	         data: {
 	        	 "bookingNumber" : bookingNumber,
 		         "sitterNumber" : sitterNumber
+	         },
+	         type: 'POST',
+	         success: 
+	        	 location.href = "/bookingInformPage/bookingInformMain?sitterNumber=" + sitterNumber
+	      });
+  }
+</script>
+
+<!-- 예약 거절 시 comment 입력 ajax -->
+<script>
+  function cancelComment(bookingNumber, sitterNumber, comment) {
+	     $.ajax({
+	         url: "cancelComment",
+	         async: false,
+	         data: {
+	        	 "bookingNumber" : bookingNumber,
+		         "sitterNumber" : sitterNumber,
+		         "comment" : comment
 	         },
 	         type: 'POST',
 	         success: 

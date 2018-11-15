@@ -20,5 +20,6 @@ PUBLIC "-//maybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.forpet.domain.UserVO" alias="UserVO"/>
 		<typeAlias type="com.forpet.domain.MovieVO" alias="MovieVO"/>
 		<typeAlias type="com.forpet.domain.TimelineVO" alias="TimelineVO"/>
+		<typeAlias type="com.forpet.domain.BookingDTO" alias="BookingDTO"/>
 	</typeAliases>
 </configuration>

@@ -23,7 +23,7 @@ public class bookingIn {
 	
 	@Test
 	public void test() throws Exception {
-		mDao.showMovie("ªÍ√•");
+		mDao.findByTimeline(1);
 	}
 
 }
