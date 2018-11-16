@@ -23,13 +23,13 @@
 		<header> 헤더 부분</header><hr>
 	</div>
 	<div style="text-align: center;">
-		<h1> 예약내역 </h1>
+		<h1> 예약  내역 </h1>
 	</div>
 	
 	<table class="table table-hover">
 	  <thead>
 	    <tr>
-	      <th scope="col">삭제하기</th>
+	      <th scope="col">번호</th>
 	      <th scope="col">예약날짜</th>
 	      <th scope="col">제목</th>
 	      <th scope="col">시작</th>
@@ -37,10 +37,10 @@
 	      <th scope="col">상태</th>
 	    </tr>
 	  </thead>
-	<c:forEach items="${reservationSearch}" var="reservation">
+	<c:forEach items="${reservationSearch}" var="reservation" varStatus="status">
 	  <tbody>
-	    <tr onClick = "location.href='/myPage/reservation/detail?bookingNumber=${reservation.bookingNumber}'">
-	      <td><input type="checkbox"></td>
+	    <tr onclick="popupCenter('/myPage/reservation/detail?bookingNumber=${reservation.bookingNumber}',800,600);">
+	      <td>${status.count}</td>
 	      <td>${reservation.bookingDate}</td>
 	      <td>${reservation.title}</td>
 	      <td>${reservation.start}</td>
@@ -51,4 +51,12 @@
   </c:forEach>
 </table>
 </body>
+<script>
+function popupCenter(href,w,h){
+	   var xPos = (document.body.clientWidth / 2) - (w / 2); 
+	   var yPos = (screen.availHeight / 2) - (h / 2);
+	 
+	   window.open(href,"pop_window","width="+w+",height="+h+", left="+xPos+", top="+yPos);
+	}
+</script>
 </html>

@@ -9,9 +9,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<div style="padding: 30px 0px 30px 0">
+		<header> 헤더 부분</header><hr>
+	</div>
+	<div style="text-align: center;">
+		<h1> 예약 상세 내역 </h1>
+	</div>
+	
+	<div>
+		완료
+	</div>
+	
 </body>
 <script>
+
 
 </script>
 </html>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.forpet.domain.BookingScheduleVO;
 import com.forpet.domain.BookingVO;
+import com.forpet.domain.UserBoughtExtraServiceVO;
 import com.forpet.domain.UserVO;
 import com.forpet.service.booking.Payment_Service;
 
@@ -30,17 +31,22 @@ public class PaymentController {
 	}
 	
 	@RequestMapping(value = "/customBooking", method = RequestMethod.POST)
-	public String customBookingPost(BookingScheduleVO bookingScheduleVO, BookingVO bookingVO, Model model, @RequestParam("userNumber") int userNumber) throws Exception {
+	public String customBookingPost(UserBoughtExtraServiceVO userBoughtExtraServiceVO, BookingScheduleVO bookingScheduleVO, BookingVO bookingVO, Model model, @RequestParam("userNumber") int userNumber) throws Exception {
 		UserVO userVo = service.userIdSelect(userNumber);
 		String userId = userVo.getUserId();
 		bookingVO.setUserId(userId);
 		
-		service.payment(bookingVO);
+		System.out.println(userBoughtExtraServiceVO);
 		
-		int lastbookingnumber = bookingVO.getBookingNumber();
-		bookingScheduleVO.setBookingNumber(lastbookingnumber);
-		service.bookingScheduleInsert(bookingScheduleVO);
-		return "redirect:/userPage/MyPage";
+		System.out.println(bookingVO);
+		
+//		service.payment(bookingVO);
+		
+//		int lastbookingnumber = bookingVO.getBookingNumber();
+//		bookingScheduleVO.setBookingNumber(lastbookingnumber);
+//		service.bookingScheduleInsert(bookingScheduleVO);
+		System.out.println(bookingScheduleVO);
+		return "redirect:/myPage/reservationPage?userNumber=2";
 	}
 	
 	@RequestMapping(value = "/asd", method = RequestMethod.GET)

@@ -13,11 +13,14 @@
 			ServicePrice,
 			extraServicePrice,
 			totalPrice,
-			progressState
+			progressState,
+			title,
+			start,
+			end
 			)
 		values(
 			#{userId}, #{userNumber}, #{sitterNumber}, now(), #{pickupAddress},
-			#{ServicePrice}, #{extraServicePrice}, #{totalPrice}, '예약중'
+			#{ServicePrice}, #{extraServicePrice}, #{totalPrice}, '예약중', #{title}, #{start}, #{end}
 		);
 	</insert>
 	
