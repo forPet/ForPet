@@ -1,20 +1,19 @@
 package com.forpet.domain;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class UserVO {
 
-	private Integer userNumber;
-	private String userName;
-	private String userId;
-	private String userPassword;
-	private String userGender;
-	private Date userDateOfBirth;
-	private String userPhoneNumber;
-	private String userEmail;
-	private String userAddress;
+	private Integer userNumber;			//유저 번호
+	private String userName;				//유저 이름
+	private String userId;					//유저 계정명
+	private String userPassword;		//유저 비밀번호
+	private String userGender;			//유저 성별
+	private Date userDateOfBirth;		//유저 생일
+	private String userPhoneNumber;	//유저 연락처
+	private String userEmail;				//유저 전자우편
+	private String userAddress;			//유저 주소
 
 	public Integer getUserNumber() {
 		return userNumber;
@@ -45,6 +44,7 @@ public class UserVO {
 	}
 
 	public void setUserPassword(String userPassword) {
+		System.out.println(userPassword);
 		this.userPassword = userPassword;
 	}
 
@@ -53,14 +53,15 @@ public class UserVO {
 	}
 
 	public void setUserGender(String userGender) {
+		System.out.println(userGender);
 		this.userGender = userGender;
 	}
 
 	public Date getUserDateOfBirth() {
 		return userDateOfBirth;
 	}
-
-	public void setUserDateOfBirth(String userDateOfBirth) throws ParseException {
+	//String 타입을 Date 타입으로 변환후 입력
+	public void setUserDateOfBirth(String userDateOfBirth) throws Exception {
 		Date date = new SimpleDateFormat("yyyy-MM-dd").parse(userDateOfBirth);
 		this.userDateOfBirth = date;
 	}
@@ -87,10 +88,6 @@ public class UserVO {
 
 	public void setUserAddress(String userAddress) {
 		this.userAddress = userAddress;
-	}
-
-	public void setUserDateOfBirth(Date userDateOfBirth) {
-		this.userDateOfBirth = userDateOfBirth;
 	}
 
 	@Override
