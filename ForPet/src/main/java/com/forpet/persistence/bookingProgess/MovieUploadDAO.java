@@ -1,11 +1,11 @@
-package com.forpet.service.BookingProgress;
+package com.forpet.persistence.bookingProgess;
 
 import java.util.List;
 
 import com.forpet.domain.BookingVO;
 import com.forpet.domain.MovieVO;
 
-public interface MovieUploadService {
+public interface MovieUploadDAO {
 	
 	public void insertMovie(MovieVO mVo) throws Exception;
 	
@@ -29,7 +29,7 @@ public interface MovieUploadService {
 	public List<BookingVO> findTwoOneHourMovie(Integer bookingNumber) throws Exception;
 	public List<BookingVO> findTwoTwoHourMovie(Integer bookingNumber) throws Exception;
 	public List<BookingVO> findTwoThreeHourMovie(Integer bookingNumber) throws Exception;
-
-	public List<MovieVO> showMovie(String movieName) throws Exception;
 	
+	public List<MovieVO> showMovie(String movieName) throws Exception;
+
 }

@@ -9,24 +9,25 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.forpet.domain.BookingVO;
-import com.forpet.service.BookingSchedule.BookingScheduleService;
+import com.forpet.controller.booking.bookingInformPageController;
+import com.forpet.service.detailService.detailService;
 
 @Controller
 @RequestMapping("/detailServicePage/*")
 public class detailServicePageController {
-	@Inject
-	private BookingScheduleService service;
 
-	private static final Logger logger = LoggerFactory.getLogger(detailServicePageController.class);
+	@Inject
+	private detailService service;
+
+	private static final Logger logger = LoggerFactory.getLogger(bookingInformPageController.class);
 
 	@RequestMapping(value = "/detailServicePageMain", method = RequestMethod.GET)
-	public void CalendarListAll() throws Exception {
+	public void FindSitterSchedule(@RequestParam("sitterNumber") int sitterNumber, Model model) throws Exception {
 		logger.info("show all list");
+		model.addAttribute("sitterNumber", sitterNumber);
+		model.addAttribute("list", service.findSitterSchedule(sitterNumber));
 	}
-	
 
 
 

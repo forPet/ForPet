@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.forpet.domain.BookingVO;
-import com.forpet.service.BookingSchedule.BookingScheduleService;
+import com.forpet.service.bookingSchedule.BookingScheduleService;
 
 @Controller
 @RequestMapping("/bookingInformPage/*")
 public class bookingInformPageController {
+	
 	@Inject
 	private BookingScheduleService service;
 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="forpet_SitterSchedule">
+
+	<select id="findSitterSchedule" resultType="SitterDTO" >
+		SELECT TSS.sitterNumber sitterNumber, TSS.six six, TSS.seven seven, TSS.eight eight, TSS.nine nine, 
+		TSS.ten ten, TSS.oneOne oneOne, TSS.oneTwo oneTwo, TSS.oneThree oneThree, TSS.oneFour oneFour,
+		TSS.oneFive oneFive, TSS.oneSix oneSix, TSS.oneSeven oneSeven, TSS.oneEight oneEight, TSS.oneNine oneNine, 
+		TSS.twoZero twoZero, TSS.twoOne twoOne, TSS.twoTwo twoTwo, TSS.twoThree twoThree,
+		TU.userName userName, TU.userId userId, TU.userGender userGender, TU.userDateOfBirth userDateOfBirth, 
+		TU.userAddress userAddress, TS.introduce introduce, TS.precautions precautions, TS.totalServiceCnt totalServiceCnt
+		FROM TBL_SITTER_SCHEDULE AS TSS, TBL_USER AS TU, TBL_SITTER AS TS WHERE TS.USERNUMBER=TU.USERNUMBER AND TSS.SITTERNUMBER = #{sitterNumber};
+	</select>
+
+</mapper>

@@ -1,129 +1,126 @@
-package com.forpet.service.BookingProgress;
+package com.forpet.persistence.bookingProgess;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
 import com.forpet.domain.BookingVO;
 import com.forpet.domain.MovieVO;
-import com.forpet.persistence.BookingProgess.MovieUploadDAO;
 
 @Service
-public class MovieUploadServiceImpl implements MovieUploadService {
-	
+public class MovieUploadDAOImpl implements MovieUploadDAO {
 	
 	@Inject
-	private MovieUploadDAO muDAO;
+	private SqlSession sqlSession;
 	
-	private static final Logger log = LoggerFactory.getLogger(MovieUploadServiceImpl.class);
-	
+	private static final String namespace = "forpet_BookingProgress";
+
 	@Override
 	public void insertMovie(MovieVO mVo) throws Exception {
-		muDAO.insertMovie(mVo);
+		sqlSession.insert(namespace + ".insertMovie", mVo);
 	}
 
 	@Override
 	public List<BookingVO> findByTimeline(Integer bookingNumber) throws Exception {
-		return muDAO.findByTimeline(bookingNumber);
+		return sqlSession.selectList(namespace + ".findByTimeline", bookingNumber);
 	}
-
+	
 	@Override
 	public List<BookingVO> findSixHourMovie(Integer bookingNumber) throws Exception {
-		return muDAO.findSixHourMovie(bookingNumber);
+		return sqlSession.selectList(namespace + ".findSixHourMovie", bookingNumber);
 	}
-
+	
 	@Override
 	public List<BookingVO> findSevenHourMovie(Integer bookingNumber) throws Exception {
-		return muDAO.findSevenHourMovie(bookingNumber);
+		return sqlSession.selectList(namespace + ".findSevenHourMovie", bookingNumber);
 	}
 
 	@Override
 	public List<BookingVO> findEightHourMovie(Integer bookingNumber) throws Exception {
-		return muDAO.findEightHourMovie(bookingNumber);
+		return sqlSession.selectList(namespace + ".findEightHourMovie", bookingNumber);
 	}
 
 	@Override
 	public List<BookingVO> findNineHourMovie(Integer bookingNumber) throws Exception {
-		return muDAO.findNineHourMovie(bookingNumber);
+		return sqlSession.selectList(namespace + ".findNineHourMovie", bookingNumber);
 	}
 
 	@Override
 	public List<BookingVO> findTenHourMovie(Integer bookingNumber) throws Exception {
-		return muDAO.findTenHourMovie(bookingNumber);
+		return sqlSession.selectList(namespace + ".findTenHourMovie", bookingNumber);
 	}
 
 	@Override
 	public List<BookingVO> findOneOneHourMovie(Integer bookingNumber) throws Exception {
-		return muDAO.findOneOneHourMovie(bookingNumber);
+		return sqlSession.selectList(namespace + ".findOneOneHourMovie", bookingNumber);
 	}
 
 	@Override
 	public List<BookingVO> findOneTwoHourMovie(Integer bookingNumber) throws Exception {
-		return muDAO.findOneTwoHourMovie(bookingNumber);
+		return sqlSession.selectList(namespace + ".findOneTwoHourMovie", bookingNumber);
 	}
 
 	@Override
 	public List<BookingVO> findOneThreeHourMovie(Integer bookingNumber) throws Exception {
-		return muDAO.findOneThreeHourMovie(bookingNumber);
+		return sqlSession.selectList(namespace + ".findOneThreeHourMovie", bookingNumber);
 	}
 
 	@Override
 	public List<BookingVO> findOneFourHourMovie(Integer bookingNumber) throws Exception {
-		return muDAO.findOneFourHourMovie(bookingNumber);
+		return sqlSession.selectList(namespace + ".findOneFourHourMovie", bookingNumber);
 	}
 
 	@Override
 	public List<BookingVO> findOneFiveHourMovie(Integer bookingNumber) throws Exception {
-		return muDAO.findOneFiveHourMovie(bookingNumber);
+		return sqlSession.selectList(namespace + ".findOneFiveHourMovie", bookingNumber);
 	}
 
 	@Override
 	public List<BookingVO> findOneSixHourMovie(Integer bookingNumber) throws Exception {
-		return muDAO.findOneSixHourMovie(bookingNumber);
+		return sqlSession.selectList(namespace + ".findOneSixHourMovie", bookingNumber);
 	}
 
 	@Override
 	public List<BookingVO> findOneSevenHourMovie(Integer bookingNumber) throws Exception {
-		return muDAO.findOneSevenHourMovie(bookingNumber);
+		return sqlSession.selectList(namespace + ".findOneSevenHourMovie", bookingNumber);
 	}
 
 	@Override
 	public List<BookingVO> findOneEightHourMovie(Integer bookingNumber) throws Exception {
-		return muDAO.findOneEightHourMovie(bookingNumber);
+		return sqlSession.selectList(namespace + ".findOneEightHourMovie", bookingNumber);
 	}
 
 	@Override
 	public List<BookingVO> findOneNineHourMovie(Integer bookingNumber) throws Exception {
-		return muDAO.findOneNineHourMovie(bookingNumber);
+		return sqlSession.selectList(namespace + ".findOneNineHourMovie", bookingNumber);
 	}
 
 	@Override
 	public List<BookingVO> findTwoZeroHourMovie(Integer bookingNumber) throws Exception {
-		return muDAO.findTwoZeroHourMovie(bookingNumber);
+		return sqlSession.selectList(namespace + ".findTwoZeroHourMovie", bookingNumber);
 	}
 
 	@Override
 	public List<BookingVO> findTwoOneHourMovie(Integer bookingNumber) throws Exception {
-		return muDAO.findTwoOneHourMovie(bookingNumber);
+		return sqlSession.selectList(namespace + ".findTwoOneHourMovie", bookingNumber);
 	}
 
 	@Override
 	public List<BookingVO> findTwoTwoHourMovie(Integer bookingNumber) throws Exception {
-		return muDAO.findTwoTwoHourMovie(bookingNumber);
+		return sqlSession.selectList(namespace + ".findTwoTwoHourMovie", bookingNumber);
 	}
 
 	@Override
 	public List<BookingVO> findTwoThreeHourMovie(Integer bookingNumber) throws Exception {
-		return muDAO.findTwoThreeHourMovie(bookingNumber);
+		return sqlSession.selectList(namespace + ".findTwoThreeHourMovie", bookingNumber);
 	}
 
 	@Override
 	public List<MovieVO> showMovie(String movieName) throws Exception {
-		return muDAO.showMovie(movieName);
+		return sqlSession.selectList(namespace + ".findBymovieNumber", movieName);
 	}
 
 }

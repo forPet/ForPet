@@ -1,4 +1,4 @@
-package com.forpet.service.BookingSchedule;
+package com.forpet.service.bookingSchedule;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.forpet.domain.BookingVO;
-import com.forpet.persistence.BookingSchedule.BookingScheduleDAO;
+import com.forpet.persistence.bookingSchedule.BookingScheduleDAO;
 
 @Service
 public class BookingScheduleServiceImpl implements BookingScheduleService {

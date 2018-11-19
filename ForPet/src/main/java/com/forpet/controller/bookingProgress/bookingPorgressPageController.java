@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.forpet.domain.MovieVO;
-import com.forpet.service.BookingProgress.MovieUploadService;
+import com.forpet.service.bookingProgress.MovieUploadService;
 
 @Controller
 @RequestMapping("/bookingProgressPage/*")
@@ -47,9 +47,9 @@ public class bookingPorgressPageController {
 		logger.info("Name :" + file.getOriginalFilename());
 		logger.info("Name :" + file.getSize());
 		logger.info("Name :" + file.getContentType());
-		
+
 		String savedName = uploadFile(file.getOriginalFilename(), file.getBytes());
-		
+
 		DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 		Date date = new Date();
 		

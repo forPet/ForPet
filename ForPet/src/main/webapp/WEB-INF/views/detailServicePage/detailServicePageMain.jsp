@@ -62,6 +62,87 @@
 	background-color: white;
 	border-top: 1px solid black;
 }
+
+#bookingBtn {
+	widht: 48% !important;
+	text-align: center;
+	padding : auto;
+}
+
+.btn-outline-success {
+	margin-right: 5px;
+}
+
+.timeline {
+	-ms-flex: 0 0 58.333333%;
+	flex: 0 0 58.333333%;
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+.schedule input[type="file"] { 
+	position: absolute; 
+	padding: 0; 
+	margin: -1px; 
+	overflow: hidden; 
+	clip:rect(0,0,0,0); 
+	border: 0; 
+}
+
+.schedule input[type="button"] { 
+	border: 0; 
+	background-color: white;
+	cursor: pointer; 
+}  
+	
+.schedule { 
+	width: 5.55555% !important;
+	text-align: center;
+}
+
+
+#upload {
+	margin-left : 20px;
+  	width: 80px;
+  	height: 40px;
+  	border-radius: 3px;
+  	font-weight: 500;
+  	border-color: black;
+  	font-size: 20px;
+  	background: black;
+  	color: white;
+ 	cursor: pointer;
+}
+
+#ShowMovieMain {
+	height: 350px;
+}
+
+#progressbar {
+    width:100%;
+    height:30px;
+    position:relative;
+}
+     
+.progresslabel {
+    position:absolute;
+    width:100%;
+    text-align:center; 
+    line-height:30px;
+    color:white;
+    text-shadow: 1px 1px 1px black;
+}
+
+.hour-mark {
+	text-align:left !important;
+}
+
+#hiddenBorder {
+	border-left:hidden !important; border-right:hidden !important; 
+}
+
 </style>
 
 </head>
@@ -147,36 +228,104 @@
 					</div>
 				</div>
 			</div>	
-				<div class="col-md-4" id = "border-max;" style="padding-top: 40px; border:1px solid black">
-					<h3 class="my-3" id="infrmDetailMain">예약 상세 정보</h3>
-						<div class=sideBar>
-							<a href="#">
-							</a>
+				<div class="col-md-4" id = "border-max;" style="padding-top: 40px; margin-top:2.5rem !important; border:1px solid black">
+					<div class="row">
+						<div class="col-lg-5" style="hight: 40px; margin-top: auto; margin-bottom: auto;">
+							<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
 						</div>
+						<div class="col-md-7" style="hight: 40px">
+							<h4>펫시터: </h4>
+							<li>주소: </li>
+							<li>펫시팅 횟수: </li>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12" style="margin-top:30px;">
+							<h5><strong>펫시팅 요금</strong></h5>
+						</div>
+					</div>
 						<ul>
-							<c:forEach items="${list}" var="BookingVO">
-								<c:forEach items="${BookingVO.userPetVO}" var="UserPetVO">
-									<c:forEach items="${BookingVO.userVO}" var="UserVO">
-										<c:forEach items="${BookingVO.sitterVO}" var="SitterVO">
-										<input type='hidden' id='sNum' name='sitterNumber' value="${SitterVO.sitterNumber}">
-										<li class="b-inform">예약자 : ${UserVO.userName}</li>
-						            	<li class="b-inform">반려동물 이름 : ${UserPetVO.petName}</li>
-						            	<li class="b-inform">예약날짜 : ${BookingVO.bookingDate}</li>
-							            <li class="b-inform">부가사항</li>
-							           	 			종류 : ${UserPetVO.petType}<br>
-							            			성별 : ${UserPetVO.petGender} 
-							            </c:forEach>
-							        </c:forEach>
-								</c:forEach>
+							<c:forEach items="${list}" var="SitterDTO">
+								<li class="b-inform">예약자 : ${SitterDTO.userName}</li>
+					            <li class="b-inform">부가사항</li>
+					            			성별 : ${SitterDTO.userGender} 
 							</c:forEach>
 						</ul>
 						<div class="button">
-							<button id="rightBtn" type="button" class="btn btn-outline-success btn-lg">수 락</button>
-							<button type="button" class="btn btn-outline-danger btn-lg">거 절</button>
+							<button id="bookingBtn" type="button" class="btn-outline-success btn-lg">간편 예약 하기</button>
+							<button id="bookingBtn" type="button" class="btn-outline-danger btn-lg">맞춤 예약 하기</button>
 						</div>
 					</div>
 				</div>
-			<div class="col-md-8">
+				<div class="col-md-12" style="margin-top:30px;">
+					<table id="table1">
+						<colgroup>
+							<col width="250"/>
+						</colgroup>
+						<tbody>
+							<tr>
+								<c:forEach items="${list}" var="SitterDTO">
+									<input type='hidden' id='bookingNumber' name='sitterNumber' value="${SitterDTO.sitterNumber}">
+									<td class="schedule">
+										<input class="showMovie" type="button" id="six" name="button"  value="${SitterDTO.six}" />
+									</td>
+									<td class="schedule" id="hiddenBorder">
+										<input class="showMovie" type="button" id="seven" name="button"  value="${SitterDTO.seven}"/>
+									</td>
+									<td class="schedule" id="hiddenBorder">
+										<input class="showMovie" type="button" id="eight" name="button" value="${SitterDTO.eight}"/>
+									</td>
+									<td class="schedule" id="hiddenBorder">
+										<input class="showMovie" type="button" id="nine" name="button" value="${SitterDTO.nine}"/>
+									</td>
+									<td class="schedule" id="hiddenBorder">
+										<input class="showMovie" type="button" id="ten" name="button" value="${SitterDTO.ten}"/>
+									</td>
+									<td class="schedule" id="hiddenBorder">
+										<input class="showMovie" type="button" id="oneOne" name="button" value="${SitterDTO.oneOne}"/>
+									</td>
+									<td class="schedule" id="hiddenBorder">
+										<input class="showMovie" type="button" id="oneTwo" name="button" value="${SitterDTO.oneTwo}"/>
+									</td>
+									<td class="schedule" id="hiddenBorder">
+										<input class="showMovie" type="button" id="oneThree" name="button" value="${SitterDTO.oneThree}"/>
+									</td>
+									<td class="schedule" id="hiddenBorder">
+										<input class="showMovie" type="button" id="oneFour" name="button" value="${SitterDTO.oneFour}"/>
+									</td>
+									<td class="schedule" id="hiddenBorder">
+										<input class="showMovie" type="button" id="oneFive" name="button" value="${SitterDTO.oneFive}"/>
+									</td>
+									<td class="schedule" id="hiddenBorder">
+										<input class="showMovie" type="button" id="oneSix" name="button" value="${SitterDTO.oneSix}"/>
+									</td>
+									<td class="schedule" id="hiddenBorder">
+										<input class="showMovie" type="button" id="oneSeven" name="button" value="${SitterDTO.oneSeven}"/>
+									</td>
+									<td class="schedule" id="hiddenBorder">
+										<input class="showMovie" type="button" id="oneEight" name="button" value="${SitterDTO.oneEight}"/>
+									</td>
+									<td class="schedule" id="hiddenBorder">
+										<input class="showMovie" type="button" id="oneNine" name="button" value="${SitterDTO.oneNine}"/>
+									</td>
+									<td class="schedule" id="hiddenBorder">
+										<input class="showMovie" type="button" id="twoZero" name="button" value="${SitterDTO.twoZero}"/>
+									</td>
+									<td class="schedule" id="hiddenBorder">
+										<input class="showMovie" type="button" id="twoOne" name="button" value="${SitterDTO.twoOne}"/>
+									</td>
+									<td class="schedule" id="hiddenBorder">
+										<input class="showMovie" type="button" id="twoTwo" name="button" value="${SitterDTO.twoTwo}"/>
+									</td>
+									<td class="schedule">
+										<input class="showMovie" type="button" id="twoThree" name="button" value="${SitterDTO.twoThree}"/>
+									</td>
+							</c:forEach>
+						</tr>
+					</tbody>
+				</table>
+			<div>
+			<div class="col-md-12">
 				<div class="row" id="border-top" style="margin-top:40px; padding-top:10px">
 					<div class="col-lg-12 col-md-6" >
 					<h2 style="color:red;">
@@ -185,7 +334,7 @@
 					</div>
 				</div>
 				<div class="row" id="border-bottom" style="margin-top:20px;">
-					<div class="col-lg-8 col-md-6">
+					<div class="col-lg-12 col-md-6">
 						<div>
 							<p>"반려동물 돌봄 공간: " 
 							<b>빌라</b>
@@ -204,14 +353,14 @@
 					</div>
 				</div>
 				<div class="row" id="border-top" style="margin-top:40px; padding-top:10px">
-					<div class="col-lg-8 col-md-6" >
+					<div class="col-lg-12 col-md-6" >
 					<h2 style="color:red;">
 					<strong>펫시팅 소개</strong>
 					</h2>
 					</div>
 				</div>
 				<div class="row" id="border-bottom" style="margin-top:20px;">
-					<div class="col-lg-8 col-md-6">
+					<div class="col-lg-12 col-md-6">
 						<div>
 							<h5>
 							<strong>펫시팅 관련 경험을 알려주세요!</strong>
@@ -235,14 +384,14 @@
 					</div>
 				</div>
 				<div class="row" id="border-top" style="margin-top:40px; padding-top:10px">
-					<div class="col-lg-8 col-md-6" >
+					<div class="col-lg-12 col-md-6" >
 					<h2 style="color:red;">
 					<strong>펫시터 제공 서비스</strong>
 					</h2>
 					</div>
 				</div>
 				<div class="row" id="border-bottom" style="margin-top:20px;">
-					<div class="col-lg-8 col-md-6">
+					<div class="col-lg-12 col-md-6">
 						<div>
 							<h5>
 							<strong>무료 서비스</strong>

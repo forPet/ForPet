@@ -1,4 +1,4 @@
-package com.forpet.persistence.BookingSchedule;
+package com.forpet.persistence.bookingSchedule;
 
 import java.util.List;
 

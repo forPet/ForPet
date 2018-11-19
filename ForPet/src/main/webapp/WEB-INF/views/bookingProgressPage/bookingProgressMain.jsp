@@ -299,6 +299,7 @@
 							<tbody>
 									<tr>
 										<c:forEach items="${list}" var="TimelineVO">
+											<input type='hidden' id='bookingNumber' name='bookingNumber' value="${TimelineVO.bookingNumber}">
 											<td class="schedule">
 												<input class="showMovie" type="button" id="six" name="button"  value="${TimelineVO.six}" />
 											</td>
