@@ -78,14 +78,13 @@
 					<li class="nav-item active"><a class="nav-link" href="#">메인
 							<span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item"><a class="nav-link">|</a></li>
+					<li class="nav-item" id="top-bar"><a class="nav-link">|</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">서비스 소개</a></li>
-					<li class="nav-item"><a class="nav-link">|</a></li>
+					<li class="nav-item" id="top-bar"><a class="nav-link">|</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">펫시터 찾기</a></li>
-					<li class="nav-item"><a class="nav-link">|</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">자주 하는 질문</a>
-					</li>
-					<li class="nav-item"><a class="nav-link">|</a></li>
+					<li class="nav-item" id="top-bar"><a class="nav-link">|</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">자주 하는 질문</a></li>
+					<li class="nav-item"  id="top-bar"><a class="nav-link">|</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">마이 페이지</a></li>
 				</ul>
 			</div>
@@ -99,62 +98,9 @@
 			<!-- calendar call  -->
 			<div class="col-md-8">
 				<div id='calendar'></div>
-				<div id="main_container" style="margin-top: 30px">
-					<!-- tables inside this DIV could have draggable content -->
-					<div id="redips-drag">
-						<div id="left">
-						<table id="table1">
-							<colgroup>
-								<col width="250"/>
-							</colgroup>
-							<tbody>
-								<tr>
-									<td class="schedule">
-									</td>
-									<td class="schedule" id="hiddenBorder">
-									</td>
-									<td class="schedule" id="hiddenBorder">
-									</td>
-									<td class="schedule" id="hiddenBorder">
-									</td>
-									<td class="schedule" id="hiddenBorder">
-									</td>
-									<td class="schedule" id="hiddenBorder">
-									</td>
-									<td class="schedule" id="hiddenBorder">
-									</td>
-									<td class="schedule" id="hiddenBorder">
-									</td>
-									<td class="schedule" id="hiddenBorder">
-									</td>
-									<td class="schedule" id="hiddenBorder">
-									</td>
-									<td class="schedule" id="hiddenBorder">
-									</td>
-									<td class="schedule" id="hiddenBorder">
-									</td>
-									<td class="schedule" id="hiddenBorder">
-									</td>
-									<td class="schedule" id="hiddenBorder">
-									</td>
-									<td class="schedule" id="hiddenBorder">
-									</td>
-									<td class="schedule" id="hiddenBorder">
-									</td>
-									<td class="schedule" id="hiddenBorder">
-									</td>
-									<td class="schedule">
-									</td>
-									</tr>
-								</tbody>
-							</table>
-						</div><!-- left container -->
-					</div><!-- timeline end -->
-				</div>
+				<div class="ajaxTimeline" id="main_container" style="margin-top: 30px"></div>
 			</div>
 			<!-- main container -->
-
-
 			<!--  calerdar action  -->
 		<script>
         var currentDate = moment().format('YYYY-MM-DD');
@@ -179,7 +125,8 @@
 		   			end: '${BookingDTO.end}',
 		   			bookingNumber: '${BookingDTO.bookingNumber}',
 		   			BookingDTO : '${BookingDTO}',
-		   			progressState: '${BookingDTO.progressState}'
+		   			progressState: '${BookingDTO.progressState}',
+		   			sitterNumber: '${BookingDTO.sitterNumber}'
 		   			},
 		    	</c:forEach>
 			],
@@ -189,12 +136,14 @@
 			selectable:true,
 			selectHelper:true,
 			eventClick: function(BookingDTO) {
-				switch(BookingDTO.progressState){
+				if(BookingDTO.progressState == '수락완료'){
 				/* $(".col-md-4").show();  */
-					case '수락완료': bookingConfirm(BookingDTO.bookingNumber);
-					break;
-					case '예약중': bookingInformDetail(BookingDTO.bookingNumber);
-					break;
+					bookingConfirm(BookingDTO.bookingNumber);
+					bookingTimeline(BookingDTO.bookingNumber);
+				}
+				if(BookingDTO.progressState == '예약중'){
+					bookingInformDetail(BookingDTO.bookingNumber);
+					bookingTimeline(BookingDTO.bookingNumber);
 				}
 				 var divLoc = $('#infrmDetailMain').offset();
 			        $('html, body').animate({scrollTop: divLoc.top-100}, "slow");
@@ -248,6 +197,21 @@
 
   	function resultPaging(msg) {
      	$(".ajaxBooking").html(msg);
+  	}
+  	
+  	function bookingTimeline(bookingNumber) {
+	     $.ajax({
+	         url: "bookingTimeline",
+	         data: {
+	            "bookingNumber" : bookingNumber
+	         },
+	         type: 'GET',
+	         success: resultTimeline
+	      });
+ 	}
+  	
+  	function resultTimeline(msg) {
+     	$(".ajaxTimeline").html(msg);
   	}
 </script>
 	

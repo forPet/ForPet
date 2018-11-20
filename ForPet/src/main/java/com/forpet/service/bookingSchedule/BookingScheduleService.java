@@ -3,6 +3,8 @@ package com.forpet.service.bookingSchedule;
 import java.util.List;
 
 import com.forpet.domain.BookingVO;
+import com.forpet.domain.SitterDTO;
+import com.forpet.domain.TimelineVO;
 
 public interface BookingScheduleService {
 	
@@ -17,4 +19,7 @@ public interface BookingScheduleService {
 	public void bookingCancelReturnResult (BookingVO vo) throws Exception;
 
 	public void cancelComment(BookingVO vo) throws Exception;
+	
+	public List<TimelineVO> bookingTimeline(Integer bookingNumber) throws Exception;
+	
 }

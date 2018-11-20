@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper 
-	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="forpet_BookingSchedule">
 	
@@ -9,6 +7,11 @@
 		SELECT TS.SITTERNUMBER sitterNumber, TB.USERNUMBER userNumber, TB.BOOKINGNUMBER bookingNumber, TBS.TITLE title, TBS.START start, TBS.END end, TBS.DESCRIPTION description, TB.PROGRESSSTATE progressState
 		FROM TBL_BOOKING AS TB, TBL_BOOKING_SCHEDULE AS TBS, TBL_SITTER AS TS
 		WHERE TBS.BOOKINGNUMBER = TB.BOOKINGNUMBER AND TB.SITTERNUMBER = TS.SITTERNUMBER AND TS.SITTERNUMBER= #{sitterNumber};
+	</select>
+
+	<select id="bookingTimeline" resultType="TimelineVO" >
+		SELECT bookingNumber, six, seven, eight, nine, ten, oneOne, oneTwo, oneThree, oneFour, oneFive, oneSix, oneSeven, oneEight, oneNine, twoZero, twoOne, twoTwo, twoThree
+		FROM TBL_TIMELINE WHERE BOOKINGNUMBER= #{bookingNumber};
 	</select>
 
 	<resultMap id="bookingDetailMap" type="BookingVO">
@@ -33,9 +36,9 @@
 	</resultMap>
 
 	<select id="bookingDetailInform" resultMap="bookingDetailMap" >
-	SELECT TS.SITTERNUMBER, U.USERNAME, UP.PETNAME, TB.USERNUMBER, TB.BOOKINGDATE, TB.BOOKINGNUMBER , UP.PETTYPE, UP.PETGENDER, UP.PETDATEOFBIRTH 
-	FROM TBL_BOOKING AS TB, TBL_USER AS U, TBL_USER_PET AS UP, TBL_SITTER AS TS
-	WHERE U.USERNUMBER = TB.USERNUMBER AND U.USERNUMBER = UP.USERNUMBER AND TB.SITTERNUMBER = TS.SITTERNUMBER AND TB.BOOKINGNUMBER = #{bookingNumber};
+		SELECT TS.SITTERNUMBER, U.USERNAME, UP.PETNAME, TB.USERNUMBER, TB.BOOKINGDATE, TB.BOOKINGNUMBER , UP.PETTYPE, UP.PETGENDER, UP.PETDATEOFBIRTH 
+		FROM TBL_BOOKING AS TB, TBL_USER AS U, TBL_USER_PET AS UP, TBL_SITTER AS TS
+		WHERE U.USERNUMBER = TB.USERNUMBER AND U.USERNUMBER = UP.USERNUMBER AND TB.SITTERNUMBER = TS.SITTERNUMBER AND TB.BOOKINGNUMBER = #{bookingNumber};
 	</select>
 
 	<update id="bookingConfirm">

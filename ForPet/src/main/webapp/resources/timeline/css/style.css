@@ -29,6 +29,26 @@ body {
 			/* 컨테이너를 중앙 정렬 */
 			margin-left: auto; margin-right: auto;
 		}
+		
+		#main_container #sitterTimeline {
+			width: 100%;
+		}
+		
+		#main_container table {
+			width: 100%;
+		}
+		
+/* main container */
+#second_container {
+	  	width: 100%;;
+ 		margin-right: auto;
+  		margin-left: auto;
+}		
+
+		#second_container table {
+			width: 100%;
+		}
+
 
 /* 객체 드래그 (테이블 셀 안의 DIV 요소) */
 .redips-drag {
@@ -54,7 +74,7 @@ body {
 @media (min-width: 289px) {
   #main_container {
     max-width: 289px;
-    font-size:4px;
+    font-size: 4px;
   }
 }
 
@@ -93,6 +113,96 @@ body {
   }
 }
 
+/* timeline 반응형 */
+
+@media (min-width: 289px) {
+  #second_container {
+    max-width: 289px;
+    font-size:4px;
+  }
+}
+
+@media (min-width: 320px) {
+  #second_container {
+    max-width: 320px;
+    font-size:4px;
+  }
+}
+
+@media (min-width: 576px) {
+  #second_container {
+    max-width: 540px;
+    font-size:7px;
+  }
+}
+
+@media (min-width: 768px) {
+  #second_container {
+    max-width: 720px;
+    font-size:10px;
+  }
+}
+
+@media (min-width: 992px) {
+  #second_container {
+    max-width: 960px;
+    font-size:13px;
+  }
+}
+
+@media (min-width: 1200px) {
+  #second_container {
+    max-width: 1140px;
+    font-size: 16px;
+  }
+}
+
+/* btn 반응형 */
+
+@media (min-width: 289px) {
+  #bookingBtn {
+    max-width: 289px;
+    font-size:4px;
+  }
+}
+
+@media (min-width: 320px) {
+  #bookingBtn {
+    max-width: 320px;
+    font-size:14px;
+  }
+}
+
+@media (min-width: 576px) {
+  #bookingBtn {
+    max-width: 540px;
+    font-size:16px;
+  }
+}
+
+@media (min-width: 768px) {
+  #bookingBtn {
+    max-width: 720px;
+    font-size:16px;
+  }
+}
+
+@media (min-width: 992px) {
+  #bookingBtn {
+    max-width: 960px;
+    font-size:13px;
+  }
+}
+
+@media (min-width: 1200px) {
+  #bookingBtn {
+    max-width: 1140px;
+    font-size: 16px;
+  }
+}
+
+
+
 /* 드래그 영역 */
 #redips-drag {
 	display: table;
@@ -129,7 +239,8 @@ div#redips-drag td {
 }
 
 #table2 {
-	width: 70%;
+	height: 50px;
+	white-space: normal;
 }
 
 /* 녹색 오브젝트 */

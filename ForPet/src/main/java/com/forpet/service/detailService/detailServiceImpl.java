@@ -10,7 +10,7 @@ import com.forpet.domain.SitterDTO;
 import com.forpet.persistence.detailService.detailServiceDAO;
 
 @Service
-public class detailServiceImpl implements detailService{
+public class detailServiceImpl implements detailService {
 	@Inject
 	private detailServiceDAO dao;
 

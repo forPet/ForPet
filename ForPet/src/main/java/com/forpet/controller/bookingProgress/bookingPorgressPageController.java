@@ -41,12 +41,12 @@ public class bookingPorgressPageController {
 		model.addAttribute("bookingNumber", bookingNumber);
 	}
 	
-	@RequestMapping(value="/bookingProgressMain", method = RequestMethod.POST)
-	public void insertMoviePOST(@RequestParam("bookingNumber") int bookingNumber, MovieVO mVo, MultipartFile file, Model model) throws Exception{
+	@RequestMapping(value="/insertMovie", method = RequestMethod.POST)
+	public String insertMoviePOST(@RequestParam("bookingNumber") int bookingNumber, MovieVO mVo, MultipartFile file, Model model) throws Exception{
 		
-		logger.info("Name :" + file.getOriginalFilename());
-		logger.info("Name :" + file.getSize());
-		logger.info("Name :" + file.getContentType());
+		logger.info("originalName :" + file.getOriginalFilename());
+		logger.info("size :" + file.getSize());
+		logger.info("contentType :" + file.getContentType());
 
 		String savedName = uploadFile(file.getOriginalFilename(), file.getBytes());
 
@@ -59,6 +59,8 @@ public class bookingPorgressPageController {
 		mVo.setShootingTime(dateFormat.format(date));
 		muService.insertMovie(mVo);
 		model.addAttribute("list", muService.findByTimeline(bookingNumber));
+		
+		return "redirect:/bookingProgressPage/bookingProgressMain?bookingNumber" + "=" + bookingNumber;
 	}
 
 	private String uploadFile(String originalName, byte[] fileData) throws Exception {

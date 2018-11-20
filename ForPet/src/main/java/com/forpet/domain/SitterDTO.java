@@ -38,6 +38,10 @@ public class SitterDTO {
 	private String userEmail;
 	private String userAddress;
 
+	private int small;
+	private int medium;
+	private int large;
+
 	public Integer getSitterNumber() {
 		return sitterNumber;
 	}
@@ -286,6 +290,30 @@ public class SitterDTO {
 		this.userAddress = userAddress;
 	}
 
+	public int getSmall() {
+		return small;
+	}
+
+	public void setSmall(int small) {
+		this.small = small;
+	}
+
+	public int getMedium() {
+		return medium;
+	}
+
+	public void setMedium(int medium) {
+		this.medium = medium;
+	}
+
+	public int getLarge() {
+		return large;
+	}
+
+	public void setLarge(int large) {
+		this.large = large;
+	}
+
 	@Override
 	public String toString() {
 		return "SitterDTO [sitterNumber=" + sitterNumber + ", six=" + six + ", seven=" + seven + ", eight=" + eight
@@ -296,7 +324,8 @@ public class SitterDTO {
 				+ ", introduce=" + introduce + ", precautions=" + precautions + ", totalServiceCnt=" + totalServiceCnt
 				+ ", totalServiceScore=" + totalServiceScore + ", userName=" + userName + ", userId=" + userId
 				+ ", userGender=" + userGender + ", userDateOfBirth=" + userDateOfBirth + ", userPhoneNumber="
-				+ userPhoneNumber + ", userEmail=" + userEmail + ", userAddress=" + userAddress + "]";
+				+ userPhoneNumber + ", userEmail=" + userEmail + ", userAddress=" + userAddress + ", small=" + small
+				+ ", medium=" + medium + ", large=" + large + "]";
 	}
 
 }

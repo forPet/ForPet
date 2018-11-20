@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.forpet.domain.BookingVO;
+import com.forpet.domain.TimelineVO;
 
 @Repository
 public class BookingScheduleDAOImpl implements BookingScheduleDAO {
@@ -47,5 +48,10 @@ public class BookingScheduleDAOImpl implements BookingScheduleDAO {
 	public void cancelComment(BookingVO vo) throws Exception {
 		sqlSession.selectOne(namespace + ".cancelComment", vo);
 	}
-	
+
+	@Override
+	public List<TimelineVO> bookingTimeline(Integer bookingNumber) throws Exception {
+		return sqlSession.selectList(namespace + ".bookingTimeline", bookingNumber);
+	}
+
 }

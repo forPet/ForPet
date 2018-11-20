@@ -42,6 +42,12 @@ public class bookingInformPageController {
 		model.addAttribute("list", service.bookingDetailInform(bookingNumber));
 	}
 	
+	@RequestMapping(value = "/bookingTimeline", method = RequestMethod.GET)
+	public void BookingTimelineGET(@RequestParam("bookingNumber") int bookingNumber, Model model) throws Exception {
+		model.addAttribute("bookingNumber", bookingNumber);
+		model.addAttribute("list", service.bookingTimeline(bookingNumber));
+	}
+
 	@RequestMapping(value = "/bookingConfirm", method = RequestMethod.POST)
 	public String BookingConfirmPOST(BookingVO vo, RedirectAttributes rttr) throws Exception {
 		

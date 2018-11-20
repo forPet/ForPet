@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.forpet.domain.BookingVO;
+import com.forpet.domain.TimelineVO;
 import com.forpet.persistence.bookingSchedule.BookingScheduleDAO;
 
 @Service
@@ -43,6 +44,12 @@ public class BookingScheduleServiceImpl implements BookingScheduleService {
 	@Override
 	public void cancelComment(BookingVO vo) throws Exception {
 		bsDAO.cancelComment(vo);
+	}
+
+	@Override
+	public List<TimelineVO> bookingTimeline(Integer bookingNumber) throws Exception {
+		return bsDAO.bookingTimeline(bookingNumber);
+		
 	}
 
 }
