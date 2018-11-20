@@ -5,8 +5,8 @@ public class UserBoughtExtraServiceVO {
 	private Integer userNumber;
 	private Integer sitterNumber;
 	private String extraServiceName;
-	private Integer extraServiceePrice;
-	private Integer count;
+	private String extraPrice;
+	private String count;
 
 	public Integer getBookingNumber() {
 		return bookingNumber;
@@ -40,26 +40,26 @@ public class UserBoughtExtraServiceVO {
 		this.extraServiceName = extraServiceName;
 	}
 
-	public Integer getExtraServiceePrice() {
-		return extraServiceePrice;
+	public String getExtraPrice() {
+		return extraPrice;
 	}
 
-	public void setExtraServiceePrice(Integer extraServiceePrice) {
-		this.extraServiceePrice = extraServiceePrice;
+	public void setExtraPrice(String extraPrice) {
+		this.extraPrice = extraPrice;
 	}
 
-	public Integer getCount() {
+	public String getCount() {
 		return count;
 	}
 
-	public void setCount(Integer count) {
+	public void setCount(String count) {
 		this.count = count;
 	}
 
 	@Override
 	public String toString() {
-		return "ReservationDetailDTO [bookingNumber=" + bookingNumber + ", userNumber=" + userNumber + ", sitterNumber="
-				+ sitterNumber + ", extraServiceName=" + extraServiceName + ", extraServiceePrice=" + extraServiceePrice
-				+ ", count=" + count + "]";
+		return "UserBoughtExtraServiceVO [bookingNumber=" + bookingNumber + ", userNumber=" + userNumber + ", sitterNumber="
+				+ sitterNumber + ", extraServiceName=" + extraServiceName + ", extraPrice=" + extraPrice + ", count=" + count
+				+ "]";
 	}
 }

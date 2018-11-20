@@ -6,9 +6,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.resource.ResourceHttpRequestHandler;
 
 import com.forpet.domain.BookingScheduleVO;
 import com.forpet.domain.BookingVO;
@@ -35,17 +37,12 @@ public class PaymentController {
 		UserVO userVo = service.userIdSelect(userNumber);
 		String userId = userVo.getUserId();
 		bookingVO.setUserId(userId);
-		
-		System.out.println(userBoughtExtraServiceVO);
-		
-		System.out.println(bookingVO);
-		
-//		service.payment(bookingVO);
-		
-//		int lastbookingnumber = bookingVO.getBookingNumber();
-//		bookingScheduleVO.setBookingNumber(lastbookingnumber);
-//		service.bookingScheduleInsert(bookingScheduleVO);
-		System.out.println(bookingScheduleVO);
+		service.payment(bookingVO);
+		int lastbookingnumber = bookingVO.getBookingNumber();
+		bookingScheduleVO.setBookingNumber(lastbookingnumber);
+		service.bookingScheduleInsert(bookingScheduleVO);
+		userBoughtExtraServiceVO.setBookingNumber(lastbookingnumber);
+		service.boughtExtraServiceInsert(userBoughtExtraServiceVO);
 		return "redirect:/myPage/reservationPage?userNumber=2";
 	}
 	

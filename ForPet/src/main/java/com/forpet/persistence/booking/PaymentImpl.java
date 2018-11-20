@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.forpet.domain.BookingScheduleVO;
 import com.forpet.domain.BookingVO;
 import com.forpet.domain.SitterVO;
+import com.forpet.domain.UserBoughtExtraServiceVO;
 import com.forpet.domain.UserVO;
 
 @Repository
@@ -52,5 +53,10 @@ public class PaymentImpl implements PaymentDAO {
 	@Override
 	public void bookingScheduleInsert(BookingScheduleVO vo) throws Exception {
 		session.insert(namespace + ".bookingScheduleInsert", vo);
+	}
+
+	@Override
+	public void boughtExtraServiceInsert(UserBoughtExtraServiceVO vo) throws Exception {
+		session.insert(namespace + ".boughtExtraServiceInsert", vo);
 	}
 }

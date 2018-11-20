@@ -71,4 +71,18 @@
 	<select id="userIdSelect" resultType="UserVO">
 		select userId from tbl_user where userNumber = #{userNumber};
 	</select>
+	
+	<insert id="boughtExtraServiceInsert" >
+		insert into
+		tbl_user_bought_extra_service
+		(
+		bookingNumber,
+		userNumber,
+		sitterNumber,
+		extraServiceName,
+		extraServiceePrice,
+		count
+		) values
+		(#{bookingNumber},#{userNumber},#{sitterNumber},#{extraServiceName},#{extraPrice},#{count});
+	</insert>
 </mapper>
