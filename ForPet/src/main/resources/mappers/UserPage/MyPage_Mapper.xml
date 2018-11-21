@@ -10,4 +10,12 @@
 		tbl_booking
 	where userNumber = #{userNumber}
 	</select>
+	
+	<select id="reservationDetailSearch" resultType="UserBoughtExtraServiceVO">
+	select
+		*
+	from
+		tbl_user_bought_extra_service
+	where bookingNumber = #{bookingNumber}
+	</select>
 </mapper>

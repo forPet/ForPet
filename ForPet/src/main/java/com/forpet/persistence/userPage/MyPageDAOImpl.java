@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.forpet.domain.BookingDTO;
+import com.forpet.domain.UserBoughtExtraServiceVO;
 
 @Repository
 public class MyPageDAOImpl implements MyPageDAO{
@@ -19,5 +20,10 @@ public class MyPageDAOImpl implements MyPageDAO{
 	@Override
 	public List<BookingDTO> reservationSearch(int userNumber) throws Exception {
 		return session.selectList(namespace + ".reservationSearch", userNumber);
+	}
+
+	@Override
+	public UserBoughtExtraServiceVO reservationDetailSearch(int bookingNumber) {
+		return session.selectOne(namespace + ".reservationDetailSearch", bookingNumber);
 	}
 }
