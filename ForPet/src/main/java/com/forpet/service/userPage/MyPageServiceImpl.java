@@ -15,7 +15,7 @@ public class MyPageServiceImpl implements MyPageService{
 	MyPageDAO dao;
 
 	@Override
-	public List<BookingDTO> reservationSearch(int vo) throws Exception {
-		return dao.reservationSearch(vo);
+	public List<BookingDTO> reservationSearch(int userNumber) throws Exception {
+		return dao.reservationSearch(userNumber);
 	}
 }
