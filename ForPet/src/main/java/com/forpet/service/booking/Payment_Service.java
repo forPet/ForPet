@@ -17,4 +17,6 @@ public interface Payment_Service {
 	public BookingVO bookingNumSelect(String userId) throws Exception;
 	public void bookingScheduleInsert(BookingScheduleVO vo) throws Exception;
 	public void boughtExtraServiceInsert(UserBoughtExtraServiceVO vo) throws Exception;
+	public void splitInsert(UserBoughtExtraServiceVO vo) throws Exception;
+	
 }

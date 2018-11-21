@@ -59,4 +59,9 @@ public class PaymentImpl implements PaymentDAO {
 	public void boughtExtraServiceInsert(UserBoughtExtraServiceVO vo) throws Exception {
 		session.insert(namespace + ".boughtExtraServiceInsert", vo);
 	}
+
+	@Override
+	public void splitInsert(UserBoughtExtraServiceVO vo) throws Exception {
+		session.insert(namespace + ".splitInsert", vo);
+	}
 }

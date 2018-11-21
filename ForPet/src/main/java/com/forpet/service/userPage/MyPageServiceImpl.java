@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.forpet.domain.BookingDTO;
+import com.forpet.domain.BookingVO;
 import com.forpet.domain.UserBoughtExtraServiceVO;
 import com.forpet.persistence.userPage.MyPageDAO;
 
@@ -21,7 +22,12 @@ public class MyPageServiceImpl implements MyPageService{
 	}
 
 	@Override
-	public UserBoughtExtraServiceVO reservationDetailSearch(int bookingNumber) {
+	public List<UserBoughtExtraServiceVO> reservationDetailSearch(int bookingNumber) throws Exception{
 		return dao.reservationDetailSearch(bookingNumber);
+	}
+
+	@Override
+	public BookingVO oneReservationSearch(int bookingNumber) throws Exception {
+		return dao.oneReservationSearch(bookingNumber);
 	}
 }

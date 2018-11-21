@@ -57,4 +57,9 @@ public class Payment_ServiceImpl implements Payment_Service{
 	public void boughtExtraServiceInsert(UserBoughtExtraServiceVO vo) throws Exception {
 		dao.boughtExtraServiceInsert(vo);
 	}
+
+	@Override
+	public void splitInsert(UserBoughtExtraServiceVO vo) throws Exception {
+		dao.splitInsert(vo);
+	}
 }

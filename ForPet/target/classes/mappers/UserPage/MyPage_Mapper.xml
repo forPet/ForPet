@@ -18,4 +18,12 @@
 		tbl_user_bought_extra_service
 	where bookingNumber = #{bookingNumber}
 	</select>
+	
+	<select id="oneReservationSearch" resultType="BookingVO">
+	select
+	bookingNumber, bookingDate, title, start, end, progressState, totalPrice, ServicePrice
+	from
+		tbl_booking
+	where bookingNumber = #{bookingNumber}
+	</select>
 </mapper>

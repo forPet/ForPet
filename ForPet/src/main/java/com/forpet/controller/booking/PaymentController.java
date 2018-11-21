@@ -41,8 +41,18 @@ public class PaymentController {
 		int lastbookingnumber = bookingVO.getBookingNumber();
 		bookingScheduleVO.setBookingNumber(lastbookingnumber);
 		service.bookingScheduleInsert(bookingScheduleVO);
-		userBoughtExtraServiceVO.setBookingNumber(lastbookingnumber);
-		service.boughtExtraServiceInsert(userBoughtExtraServiceVO);
+		
+		String[] count = userBoughtExtraServiceVO.getCount().split(",", userBoughtExtraServiceVO.getCount().length());
+		String[] name = userBoughtExtraServiceVO.getExtraServiceName().split(",", userBoughtExtraServiceVO.getExtraServiceName().length());
+		String[] extraPrice = userBoughtExtraServiceVO.getExtraPrice().split(",", userBoughtExtraServiceVO.getExtraPrice().length());
+		
+		for(int i = 0; i < count.length; i++)	{
+			userBoughtExtraServiceVO.setBookingNumber(lastbookingnumber);
+			userBoughtExtraServiceVO.setCount(count[i]);
+			userBoughtExtraServiceVO.setExtraPrice(extraPrice[i]);
+			userBoughtExtraServiceVO.setExtraServiceName(name[i]);
+			service.splitInsert(userBoughtExtraServiceVO);
+		}
 		return "redirect:/myPage/reservationPage?userNumber=2";
 	}
 	

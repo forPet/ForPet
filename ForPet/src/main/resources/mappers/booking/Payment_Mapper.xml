@@ -80,7 +80,21 @@
 		userNumber,
 		sitterNumber,
 		extraServiceName,
-		extraServiceePrice,
+		extraPrice,
+		count
+		) values
+		(#{bookingNumber},#{userNumber},#{sitterNumber},#{extraServiceName},#{extraPrice},#{count});
+	</insert>
+	
+	<insert id="splitInsert" >
+		insert into
+		tbl_user_bought_extra_service
+		(
+		bookingNumber,
+		userNumber,
+		sitterNumber,
+		extraServiceName,
+		extraPrice,
 		count
 		) values
 		(#{bookingNumber},#{userNumber},#{sitterNumber},#{extraServiceName},#{extraPrice},#{count});
