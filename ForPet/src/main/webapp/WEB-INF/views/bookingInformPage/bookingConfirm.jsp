@@ -46,7 +46,7 @@
 		</c:forEach>
 	</c:forEach>
 </ul>
-<div class="my-3">
+<div class="button">
 	<button id="confirmBtn" type="button" class="btn btn-outline-success btn-lg">예약 진행 확인</button>
 </div>
 <script>
