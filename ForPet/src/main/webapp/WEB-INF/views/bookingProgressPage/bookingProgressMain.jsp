@@ -74,6 +74,9 @@
 	border: 0; 
 	background-color: white;
 	cursor: pointer; 
+	position: absolute; 
+	overflow: hidden; 
+	font-size: 0;
 }  
 	
 .schedule label { 
@@ -90,6 +93,19 @@
 	margin-right : auto;
 }
 
+.showTimeline { 
+	display: table-cell;
+	width: 100px; 
+	height: 100%;
+	color: black; 
+	font-size: inherit; 
+	line-height: normal; 
+	vertical-align: middle; 
+	background-color: #fdfdfd; 
+	cursor: pointer; 
+	margin-left : auto;
+	margin-right : auto;
+}
 
 #upload {
 	margin-left : 20px;
@@ -150,14 +166,13 @@
 					<li class="nav-item active"><a class="nav-link" href="#">메인
 							<span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item"><a class="nav-link">|</a></li>
+					<li class="nav-item" id="top-bar"><a class="nav-link">|</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">서비스 소개</a></li>
-					<li class="nav-item"><a class="nav-link">|</a></li>
+					<li class="nav-item" id="top-bar"><a class="nav-link">|</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">펫시터 찾기</a></li>
-					<li class="nav-item"><a class="nav-link">|</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">자주 하는 질문</a>
-					</li>
-					<li class="nav-item"><a class="nav-link">|</a></li>
+					<li class="nav-item" id="top-bar"><a class="nav-link">|</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">자주 하는 질문</a></li>
+					<li class="nav-item"  id="top-bar"><a class="nav-link">|</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">마이 페이지</a></li>
 				</ul>
 			</div>
@@ -166,42 +181,26 @@
 
 	<!-- Page Content -->
 	<div class="container">
-		<form id="frm" name="frm" enctype="multipart/form-data" method="post" >
-
-		<!-- Portfolio Item Row -->
-		<!-- ajaxMainMovie -->
-		<div id = "ShowMovieMain" class="row ajaxMovieMain">
+		<form id="frm" name="frm" enctype="multipart/form-data" method="post" action="insertMovie" >
+			<!-- ajaxMainMovie -->
+			<div id = "ShowMovieMain" class="row ajaxMovieMain"></div>
+			<!-- /.row -->
 	
-		</div>
-		<!-- /.row -->
-
-		<!-- Related Projects Row -->
-		<h3 class="my-bottom">스케쥴 진행 현황 <input type="submit" value="올리기" id="upload"></h3>
-		
-		<!-- calendar call  --> 
-        <div class="timeline">
-			<div id="main_container" style="margin-top: 20px">
-			<!-- tables inside this DIV could have draggable content -->
-				<div id="redips-drag">		
-					<!-- sitterTimeline -->
-					<div id="left">
-						<table id="table3">
-							<colgroup>
-								<col width="250"/>
-							</colgroup>
-							<h3>sitterTimeline</h3>
-							
+			<!-- Related Projects Row -->
+			<h3 class="my-bottom">스케쥴 진행 현황 <input type="submit" value="올리기" id="upload"></h3>
+			
+	        <div class="timeline">
+				<div id="main_container" style="margin-top: 20px">
+					<div id="redips-drag">		
+						<!-- sitterTimeline -->
+						<div id="left">
 							<!--  진행바 -->
-							<div id="pbar_outerdiv" style="width: 100%; height: 30px; border: 1px solid grey; z-index: 1; position: relative; border-radius: 5px; -moz-border-radius: 5px;">
-							<div id="pbar_innerdiv" style="background-color: lightblue; z-index: 2; height: 100%; width: 0%;"></div>
-							<div id="pbar_innertext" style="z-index: 3; position: absolute; top: 0; left: 0; width: 100%; height: 100%; color: black; font-weight: bold; text-align: center;">서비스 준비중</div>
+							<div id="pbar_outerdiv" style="margin-top: 10px; width: 100%; height: 30px; border: 1px solid grey; z-index: 1; position: relative; border-radius: 5px; -moz-border-radius: 5px;">
+								<div id="pbar_innerdiv" style="background-color: lightblue; z-index: 2; height: 100%; width: 0%;"></div>
+								<div id="pbar_innertext" style="z-index: 3; position: absolute; top: 0; left: 0; width: 100%; height: 100%; color: black; font-weight: bold; text-align: center;">서비스 준비중</div>
 							</div>
-						</table>
-						<table id="table1">
-							<colgroup>
-								<col width="250"/>
-							</colgroup>
-							<tbody>
+							<table id="table1" style="margin-top: 20px">
+								<tbody>
 									<tr>
 										<c:forEach items="${list}" var="TimelineVO">
 											<td class="schedule" id="hiddenBorderSix" style="border-right:hidden;">
@@ -278,80 +277,91 @@
 											</td>
 										</c:forEach>
 									</tr>
-							</tbody>
-						</table>
-					</div><!-- left container -->
-				</div><!-- sitterTimeline -->
+								</tbody>
+							</table>
+						</div><!-- left container -->
+					</div><!-- sitterTimeline -->
 				
-				<!--  user timeline -->
-				<div id="redips-drag">
-					<!-- left container -->
-					<div id="left">
-						<table id="table3">
-							<h3>userTimeline</h3>
-							<colgroup>
-								<col width="250"/>
-							</colgroup>
-						</table>
-						<table id="table1">
-							<colgroup>
-								<col width="250"/>
-							</colgroup>
-							<tbody>
+					<!--  user timeline -->
+					<div id="redips-drag" style="margin-top: 20px;">
+						<!-- left container -->
+						<div id="left">
+							<h3>showMovie</h3>
+							<table id="table2" style="margin-top: 10px">
+								<tbody>
 									<tr>
 										<c:forEach items="${list}" var="TimelineVO">
+											<input type='hidden' id='bookingNumber' name='bookingNumber' value="${TimelineVO.bookingNumber}">
 											<td class="schedule">
+												<label for="six" class="showTimeline"> ${TimelineVO.six} </label>
 												<input class="showMovie" type="button" id="six" name="button"  value="${TimelineVO.six}" />
 											</td>
 											<td class="schedule" id="hiddenBorder">
+												<label for="seven" class="showTimeline"> ${TimelineVO.seven} </label>
 												<input class="showMovie" type="button" id="seven" name="button"  value="${TimelineVO.seven}"/>
 											</td>
 											<td class="schedule" id="hiddenBorder">
+												<label for="eight" class="showTimeline"> ${TimelineVO.eight} </label>
 												<input class="showMovie" type="button" id="eight" name="button" value="${TimelineVO.eight}"/>
 											</td>
 											<td class="schedule" id="hiddenBorder">
+												<label for="nine" class="showTimeline"> ${TimelineVO.nine} </label>
 												<input class="showMovie" type="button" id="nine" name="button" value="${TimelineVO.nine}"/>
 											</td>
 											<td class="schedule" id="hiddenBorder">
+												<label for="ten" class="showTimeline"> ${TimelineVO.ten} </label>
 												<input class="showMovie" type="button" id="ten" name="button" value="${TimelineVO.ten}"/>
 											</td>
 											<td class="schedule" id="hiddenBorder">
+												<label for="oneOne" class="showTimeline"> ${TimelineVO.oneOne} </label>
 												<input class="showMovie" type="button" id="oneOne" name="button" value="${TimelineVO.oneOne}"/>
 											</td>
 											<td class="schedule" id="hiddenBorder">
+												<label for="oneTwo" class="showTimeline"> ${TimelineVO.oneTwo} </label>
 												<input class="showMovie" type="button" id="oneTwo" name="button" value="${TimelineVO.oneTwo}"/>
 											</td>
 											<td class="schedule" id="hiddenBorder">
+												<label for="oneThree" class="showTimeline"> ${TimelineVO.oneThree} </label>
 												<input class="showMovie" type="button" id="oneThree" name="button" value="${TimelineVO.oneThree}"/>
 											</td>
 											<td class="schedule" id="hiddenBorder">
+												<label for="oneFour" class="showTimeline"> ${TimelineVO.oneFour} </label>
 												<input class="showMovie" type="button" id="oneFour" name="button" value="${TimelineVO.oneFour}"/>
 											</td>
 											<td class="schedule" id="hiddenBorder">
+												<label for="oneFive" class="showTimeline"> ${TimelineVO.oneFive} </label>
 												<input class="showMovie" type="button" id="oneFive" name="button" value="${TimelineVO.oneFive}"/>
 											</td>
 											<td class="schedule" id="hiddenBorder">
+												<label for="oneSix" class="showTimeline"> ${TimelineVO.oneSix} </label>
 												<input class="showMovie" type="button" id="oneSix" name="button" value="${TimelineVO.oneSix}"/>
 											</td>
 											<td class="schedule" id="hiddenBorder">
+												<label for="oneSeven" class="showTimeline"> ${TimelineVO.oneSeven} </label>
 												<input class="showMovie" type="button" id="oneSeven" name="button" value="${TimelineVO.oneSeven}"/>
 											</td>
 											<td class="schedule" id="hiddenBorder">
+												<label for="oneEight" class="showTimeline"> ${TimelineVO.oneEight} </label>
 												<input class="showMovie" type="button" id="oneEight" name="button" value="${TimelineVO.oneEight}"/>
 											</td>
 											<td class="schedule" id="hiddenBorder">
+												<label for="oneNine" class="showTimeline"> ${TimelineVO.oneNine} </label>
 												<input class="showMovie" type="button" id="oneNine" name="button" value="${TimelineVO.oneNine}"/>
 											</td>
 											<td class="schedule" id="hiddenBorder">
+												<label for="twoZero" class="showTimeline"> ${TimelineVO.twoZero} </label>
 												<input class="showMovie" type="button" id="twoZero" name="button" value="${TimelineVO.twoZero}"/>
 											</td>
 											<td class="schedule" id="hiddenBorder">
+												<label for="twoOne" class="showTimeline"> ${TimelineVO.twoOne} </label>
 												<input class="showMovie" type="button" id="twoOne" name="button" value="${TimelineVO.twoOne}"/>
 											</td>
 											<td class="schedule" id="hiddenBorder">
+												<label for="twoTwo" class="showTimeline"> ${TimelineVO.twoTwo} </label>
 												<input class="showMovie" type="button" id="twoTwo" name="button" value="${TimelineVO.twoTwo}"/>
 											</td>
 											<td class="schedule">
+												<label for="twoThree" class="showTimeline"> ${TimelineVO.twoThree} </label>
 												<input class="showMovie" type="button" id="twoThree" name="button" value="${TimelineVO.twoThree}"/>
 											</td>
 										</c:forEach>
@@ -363,7 +373,8 @@
 				</div>
 			</div>
 		</form>
-	<div class="row ajaxShowMovie"></div>
+		
+		<div class="row ajaxShowMovie"></div>
 	</div><!-- main container -->
 	
 
@@ -396,6 +407,7 @@
 	<script>
 		var time = new Date();
 		var currentHours = time.getHours();
+		
 		$("#six").click(function(){
 			if(currentHours >= 6) {
 				showSixHourMovie();
@@ -481,6 +493,7 @@
 				showTwoTwoHourMovie();
 			}
 		});
+		
 		$("#twoThree").click(function(){
 			if(currentHours >= 23) {
 				showTwoThreeHourMovie();

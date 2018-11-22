@@ -1,10 +1,11 @@
 package com.forpet.domain;
 
 public class SitterServiceVO {
-	
+
 	private Integer sitterNumber;
-	private String serviceType;
-	private int servicePrice;
+	private int small;
+	private int medium;
+	private int large;
 
 	public Integer getSitterNumber() {
 		return sitterNumber;
@@ -14,25 +15,34 @@ public class SitterServiceVO {
 		this.sitterNumber = sitterNumber;
 	}
 
-	public String getServiceType() {
-		return serviceType;
+	public int getSmall() {
+		return small;
 	}
 
-	public void setServiceType(String serviceType) {
-		this.serviceType = serviceType;
+	public void setSmall(int small) {
+		this.small = small;
 	}
 
-	public int getServicePrice() {
-		return servicePrice;
+	public int getMedium() {
+		return medium;
 	}
 
-	public void setServicePrice(int servicePrice) {
-		this.servicePrice = servicePrice;
+	public void setMedium(int medium) {
+		this.medium = medium;
+	}
+
+	public int getLarge() {
+		return large;
+	}
+
+	public void setLarge(int large) {
+		this.large = large;
 	}
 
 	@Override
 	public String toString() {
-		return "SitterServiceVO [sitterNumber=" + sitterNumber + ", serviceType=" + serviceType + ", servicePrice="
-				+ servicePrice + "]";
+		return "SitterServiceVO [sitterNumber=" + sitterNumber + ", small=" + small + ", medium=" + medium + ", large="
+				+ large + "]";
 	}
+
 }

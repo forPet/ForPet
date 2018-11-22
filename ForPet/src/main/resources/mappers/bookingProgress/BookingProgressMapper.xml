@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="forpet_BookingProgress">
+
+	<resultMap id="findMovieMap" type="BookingVO">
+		<id property="bookingNumber" column="bookingNumber" />
+		<collection property="movieVO" ofType="MovieVO" >
+			<id property="movieNumber" column="movieNumber" />
+			<result property="movieName" column="movieName" />
+			<result property="shootingTime" column="shootingTime" />
+		</collection>
+    </resultMap>
+
+	<insert id="insertMovie">
+		INSERT INTO TBL_MOVIE (bookingNumber, movieName, shootingTime) VALUE (#{bookingNumber}, 
+		#{movieName}, #{shootingTime});
+	</insert>
+
+	<select id="findByTimeline" resultType="TimelineVO" >
+		SELECT bookingNumber, six, seven, eight, nine, ten, oneOne, oneTwo, oneThree, oneFour, 
+		oneFive, oneSix, oneSeven, oneEight, oneNine, twoZero, twoOne, twoTwo, twoThree
+		FROM TBL_TIMELINE WHERE BOOKINGNUMBER= #{bookingNumber};
+	</select>
+
+	<select id="findBymovieNumber" resultMap="findMovieMap" >
+		SELECT * FROM TBL_MOVIE AS TM
+		WHERE TM.MOVIENAME LIKE CONCAT("%",#{MOVIENAME},"%");
+	</select>
+
+	<select id="findSixHourMovie" resultMap="findMovieMap" >
+		<![CDATA[ 
+		SELECT TB.BOOKINGNUMBER, TM.MOVIENUMBER, TM.MOVIENAME, TM.SHOOTINGTIME 
+		FROM TBL_BOOKING AS TB, TBL_MOVIE AS TM
+		WHERE TB.BOOKINGNUMBER = TM.BOOKINGNUMBER AND TB.BOOKINGNUMBER= #{bookingNumber}
+		AND TM.SHOOTINGTIME >='06:00:00'AND TM.SHOOTINGTIME <'07:00:00';
+		]]> 
+	</select>
+
+	<select id="findSevenHourMovie" resultMap="findMovieMap" >
+		<![CDATA[ 
+		SELECT TB.BOOKINGNUMBER, TM.MOVIENUMBER, TM.MOVIENAME, TM.SHOOTINGTIME 
+		FROM TBL_BOOKING AS TB, TBL_MOVIE AS TM
+		WHERE TB.BOOKINGNUMBER = TM.BOOKINGNUMBER AND TB.BOOKINGNUMBER= #{bookingNumber}
+		AND TM.SHOOTINGTIME >='07:00:00'AND TM.SHOOTINGTIME <'08:00:00';
+		]]> 
+	</select>
+	<select id="findEightHourMovie" resultMap="findMovieMap" >
+		<![CDATA[ 
+		SELECT TB.BOOKINGNUMBER, TM.MOVIENUMBER, TM.MOVIENAME, TM.SHOOTINGTIME 
+		FROM TBL_BOOKING AS TB, TBL_MOVIE AS TM
+		WHERE TB.BOOKINGNUMBER = TM.BOOKINGNUMBER AND TB.BOOKINGNUMBER= #{bookingNumber}
+		AND TM.SHOOTINGTIME >='08:00:00'AND TM.SHOOTINGTIME <'09:00:00';
+		]]> 
+	</select>
+	<select id="findNineHourMovie" resultMap="findMovieMap" >
+		<![CDATA[ 
+		SELECT TB.BOOKINGNUMBER, TM.MOVIENUMBER, TM.MOVIENAME, TM.SHOOTINGTIME 
+		FROM TBL_BOOKING AS TB, TBL_MOVIE AS TM
+		WHERE TB.BOOKINGNUMBER = TM.BOOKINGNUMBER AND TB.BOOKINGNUMBER= #{bookingNumber}
+		AND TM.SHOOTINGTIME >='09:00:00'AND TM.SHOOTINGTIME <'10:00:00';
+		]]> 
+	</select>
+	<select id="findTenHourMovie" resultMap="findMovieMap" >
+		<![CDATA[ 
+		SELECT TB.BOOKINGNUMBER, TM.MOVIENUMBER, TM.MOVIENAME, TM.SHOOTINGTIME 
+		FROM TBL_BOOKING AS TB, TBL_MOVIE AS TM
+		WHERE TB.BOOKINGNUMBER = TM.BOOKINGNUMBER AND TB.BOOKINGNUMBER= #{bookingNumber}
+		AND TM.SHOOTINGTIME >='10:00:00'AND TM.SHOOTINGTIME <'11:00:00';
+		]]> 
+	</select>
+	<select id="findOneOneHourMovie" resultMap="findMovieMap" >
+		<![CDATA[ 
+		SELECT TB.BOOKINGNUMBER, TM.MOVIENUMBER, TM.MOVIENAME, TM.SHOOTINGTIME 
+		FROM TBL_BOOKING AS TB, TBL_MOVIE AS TM
+		WHERE TB.BOOKINGNUMBER = TM.BOOKINGNUMBER AND TB.BOOKINGNUMBER= #{bookingNumber}
+		AND TM.SHOOTINGTIME >='11:00:00'AND TM.SHOOTINGTIME <'12:00:00';
+		]]> 
+	</select>
+	<select id="findOneTwoHourMovie" resultMap="findMovieMap" >
+		<![CDATA[ 
+		SELECT TB.BOOKINGNUMBER, TM.MOVIENUMBER, TM.MOVIENAME, TM.SHOOTINGTIME 
+		FROM TBL_BOOKING AS TB, TBL_MOVIE AS TM
+		WHERE TB.BOOKINGNUMBER = TM.BOOKINGNUMBER AND TB.BOOKINGNUMBER= #{bookingNumber}
+		AND TM.SHOOTINGTIME >='12:00:00'AND TM.SHOOTINGTIME <'13:00:00';
+		]]> 
+	</select>
+	<select id="findOneThreeHourMovie" resultMap="findMovieMap" >
+		<![CDATA[ 
+		SELECT TB.BOOKINGNUMBER, TM.MOVIENUMBER, TM.MOVIENAME, TM.SHOOTINGTIME 
+		FROM TBL_BOOKING AS TB, TBL_MOVIE AS TM
+		WHERE TB.BOOKINGNUMBER = TM.BOOKINGNUMBER AND TB.BOOKINGNUMBER= #{bookingNumber}
+		AND TM.SHOOTINGTIME >='13:00:00'AND TM.SHOOTINGTIME <'14:00:00';
+		]]> 
+	</select>
+	<select id="findOneFourHourMovie" resultMap="findMovieMap" >
+		<![CDATA[ 
+		SELECT TB.BOOKINGNUMBER, TM.MOVIENUMBER, TM.MOVIENAME, TM.SHOOTINGTIME 
+		FROM TBL_BOOKING AS TB, TBL_MOVIE AS TM
+		WHERE TB.BOOKINGNUMBER = TM.BOOKINGNUMBER AND TB.BOOKINGNUMBER= #{bookingNumber}
+		AND TM.SHOOTINGTIME >='14:00:00'AND TM.SHOOTINGTIME <'15:00:00';
+		]]> 
+	</select>
+	<select id="findOneFiveHourMovie" resultMap="findMovieMap" >
+		<![CDATA[ 
+		SELECT TB.BOOKINGNUMBER, TM.MOVIENUMBER, TM.MOVIENAME, TM.SHOOTINGTIME 
+		FROM TBL_BOOKING AS TB, TBL_MOVIE AS TM
+		WHERE TB.BOOKINGNUMBER = TM.BOOKINGNUMBER AND TB.BOOKINGNUMBER= #{bookingNumber}
+		AND TM.SHOOTINGTIME >='15:00:00'AND TM.SHOOTINGTIME <'16:00:00';
+		]]> 
+	</select>
+	<select id="findOneSixHourMovie" resultMap="findMovieMap" >
+		<![CDATA[ 
+		SELECT TB.BOOKINGNUMBER, TM.MOVIENUMBER, TM.MOVIENAME, TM.SHOOTINGTIME 
+		FROM TBL_BOOKING AS TB, TBL_MOVIE AS TM
+		WHERE TB.BOOKINGNUMBER = TM.BOOKINGNUMBER AND TB.BOOKINGNUMBER= #{bookingNumber}
+		AND TM.SHOOTINGTIME >='16:00:00'AND TM.SHOOTINGTIME <'17:00:00';
+		]]> 
+	</select>
+	<select id="findOneSevenHourMovie" resultMap="findMovieMap" >
+		<![CDATA[ 
+		SELECT TB.BOOKINGNUMBER, TM.MOVIENUMBER, TM.MOVIENAME, TM.SHOOTINGTIME 
+		FROM TBL_BOOKING AS TB, TBL_MOVIE AS TM
+		WHERE TB.BOOKINGNUMBER = TM.BOOKINGNUMBER AND TB.BOOKINGNUMBER= #{bookingNumber}
+		AND TM.SHOOTINGTIME >='17:00:00'AND TM.SHOOTINGTIME <'18:00:00';
+		]]> 
+	</select>
+	<select id="findOneEightHourMovie" resultMap="findMovieMap" >
+		<![CDATA[ 
+		SELECT TB.BOOKINGNUMBER, TM.MOVIENUMBER, TM.MOVIENAME, TM.SHOOTINGTIME 
+		FROM TBL_BOOKING AS TB, TBL_MOVIE AS TM
+		WHERE TB.BOOKINGNUMBER = TM.BOOKINGNUMBER AND TB.BOOKINGNUMBER= #{bookingNumber}
+		AND TM.SHOOTINGTIME >='18:00:00'AND TM.SHOOTINGTIME <'19:00:00';
+		]]> 
+	</select>
+	<select id="findOneNineHourMovie" resultMap="findMovieMap" >
+		<![CDATA[ 
+		SELECT TB.BOOKINGNUMBER, TM.MOVIENUMBER, TM.MOVIENAME, TM.SHOOTINGTIME 
+		FROM TBL_BOOKING AS TB, TBL_MOVIE AS TM
+		WHERE TB.BOOKINGNUMBER = TM.BOOKINGNUMBER AND TB.BOOKINGNUMBER= #{bookingNumber}
+		AND TM.SHOOTINGTIME >='19:00:00'AND TM.SHOOTINGTIME <'20:00:00';
+		]]> 
+	</select>
+	<select id="findTwoZeroHourMovie" resultMap="findMovieMap" >
+		<![CDATA[ 
+		SELECT TB.BOOKINGNUMBER, TM.MOVIENUMBER, TM.MOVIENAME, TM.SHOOTINGTIME 
+		FROM TBL_BOOKING AS TB, TBL_MOVIE AS TM
+		WHERE TB.BOOKINGNUMBER = TM.BOOKINGNUMBER AND TB.BOOKINGNUMBER= #{bookingNumber}
+		AND TM.SHOOTINGTIME >='20:00:00'AND TM.SHOOTINGTIME <'21:00:00';
+		]]> 
+	</select>
+	<select id="findTwoOneHourMovie" resultMap="findMovieMap" >
+		<![CDATA[ 
+		SELECT TB.BOOKINGNUMBER, TM.MOVIENUMBER, TM.MOVIENAME, TM.SHOOTINGTIME 
+		FROM TBL_BOOKING AS TB, TBL_MOVIE AS TM
+		WHERE TB.BOOKINGNUMBER = TM.BOOKINGNUMBER AND TB.BOOKINGNUMBER= #{bookingNumber}
+		AND TM.SHOOTINGTIME >='21:00:00'AND TM.SHOOTINGTIME <'22:00:00';
+		]]> 
+	</select>
+	<select id="findTwoTwoHourMovie" resultMap="findMovieMap" >
+		<![CDATA[ 
+		SELECT TB.BOOKINGNUMBER, TM.MOVIENUMBER, TM.MOVIENAME, TM.SHOOTINGTIME 
+		FROM TBL_BOOKING AS TB, TBL_MOVIE AS TM
+		WHERE TB.BOOKINGNUMBER = TM.BOOKINGNUMBER AND TB.BOOKINGNUMBER= #{bookingNumber}
+		AND TM.SHOOTINGTIME >='22:00:00'AND TM.SHOOTINGTIME <'23:00:00';
+		]]> 
+	</select>
+	<select id="findTwoThreeHourMovie" resultMap="findMovieMap" >
+		<![CDATA[ 
+		SELECT TB.BOOKINGNUMBER, TM.MOVIENUMBER, TM.MOVIENAME, TM.SHOOTINGTIME 
+		FROM TBL_BOOKING AS TB, TBL_MOVIE AS TM
+		WHERE TB.BOOKINGNUMBER = TM.BOOKINGNUMBER AND TB.BOOKINGNUMBER= #{bookingNumber}
+		AND TM.SHOOTINGTIME >='23:00:00'AND TM.SHOOTINGTIME <'24:00:00';
+		]]> 
+	</select>
+
+</mapper>
