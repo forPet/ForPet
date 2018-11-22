@@ -22,7 +22,7 @@
 		<header> 헤더 부분</header><hr>
 	</div>
 	<div>
-		${OneReservation.progressState}
+		${OneReservation.progressState} ${PaymentVO.paymentState} ${OneReservation.comment}
 	</div>
 	
 	<div style="text-align: center;">

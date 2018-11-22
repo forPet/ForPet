@@ -86,7 +86,9 @@ ul {
 								<input type=hidden name="count"  id="cnt${extra.extraServiceName}" value="0">
 								<input type=hidden name="extraServiceName" value="${extra.extraServiceName}">
 								<input type=hidden name="extraPrice" value="${extra.extraSerivcePrice}">
+								
 								${extra.extraServiceType} ${extra.extraServiceName} : ${extra.extraSerivcePrice}원 
+								
 								<input type="text" id="cnt${extra.extraServiceName}" value="0" size="5">
 								<input class="price_add" type="button" value=" + " division="${extra.extraServiceName}"> <!-- 나중에 onclick으로 변경 해야 할 것 같음 division이 중복  -->
 								<input class="price_del" type="button" value=" - " division="${extra.extraServiceName}"><br> <!-- 나중에 onclick으로 변경 해야 할 것 같음  -->
@@ -164,8 +166,8 @@ $(".price_del").on("click", function() {
 
 $(function() {
 	$(".datepicker").datepicker({
-		minDate : -20,
-		maxDate : "+1M +10D"
+		minDate : 0,
+		maxDate : "+10D"
 	});
 });
 

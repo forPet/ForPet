@@ -21,7 +21,7 @@
 	
 	<select id="oneReservationSearch" resultType="BookingVO">
 	select
-	bookingNumber, bookingDate, title, start, end, progressState, totalPrice, ServicePrice, extraServicePrice
+	bookingNumber, bookingDate, title, start, end, progressState, totalPrice, ServicePrice, extraServicePrice, comment
 	from
 		tbl_booking
 	where bookingNumber = #{bookingNumber}
