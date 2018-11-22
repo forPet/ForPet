@@ -25,7 +25,7 @@
 ul {
 	all: unset;
 	display: table;
-	margin-left: auto;
+	margin-left: auto;1
 }
 
 #reservation_button {
@@ -83,8 +83,13 @@ ul {
 							<td>
 								<input type=hidden class="sell_price${extra.extraServiceName}" value="${extra.extraSerivcePrice}">
 								<input type=hidden class="extra_cnt${extra.extraServiceName}" value="1">
+								<input type=hidden name="count"  id="cnt${extra.extraServiceName}" value="0">
+								<input type=hidden name="extraServiceName" value="${extra.extraServiceName}">
+								<input type=hidden name="extraPrice" value="${extra.extraSerivcePrice}">
+								
 								${extra.extraServiceType} ${extra.extraServiceName} : ${extra.extraSerivcePrice}원 
-								<input type="text" class="cnt${extra.extraServiceName}" value="0" size="5">
+								
+								<input type="text" id="cnt${extra.extraServiceName}" value="0" size="5">
 								<input class="price_add" type="button" value=" + " division="${extra.extraServiceName}"> <!-- 나중에 onclick으로 변경 해야 할 것 같음 division이 중복  -->
 								<input class="price_del" type="button" value=" - " division="${extra.extraServiceName}"><br> <!-- 나중에 onclick으로 변경 해야 할 것 같음  -->
 							</td>
@@ -118,11 +123,9 @@ $(document).ready(function() {
 		var division = $(this).attr("division");
 		var total_price = parseInt($("#total_price").val());
 		var extra_cnt = parseInt($(".extra_cnt" + division).val());
-		var cnt = parseInt($(".cnt" + division).val());
+		var cnt = parseInt($("#cnt" + division).val());
 		var sell_price = parseInt($(".sell_price" + division).val());
 		
-		console.log(cnt);
-		console.log(extra_cnt);
 		
 		cnt += extra_cnt;
 		extra_Service_Count(cnt, division);
@@ -132,17 +135,18 @@ $(document).ready(function() {
 		
 		total_price += sell_price;
 		total_Price(total_price);
-		
 	});
 });
+
 
 $(".price_del").on("click", function() {
 	var extra_price = parseInt($("#extra_price").val());
 	var division = $(this).attr("division");
 	var total_price = parseInt($("#total_price").val());
 	var extra_cnt = parseInt($(".extra_cnt" + division).val());
-	var cnt = parseInt($(".cnt" + division).val());
+	var cnt = parseInt($("#cnt" + division).val());
 	var sell_price = parseInt($(".sell_price" + division).val());
+	
 		
 	cnt -= extra_cnt
 	
@@ -156,12 +160,14 @@ $(".price_del").on("click", function() {
 		extra_Service_Count(cnt, division);
   	total_Price(total_price);
 	}
-});
+  console.log("cnt!!!"+cnt);
+  console.log("countasd!!!!"+$("#countasd").val());
+ });
 
 $(function() {
 	$(".datepicker").datepicker({
-		minDate : -20,
-		maxDate : "+1M +10D"
+		minDate : 0,
+		maxDate : "+10D"
 	});
 });
 
@@ -178,7 +184,7 @@ function extraPrice(extra_price) {
 }
 
 function extra_Service_Count(cnt, division) {
-	$(".cnt" + division).val(cnt);
+	$("#cnt" + division).val(cnt);
 }
 	
 </script>

@@ -3,7 +3,47 @@
 
 <mapper namespace="com.forpet.MyPage_Mapper">
 	
-	<select id="reservationSearch" resultType="BookingDTO">
-	select a.bookingDate bookingDate, b.title title, b.start start, b.end end, a.progressState progressState from tbl_booking a, tbl_booking_schedule b where a.bookingNumber = b.bookingNumber and a.userNumber = #{userNumber};
+	<select id="reservationSearch" resultType="BookingVO">
+	select
+	bookingNumber, bookingDate, title, start, end, progressState
+	from
+		tbl_booking
+	where userNumber = #{userNumber}
+	</select>
+	
+	<select id="reservationDetailSearch" resultType="UserBoughtExtraServiceVO">
+	select
+		*
+	from
+		tbl_user_bought_extra_service
+	where bookingNumber = #{bookingNumber}
+	</select>
+	
+	<select id="oneReservationSearch" resultType="BookingVO">
+	select
+	bookingNumber, bookingDate, title, start, end, progressState, totalPrice, ServicePrice, extraServicePrice, comment
+	from
+		tbl_booking
+	where bookingNumber = #{bookingNumber}
+	</select>
+	
+	<insert id="payment">
+		insert into 
+			tbl_payment(
+			bookingNumber,
+			paymentDate,
+			paymentType,
+			paymentPrice,
+			paymentState
+			)
+			values(#{bookingNumber}, now(), '카드', #{paymentPrice}, '결제 완료');
+	</insert>
+	
+	<select id="paymentSelect" resultType="PaymentVO">
+	select
+		paymentState
+	from
+		tbl_payment
+	where bookingNumber = #{bookingNumber}
 	</select>
 </mapper>

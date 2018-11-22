@@ -5,6 +5,7 @@ import java.util.List;
 import com.forpet.domain.BookingScheduleVO;
 import com.forpet.domain.BookingVO;
 import com.forpet.domain.SitterVO;
+import com.forpet.domain.UserBoughtExtraServiceVO;
 import com.forpet.domain.UserVO;
 
 public interface PaymentDAO {
@@ -15,4 +16,6 @@ public interface PaymentDAO {
 	public UserVO userIdSelect(int vo) throws Exception;
 	public BookingVO bookingNumSelect(String userId) throws Exception;
 	public void bookingScheduleInsert(BookingScheduleVO vo) throws Exception;
+	public void boughtExtraServiceInsert(UserBoughtExtraServiceVO vo) throws Exception;
+	public void splitInsert(UserBoughtExtraServiceVO vo) throws Exception;
 }

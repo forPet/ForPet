@@ -13,11 +13,14 @@
 			ServicePrice,
 			extraServicePrice,
 			totalPrice,
-			progressState
+			progressState,
+			title,
+			start,
+			end
 			)
 		values(
 			#{userId}, #{userNumber}, #{sitterNumber}, now(), #{pickupAddress},
-			#{ServicePrice}, #{extraServicePrice}, #{totalPrice}, '예약중'
+			#{ServicePrice}, #{extraServicePrice}, #{totalPrice}, '예약중', #{title}, #{start}, #{end}
 		);
 	</insert>
 	
@@ -68,4 +71,32 @@
 	<select id="userIdSelect" resultType="UserVO">
 		select userId from tbl_user where userNumber = #{userNumber};
 	</select>
+	
+	<insert id="boughtExtraServiceInsert" >
+		insert into
+		tbl_user_bought_extra_service
+		(
+		bookingNumber,
+		userNumber,
+		sitterNumber,
+		extraServiceName,
+		extraPrice,
+		count
+		) values
+		(#{bookingNumber},#{userNumber},#{sitterNumber},#{extraServiceName},#{extraPrice},#{count});
+	</insert>
+	
+	<insert id="splitInsert" >
+		insert into
+		tbl_user_bought_extra_service
+		(
+		bookingNumber,
+		userNumber,
+		sitterNumber,
+		extraServiceName,
+		extraPrice,
+		count
+		) values
+		(#{bookingNumber},#{userNumber},#{sitterNumber},#{extraServiceName},#{extraPrice},#{count});
+	</insert>
 </mapper>

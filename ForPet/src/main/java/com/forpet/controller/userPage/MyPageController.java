@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.forpet.service.userPage.MyPageService;
 
 @Controller
-@RequestMapping("/userPage/*")
+@RequestMapping("/myPage/*")
 public class MyPageController {
 
 	@Inject
@@ -19,6 +19,8 @@ public class MyPageController {
 	
 	@RequestMapping(value = "/reservationPage", method = RequestMethod.GET)
 	public void SitterListPage(Model model, @RequestParam("userNumber") int userNumber) throws Exception {
+//		System.out.println(service.reservationSearch(userNumber));
 		model.addAttribute("reservationSearch", service.reservationSearch(userNumber));
 	}
 }
+	
