@@ -21,9 +21,29 @@
 	
 	<select id="oneReservationSearch" resultType="BookingVO">
 	select
-	bookingNumber, bookingDate, title, start, end, progressState, totalPrice, ServicePrice
+	bookingNumber, bookingDate, title, start, end, progressState, totalPrice, ServicePrice, extraServicePrice
 	from
 		tbl_booking
+	where bookingNumber = #{bookingNumber}
+	</select>
+	
+	<insert id="payment">
+		insert into 
+			tbl_payment(
+			bookingNumber,
+			paymentDate,
+			paymentType,
+			paymentPrice,
+			paymentState
+			)
+			values(#{bookingNumber}, now(), '카드', #{paymentPrice}, '결제 완료');
+	</insert>
+	
+	<select id="paymentSelect" resultType="PaymentVO">
+	select
+		paymentState
+	from
+		tbl_payment
 	where bookingNumber = #{bookingNumber}
 	</select>
 </mapper>

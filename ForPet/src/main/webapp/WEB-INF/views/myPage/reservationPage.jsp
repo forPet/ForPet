@@ -39,7 +39,7 @@
 	  </thead>
 	<c:forEach items="${reservationSearch}" var="reservation" varStatus="status">
 	  <tbody>
-	    <tr onclick="popupCenter('/myPage/reservation/detail?bookingNumber=${reservation.bookingNumber}',800,600);">
+	    <tr onclick="popupCenter('/myPage/reservation/detail?bookingNumber=${reservation.bookingNumber}',400,600);">
 	      <td>${status.count}</td>
 	      <td>${reservation.bookingDate}</td>
 	      <td>${reservation.title}</td>

@@ -106,7 +106,7 @@ public class BookingVO {
 	}
 
 	public void setServicePrice(int servicePrice) {
-		ServicePrice = servicePrice;
+		this.ServicePrice = servicePrice;
 	}
 
 	public int getExtraServicePrice() {

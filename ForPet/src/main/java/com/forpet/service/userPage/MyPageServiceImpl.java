@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.forpet.domain.BookingDTO;
 import com.forpet.domain.BookingVO;
+import com.forpet.domain.PaymentVO;
 import com.forpet.domain.UserBoughtExtraServiceVO;
 import com.forpet.persistence.userPage.MyPageDAO;
 
@@ -29,5 +30,15 @@ public class MyPageServiceImpl implements MyPageService{
 	@Override
 	public BookingVO oneReservationSearch(int bookingNumber) throws Exception {
 		return dao.oneReservationSearch(bookingNumber);
+	}
+
+	@Override
+	public void payment(PaymentVO paymentVO) throws Exception {
+		dao.payment(paymentVO);
+	}
+
+	@Override
+	public PaymentVO paymentSelect(int bookingNumber) throws Exception {
+		return dao.paymentSelect(bookingNumber);
 	}
 }

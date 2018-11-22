@@ -9,6 +9,15 @@ public class PaymentVO {
 	private Timestamp paymentDate;
 	private String paymentType;
 	private int paymentPrice;
+	private String paymentState;
+
+	public String getPaymentState() {
+		return paymentState;
+	}
+
+	public void setPaymentState(String paymentState) {
+		this.paymentState = paymentState;
+	}
 
 	public Integer getPaymentNumber() {
 		return paymentNumber;
@@ -53,6 +62,7 @@ public class PaymentVO {
 	@Override
 	public String toString() {
 		return "PaymentVO [paymentNumber=" + paymentNumber + ", bookingNumber=" + bookingNumber + ", paymentDate="
-				+ paymentDate + ", paymentType=" + paymentType + ", paymentPrice=" + paymentPrice + "]";
+				+ paymentDate + ", paymentType=" + paymentType + ", paymentPrice=" + paymentPrice + ", paymentState="
+				+ paymentState + "]";
 	}
 }

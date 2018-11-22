@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.forpet.domain.BookingDTO;
 import com.forpet.domain.BookingVO;
+import com.forpet.domain.PaymentVO;
 import com.forpet.domain.UserBoughtExtraServiceVO;
 
 @Repository
@@ -31,5 +32,15 @@ public class MyPageDAOImpl implements MyPageDAO{
 	@Override
 	public BookingVO oneReservationSearch(int bookingNumber) throws Exception {
 		return session.selectOne(namespace + ".oneReservationSearch", bookingNumber);
+	}
+
+	@Override
+	public void payment(PaymentVO paymentVO) throws Exception {
+		session.insert(namespace + ".payment", paymentVO);
+	}
+
+	@Override
+	public PaymentVO paymentSelect(int bookingNumber) throws Exception {
+		return session.selectOne(namespace + ".paymentSelect", bookingNumber);
 	}
 }
