@@ -194,15 +194,12 @@
 					<div id="redips-drag">		
 						<!-- sitterTimeline -->
 						<div id="left">
-							<table id="table3">
-								<h3>sitterTimeline</h3>
-								<!--  진행바 -->
-								<div id="pbar_outerdiv" style="width: 100%; height: 30px; border: 1px solid grey; z-index: 1; position: relative; border-radius: 5px; -moz-border-radius: 5px;">
-									<div id="pbar_innerdiv" style="background-color: lightblue; z-index: 2; height: 100%; width: 0%;"></div>
-									<div id="pbar_innertext" style="z-index: 3; position: absolute; top: 0; left: 0; width: 100%; height: 100%; color: black; font-weight: bold; text-align: center;">서비스 준비중</div>
-								</div>
-							</table>
-							<table id="table1">
+							<!--  진행바 -->
+							<div id="pbar_outerdiv" style="margin-top: 10px; width: 100%; height: 30px; border: 1px solid grey; z-index: 1; position: relative; border-radius: 5px; -moz-border-radius: 5px;">
+								<div id="pbar_innerdiv" style="background-color: lightblue; z-index: 2; height: 100%; width: 0%;"></div>
+								<div id="pbar_innertext" style="z-index: 3; position: absolute; top: 0; left: 0; width: 100%; height: 100%; color: black; font-weight: bold; text-align: center;">서비스 준비중</div>
+							</div>
+							<table id="table1" style="margin-top: 20px">
 								<tbody>
 									<tr>
 										<c:forEach items="${list}" var="TimelineVO">
@@ -286,13 +283,11 @@
 					</div><!-- sitterTimeline -->
 				
 					<!--  user timeline -->
-					<div id="redips-drag">
+					<div id="redips-drag" style="margin-top: 20px;">
 						<!-- left container -->
 						<div id="left">
-							<table id="table3">
-								<h3>userTimeline</h3>
-							</table>
-							<table id="table2">
+							<h3>showMovie</h3>
+							<table id="table2" style="margin-top: 10px">
 								<tbody>
 									<tr>
 										<c:forEach items="${list}" var="TimelineVO">
@@ -412,6 +407,7 @@
 	<script>
 		var time = new Date();
 		var currentHours = time.getHours();
+		
 		$("#six").click(function(){
 			if(currentHours >= 6) {
 				showSixHourMovie();
@@ -497,6 +493,7 @@
 				showTwoTwoHourMovie();
 			}
 		});
+		
 		$("#twoThree").click(function(){
 			if(currentHours >= 23) {
 				showTwoThreeHourMovie();

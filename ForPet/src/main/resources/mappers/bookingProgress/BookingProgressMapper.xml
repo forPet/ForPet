@@ -5,15 +5,6 @@
 
 <mapper namespace="forpet_BookingProgress">
 
-	<insert id="insertMovie">
-		INSERT INTO TBL_MOVIE (bookingNumber, movieName, shootingTime) VALUE (#{bookingNumber}, #{movieName}, #{shootingTime});
-	</insert>
-
-	<select id="findByTimeline" resultType="TimelineVO" >
-		SELECT bookingNumber, six, seven, eight, nine, ten, oneOne, oneTwo, oneThree, oneFour, oneFive, oneSix, oneSeven, oneEight, oneNine, twoZero, twoOne, twoTwo, twoThree
-		FROM TBL_TIMELINE WHERE BOOKINGNUMBER= #{bookingNumber};
-	</select>
-
 	<resultMap id="findMovieMap" type="BookingVO">
 		<id property="bookingNumber" column="bookingNumber" />
 		<collection property="movieVO" ofType="MovieVO" >
@@ -22,6 +13,17 @@
 			<result property="shootingTime" column="shootingTime" />
 		</collection>
     </resultMap>
+
+	<insert id="insertMovie">
+		INSERT INTO TBL_MOVIE (bookingNumber, movieName, shootingTime) VALUE (#{bookingNumber}, 
+		#{movieName}, #{shootingTime});
+	</insert>
+
+	<select id="findByTimeline" resultType="TimelineVO" >
+		SELECT bookingNumber, six, seven, eight, nine, ten, oneOne, oneTwo, oneThree, oneFour, 
+		oneFive, oneSix, oneSeven, oneEight, oneNine, twoZero, twoOne, twoTwo, twoThree
+		FROM TBL_TIMELINE WHERE BOOKINGNUMBER= #{bookingNumber};
+	</select>
 
 	<select id="findBymovieNumber" resultMap="findMovieMap" >
 		SELECT * FROM TBL_MOVIE AS TM
@@ -36,6 +38,7 @@
 		AND TM.SHOOTINGTIME >='06:00:00'AND TM.SHOOTINGTIME <'07:00:00';
 		]]> 
 	</select>
+
 	<select id="findSevenHourMovie" resultMap="findMovieMap" >
 		<![CDATA[ 
 		SELECT TB.BOOKINGNUMBER, TM.MOVIENUMBER, TM.MOVIENAME, TM.SHOOTINGTIME 

@@ -28,6 +28,12 @@ public class MovieUploadDAOImpl implements MovieUploadDAO {
 		return sqlSession.selectList(namespace + ".findByTimeline", bookingNumber);
 	}
 	
+
+	@Override
+	public List<MovieVO> showMovie(String movieName) throws Exception {
+		return sqlSession.selectList(namespace + ".findBymovieNumber", movieName);
+	}
+	
 	@Override
 	public List<BookingVO> findSixHourMovie(Integer bookingNumber) throws Exception {
 		return sqlSession.selectList(namespace + ".findSixHourMovie", bookingNumber);
@@ -118,9 +124,5 @@ public class MovieUploadDAOImpl implements MovieUploadDAO {
 		return sqlSession.selectList(namespace + ".findTwoThreeHourMovie", bookingNumber);
 	}
 
-	@Override
-	public List<MovieVO> showMovie(String movieName) throws Exception {
-		return sqlSession.selectList(namespace + ".findBymovieNumber", movieName);
-	}
 
 }

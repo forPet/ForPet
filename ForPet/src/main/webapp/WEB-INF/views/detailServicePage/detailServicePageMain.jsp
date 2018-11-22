@@ -139,8 +139,8 @@
 }
 
 .profileIMG {
-	widht: 127.44px;
-	height: 72.84px;
+	max-height: 100px;
+
 }
 
 .showTimeline { 
@@ -154,6 +154,10 @@
 	background-color: #fdfdfd; 
 	margin-left : auto;
 	margin-right : auto;
+}
+
+.card-img-top {
+	max-height: 140px;
 }
 
 .schedule input[type="button"] { 
@@ -200,7 +204,7 @@
 	<!-- Page Content -->
 	<div class="container" style="padding-bottom: 40px;">
 		<!-- Portfolio Item Row -->
-		<div class="row" style="padding-top: 40px">
+		<div class="row" style="padding-top: 40px;">
 			<div class="col-lg-8">
 				<div id="carouselExampleIndicators" class="carousel slide my-4"
 					data-ride="carousel">
@@ -212,15 +216,15 @@
 					</ol>
 					<div class="carousel-inner" role="listbox">
 						<div class="carousel-item active">
-							<img class="d-block img-fluid" src="http://placehold.it/900x350"
+							<img class="d-block img-fluid" src="/resources/img/강아지1.jpg"
 								alt="First slide">
 						</div>
 						<div class="carousel-item">
-							<img class="d-block img-fluid" src="http://placehold.it/900x350"
+							<img class="d-block img-fluid" src="/resources/img/강아지2.jpg"
 								alt="Second slide">
 						</div>
 						<div class="carousel-item">
-							<img class="d-block img-fluid" src="http://placehold.it/900x350"
+							<img class="d-block img-fluid" src="/resources/img/강아지3.jpg"
 								alt="Third slide">
 						</div>
 					</div>
@@ -236,22 +240,22 @@
 				</div>
 				<div class="row" id="bottomPic">
 					<div class="col-lg-c1">
-						<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+						<a href="#"><img class="card-img-top" src="/resources/img/강아지1.jpg" alt=""></a>
 					</div>
 
 					<div class="col-lg-c1">
-						<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+						<a href="#"><img class="card-img-top" src="/resources/img/강아지2.jpg" alt=""></a>
 					</div>
 
 					<div class="col-lg-c1">
-						<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+						<a href="#"><img class="card-img-top" src="/resources/img/강아지3.jpg" alt=""></a>
 					</div>
 				</div>
 			</div>	
 				<div class="col-lg-4" id = "border-max;" style="padding-top: 40px; margin-top:2.5rem !important; border:1px solid black">
-					<div class="row">
-						<div class="col-lg-5" style="margin-top: auto; margin-bottom: auto;">
-							<a href="#"><img class="profileIMG" src="http://placehold.it/700x400" alt=""></a>
+					<div class="row" style="max-height: 100px;">
+						<div class="col-lg-5" style="margin-top: auto; margin-bottom: auto; text-align: center;">
+							<a href="#"><img class="profileIMG" src="/resources/img/프로필.jpg" alt=""></a>
 						</div>
 						<div class="col-lg-7" style="hight: 40px">
 							<c:forEach items="${list}" var="SitterDTO">

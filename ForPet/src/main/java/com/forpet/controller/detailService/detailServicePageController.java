@@ -24,11 +24,8 @@ public class detailServicePageController {
 
 	@RequestMapping(value = "/detailServicePageMain", method = RequestMethod.GET)
 	public void FindSitterSchedule(@RequestParam("sitterNumber") int sitterNumber, Model model) throws Exception {
-		logger.info("show all list");
+		logger.info("show SitterSchedule");
 		model.addAttribute("sitterNumber", sitterNumber);
 		model.addAttribute("list", service.findSitterSchedule(sitterNumber));
 	}
-
-
-
 }

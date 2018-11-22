@@ -36,13 +36,14 @@ public class bookingPorgressPageController {
 
 	@RequestMapping(value = "/bookingProgressMain", method = RequestMethod.GET)
 	public void CalendarListAll(int bookingNumber, Model model) throws Exception {
-		logger.info("show all list");
+		logger.info("show CalendarListAll");
 		model.addAttribute("list", muService.findByTimeline(bookingNumber));
 		model.addAttribute("bookingNumber", bookingNumber);
 	}
 	
 	@RequestMapping(value="/insertMovie", method = RequestMethod.POST)
-	public String insertMoviePOST(@RequestParam("bookingNumber") int bookingNumber, MovieVO mVo, MultipartFile file, Model model) throws Exception{
+	public String insertMoviePOST(@RequestParam("bookingNumber") int bookingNumber, MovieVO mVo, 
+			MultipartFile file, Model model) throws Exception{
 		
 		logger.info("originalName :" + file.getOriginalFilename());
 		logger.info("size :" + file.getSize());

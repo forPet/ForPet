@@ -11,7 +11,10 @@ public interface MovieUploadService {
 	
 	public List<BookingVO> findByTimeline(Integer bookingNumber) throws Exception;
 	
+	public List<MovieVO> showMovie(String movieName) throws Exception;
+	
 	public List<BookingVO> findSixHourMovie(Integer bookingNumber) throws Exception;
+	
 	public List<BookingVO> findSevenHourMovie(Integer bookingNumber) throws Exception;
 	public List<BookingVO> findEightHourMovie(Integer bookingNumber) throws Exception;
 	public List<BookingVO> findNineHourMovie(Integer bookingNumber) throws Exception;
@@ -30,6 +33,6 @@ public interface MovieUploadService {
 	public List<BookingVO> findTwoTwoHourMovie(Integer bookingNumber) throws Exception;
 	public List<BookingVO> findTwoThreeHourMovie(Integer bookingNumber) throws Exception;
 
-	public List<MovieVO> showMovie(String movieName) throws Exception;
+
 	
 }

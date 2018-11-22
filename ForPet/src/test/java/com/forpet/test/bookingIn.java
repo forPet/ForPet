@@ -27,7 +27,7 @@ public class bookingIn {
 	
 	@Test
 	public void test() throws Exception {
-		dao.bookingTimeline(29);
+		dsDao.findSitterSchedule(59);
 	}
 
 }

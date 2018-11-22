@@ -25,6 +25,11 @@ public class MovieUploadServiceImpl implements MovieUploadService {
 	public void insertMovie(MovieVO mVo) throws Exception {
 		muDAO.insertMovie(mVo);
 	}
+	
+	@Override
+	public List<MovieVO> showMovie(String movieName) throws Exception {
+		return muDAO.showMovie(movieName);
+	}
 
 	@Override
 	public List<BookingVO> findByTimeline(Integer bookingNumber) throws Exception {
@@ -119,11 +124,6 @@ public class MovieUploadServiceImpl implements MovieUploadService {
 	@Override
 	public List<BookingVO> findTwoThreeHourMovie(Integer bookingNumber) throws Exception {
 		return muDAO.findTwoThreeHourMovie(bookingNumber);
-	}
-
-	@Override
-	public List<MovieVO> showMovie(String movieName) throws Exception {
-		return muDAO.showMovie(movieName);
 	}
 
 }

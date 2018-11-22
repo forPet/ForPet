@@ -59,7 +59,8 @@ public class bookingInformPageController {
 	}
 	
 	@RequestMapping(value = "/bookingCancel", method = RequestMethod.POST)
-	public String BookingCancel(@RequestParam("bookingNumber") int bookingNumber, RedirectAttributes rttr) throws Exception {
+	public String BookingCancel(@RequestParam("bookingNumber") int bookingNumber, RedirectAttributes rttr) 
+			throws Exception {
 		service.bookingCancel(bookingNumber);
 		rttr.addFlashAttribute("msg", "success");
 		return "";

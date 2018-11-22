@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class BookingDTO {
+	
 	private Date bookingDate;
 	private Date start;
 	private Date end;

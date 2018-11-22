@@ -48,8 +48,7 @@ public class BookingScheduleServiceImpl implements BookingScheduleService {
 
 	@Override
 	public List<TimelineVO> bookingTimeline(Integer bookingNumber) throws Exception {
-		return bsDAO.bookingTimeline(bookingNumber);
-		
+		return bsDAO.bookingTimeline(bookingNumber);	
 	}
 
 }
