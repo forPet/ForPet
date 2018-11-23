@@ -5,7 +5,11 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.forpet.domain.SitterSignUpDTO;
+import com.forpet.domain.SitterAnimalspecVO;
+import com.forpet.domain.SitterCertificateVO;
+import com.forpet.domain.SitterServiceExtraVO;
+import com.forpet.domain.SitterServiceVO;
+import com.forpet.domain.SitterVO;
 import com.forpet.domain.UserVO;
 
 @Repository
@@ -26,8 +30,37 @@ public class SignUpDAOImpl implements SignUpDAO {
 		return session.selectOne(namespace+ ".SignupIdCeheck", user);
 	}
 
-//	@Override
-//	public void SitterSignUp(SitterSignUpDTO sitter) throws Exception {
-//		session.insert(namespace +".SitterSignUp", sitter);
-//	}
+	@Override
+	public void sitterSignUp(SitterVO sitterVO) throws Exception {
+		session.insert(namespace +".insert_Sitter", sitterVO);
+	}
+		
+	@Override
+	public void sitterServiceSignUp(SitterServiceVO sitterServiceVO) throws Exception {
+		session.insert(namespace +".insert_Sitter_Service", sitterServiceVO);
+	}
+
+	@Override
+	public void sitterServiceExtra(SitterServiceExtraVO sitterServiceExtraVO) throws Exception {
+		session.insert(namespace +".insert_sitter_service_extra", sitterServiceExtraVO);
+		
+	}
+
+	@Override
+	public void sitterAnimalSpec(SitterAnimalspecVO sitterAnimalspecVO) throws Exception {
+		session.insert(namespace +".insert_sitter_animalspec", sitterAnimalspecVO);
+		
+	}
+
+	@Override
+	public void sitterCertificate(SitterCertificateVO sitterCertificateVO) throws Exception {
+		session.insert(namespace +".insert_sitter_certificate", sitterCertificateVO);
+		
+	}
+
+	@Override
+	public void sitterAuthority(UserVO authority) throws Exception {
+		session.insert(namespace +".insert_sitter_Authority", authority);
+		
+	}
 }

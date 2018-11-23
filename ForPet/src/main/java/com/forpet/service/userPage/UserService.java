@@ -8,4 +8,6 @@ public interface UserService {
 public UserVO login(LoginDTO dto) throws Exception;
 
 public UserVO userinfo(Integer uno) throws Exception;
+
+public UserVO sitterCheck(UserVO checkVO) throws Exception;
 }

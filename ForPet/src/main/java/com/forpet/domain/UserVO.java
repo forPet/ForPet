@@ -14,9 +14,20 @@ public class UserVO {
 	private String userPhoneNumber;	//유저 연락처
 	private String userEmail;				//유저 전자우편
 	private String userAddress;			//유저 주소
+	private int sitterAuthority;
+
+	private SitterVO sitterNumber;
 
 	public Integer getUserNumber() {
 		return userNumber;
+	}
+
+	public SitterVO getSitterNumber() {
+		return sitterNumber;
+	}
+
+	public void setSitterNumber(SitterVO sitterNumber) {
+		this.sitterNumber = sitterNumber;
 	}
 
 	public void setUserNumber(Integer userNumber) {
@@ -44,7 +55,6 @@ public class UserVO {
 	}
 
 	public void setUserPassword(String userPassword) {
-		System.out.println(userPassword);
 		this.userPassword = userPassword;
 	}
 
@@ -53,7 +63,6 @@ public class UserVO {
 	}
 
 	public void setUserGender(String userGender) {
-		System.out.println(userGender);
 		this.userGender = userGender;
 	}
 
@@ -90,10 +99,19 @@ public class UserVO {
 		this.userAddress = userAddress;
 	}
 
+	public int getSitterAuthority() {
+		return sitterAuthority;
+	}
+
+	public void setSitterAuthority(int sitterAuthority) {
+		this.sitterAuthority = sitterAuthority;
+	}
+
 	@Override
 	public String toString() {
 		return "UserVO [userNumber=" + userNumber + ", userName=" + userName + ", userId=" + userId + ", userPassword="
 				+ userPassword + ", userGender=" + userGender + ", userDateOfBirth=" + userDateOfBirth + ", userPhoneNumber="
-				+ userPhoneNumber + ", userEmail=" + userEmail + ", userAddress=" + userAddress + "]";
+				+ userPhoneNumber + ", userEmail=" + userEmail + ", userAddress=" + userAddress + ", sitterAuthority="
+				+ sitterAuthority + ", sitterNumber=" + sitterNumber + "]";
 	}
 }

@@ -5,28 +5,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.forpet.mapper.UserPage.signupMapper">
 
+<!-- 회원 가입  -->
 <insert id="signUp" parameterType="UserVO">
 	insert into tbl_user(
-		userName, 
-		userId, 
-		userPassword, 
-		userGender, 
-		userDateOfBirth, 
-		userPhoneNumber, 
-		userEmail, 
+		userName,
+		userId,
+		userPassword,
+		userGender,
+		userDateOfBirth,
+		userPhoneNumber,
+		userEmail,
 		userAddress
 	)values(
-		#{userName}, 
-		#{userId}, 
-		#{userPassword}, 
-		#{userGender}, 
-		#{userDateOfBirth}, 
-		#{userPhoneNumber}, 
-		#{userEmail}, 
+		#{userName},
+		#{userId},
+		#{userPassword},
+		#{userGender},
+		#{userDateOfBirth},
+		#{userPhoneNumber},
+		#{userEmail},
 		#{userAddress}
 	)
 </insert>
 
+<!-- 아이디 중복체크  -->
 <select id="SignupIdCeheck" resultType="String">
 	select 
 		userId 
@@ -36,22 +38,78 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		userId = #{userId}
 </select>
 
-<!-- <insert id="SitterSignUp" parameterType="SitterSignUpDTO">
-insert into tbl_sitter(
-	userNumber,
-	userId,
-	introduce,
-	precautions,
-	serviceType,
-	servicePrice
-)values(
-	#{userNumber},
-	#{userId},
-	#{introduce},
-	#{precautions},
-	#{serviceType},
-	#{servicePrice}
-)
-</insert>  -->
+<!-- 시터 회원 가입 (정보입력) -->
+<insert id="insert_Sitter" parameterType="SitterVO" useGeneratedKeys="true" keyProperty="sitterNumber">
+	insert into tbl_sitter(
+			userNumber,
+			userId,
+			introduce,
+			precautions
+		)values(
+			#{userNumber},
+			#{userId},
+			#{introduce},
+			#{precautions}
+		)
+</insert>
+
+<!-- 시터 권한 부여 -->
+<update id="insert_sitter_Authority" parameterType="UserVO">
+UPDATE tbl_user
+SET sitterAuthority = '1' 
+WHERE userNumber = #{userNumber} and userId = #{userId};
+</update>
+
+<!-- 시터 회원 가입 (무게별 가격) -->
+<insert id="insert_Sitter_Service" parameterType="SitterServiceVO">
+	insert into tbl_sitter_service(
+			sitterNumber,
+			small,
+			medium,
+			large
+		)values(
+			#{sitterNumber},
+			#{small},
+			#{medium},
+			#{large}
+		)
+</insert>
+
+<!-- 시터 회원 가입 (간식 가격) -->
+<insert id="insert_sitter_service_extra" parameterType="SitterServiceExtraVO">
+	insert into tbl_sitter_service_extra(
+			sitterNumber,
+			extraServiceType,
+			extraServiceName,
+			extraSerivcePrice
+		)values(
+			#{sitterNumber},
+			#{extraServiceType},
+			#{extraServiceName},
+			#{extraSerivcePrice}
+		)
+</insert>
+
+<!-- 시터 회원 가입 (자격증) -->
+<insert id="insert_sitter_certificate" parameterType="SitterCertificateVO">
+	insert into tbl_sitter_certificate(
+			sitterNumber,
+			certificateName
+		)values(
+			#{sitterNumber},
+			#{certificateName}
+		)
+</insert>
+
+<!-- 시터 회원 가입 (반려동물 유무) -->
+<insert id="insert_sitter_animalspec" parameterType="SitterAnimalspecVO">
+	insert into tbl_sitter_animalspec(
+			sitterNumber,
+			animalType
+		)values(
+			#{sitterNumber},
+			#{animalType}
+		)
+</insert>
 
 </mapper>

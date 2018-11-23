@@ -18,11 +18,13 @@ PUBLIC "-//maybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.forpet.domain.SitterVO" alias="SitterVO"/>
 		<typeAlias type="com.forpet.domain.UserPetVO" alias="UserPetVO"/>
 		<typeAlias type="com.forpet.domain.UserVO" alias="UserVO"/>
-		<typeAlias type="com.forpet.domain.listDTO" alias="listDTO"/>
+		<typeAlias type="com.forpet.domain.LoginDTO" alias="LoginDTO"/>
 		<typeAlias type="com.forpet.domain.MovieVO" alias="MovieVO"/>
 		<typeAlias type="com.forpet.domain.TimelineVO" alias="TimelineVO"/>
 		<typeAlias type="com.forpet.domain.BookingDTO" alias="BookingDTO"/>
 		<typeAlias type="com.forpet.domain.UserBoughtExtraServiceVO" alias="UserBoughtExtraServiceVO"/>
 		<typeAlias type="com.forpet.domain.SitterDTO" alias="SitterDTO"/>
+		<typeAlias type="com.forpet.domain.ListDTO" alias="ListDTO"/>
+		<typeAlias type="com.forpet.domain.SitterSignUpDTO" alias="SitterSignUpDTO"/>
 	</typeAliases>
 </configuration>

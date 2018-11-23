@@ -20,8 +20,15 @@ public class UserDAOImpl implements UserDAO {
 	public UserVO login(LoginDTO dto) throws Exception {
 		return session.selectOne(namespace +".login", dto);
 	}
+	
 	@Override
 	public UserVO userinfo(Integer uno) throws Exception {
 		return session.selectOne(namespace +".userinfo", uno);
 	}
+
+	@Override
+	public UserVO sitterCheck(UserVO checkVO) throws Exception {
+		return session.selectOne(namespace +".sitterCheck", checkVO);
+	}
+	
 }

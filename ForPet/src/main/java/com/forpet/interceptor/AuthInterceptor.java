@@ -17,10 +17,13 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 	private void saveDest(HttpServletRequest req) {
 		String uri = req.getRequestURI();
 		String query = req.getQueryString();
+		System.out.println("Asdad");
 		if (query == null || query.equals("null")) {
 			query = "";
+			System.out.println("123eaws");
 		} else {
 			query = "?" + query;
+			System.out.println("else");
 		}
 		if (req.getMethod().equals("GET")) {
 			logger.info("dest: "+(uri + query));

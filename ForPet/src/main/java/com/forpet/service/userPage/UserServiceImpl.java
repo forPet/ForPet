@@ -22,4 +22,8 @@ public class UserServiceImpl implements UserService {
 	public UserVO userinfo(Integer uno) throws Exception {
 		return dao.userinfo(uno);
 	}
+	@Override
+	public UserVO sitterCheck(UserVO checkVO) throws Exception {
+		return dao.sitterCheck(checkVO);
+	}
 }

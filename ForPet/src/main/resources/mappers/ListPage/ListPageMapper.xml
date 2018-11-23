@@ -5,18 +5,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.forpet.mapper.ListPage.ListPageMapper">
 
-	<select id="SitterListPage" resultType="listDTO">
-		SELECT u.userName userName, s.introduce introduce, u.userAddress userAddress,
-		s.totalServiceCnt totalServiceCnt, s.totalServiceScore totalServiceScore
-		FROM tbl_sitter as s left join tbl_user as u on s.userNumber = u.userNumber 
-    WHERE u.userAddress like concat("%", #{keyword} ,"%");
+	<select id="SitterListPage" resultType="ListDTO">
+		SELECT 
+			u.userName userName, 
+			s.introduce introduce, 
+			u.userAddress userAddress,
+			s.totalServiceCnt totalServiceCnt, 
+			s.totalServiceScore totalServiceScore
+		FROM 
+			tbl_sitter as s left join tbl_user as u on s.userNumber = u.userNumber 
+    WHERE 
+			u.userAddress like concat("%", #{keyword} ,"%");
 	</select>
 
-	<select id="ScoreSortingList" resultType="listDTO">
-		SELECT u.userName userName, s.introduce introduce, u.userAddress userAddress,
-		s.totalServiceCnt totalServiceCnt, s.totalServiceScore totalServiceScore
-		FROM tbl_sitter as s left join tbl_user as u on s.userNumber = u.userNumber
-		order by totalServiceCnt desc;
+	<select id="ScoreSortingList" resultType="ListDTO">
+		SELECT 
+			u.userName userName, 
+			s.introduce introduce, 
+			u.userAddress userAddress,
+			s.totalServiceCnt totalServiceCnt, 
+			s.totalServiceScore totalServiceScore
+		FROM 
+			tbl_sitter as s left join tbl_user as u on s.userNumber = u.userNumber
+		order by 
+			totalServiceCnt desc;
 	</select>
-
 </mapper>

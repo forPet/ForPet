@@ -1,6 +1,6 @@
 package com.forpet.domain;
 
-public class listDTO {
+public class ListDTO {
 	private String userName;
 	private String introduce;
 	private String userAddress;

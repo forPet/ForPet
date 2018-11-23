@@ -29,6 +29,7 @@
 			</div>
 			<div>
 			  <button type="submit" class="btn-primary" id="login_btn">Login</button>
+			  <button type="button" id="signup" onclick="location.href='../signUp/signUpPage'">SignUp</button>
 			</div>
 		</div>
 	</form>

@@ -5,7 +5,7 @@ public class SitterServiceExtraVO {
 	private Integer sitterNumber;
 	private String extraServiceType;
 	private String extraServiceName;
-	private int extraSerivcePrice;
+	private String extraSerivcePrice;
 
 	public Integer getSitterNumber() {
 		return sitterNumber;
@@ -31,12 +31,12 @@ public class SitterServiceExtraVO {
 		this.extraServiceName = extraServiceName;
 	}
 
-	public int getExtraSerivcePrice() {
+	public String getExtraSerivcePrice() {
 		return extraSerivcePrice;
 	}
 
-	public void setExtraSerivcePrice(int extraSerivcePrice) {
-		this.extraSerivcePrice = extraSerivcePrice;
+	public String setExtraSerivcePrice(String extraSerivcePrice) {
+		return extraSerivcePrice;
 	}
 
 	@Override

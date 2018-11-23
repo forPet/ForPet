@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.forpet.domain.LoginDTO;
 import com.forpet.domain.UserVO;
@@ -28,11 +29,13 @@ public class UserController {
 	}
 	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
 	public void loginPOST(LoginDTO dto, HttpSession session, Model model) throws Exception {
+		System.out.println(dto);
 		UserVO vo = service.login(dto);
 		if (vo == null) {
 			return;
 		}
 		model.addAttribute("userVO", vo);
+		System.out.println(vo);
 	}
 	/**
 	 * 마이페이지
@@ -40,4 +43,17 @@ public class UserController {
 	@RequestMapping(value = "/myPage", method = RequestMethod.GET)
 	public void myPage(HttpServletRequest request, Model model) throws Exception {
 	}
+	/**
+	 * 로그아웃 기능
+	 */
+	@RequestMapping("/logOut")
+  public ModelAndView logOut(HttpServletRequest request)throws Exception {
+		request.getSession().removeAttribute("login");
+		
+		ModelAndView mav = new ModelAndView("/userPage/logOut");
+		mav.addObject("msg", "로그아웃 되었습니다.");
+		
+		return mav;
+  }
+	
 }

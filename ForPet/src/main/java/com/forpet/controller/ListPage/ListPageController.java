@@ -34,4 +34,7 @@ public class ListPageController {
 	public void sitterAllList(Model model, @RequestParam(value="keyword", required = false)String keyword) throws Exception {
 		model.addAttribute("SitterListPage", service.SitterListPage(keyword));
 	}
+	/**
+	 * 시터 상세 정보 페이지
+	 */
 }

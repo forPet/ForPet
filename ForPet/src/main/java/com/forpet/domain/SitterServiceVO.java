@@ -44,5 +44,4 @@ public class SitterServiceVO {
 		return "SitterServiceVO [sitterNumber=" + sitterNumber + ", small=" + small + ", medium=" + medium + ", large="
 				+ large + "]";
 	}
-
 }
