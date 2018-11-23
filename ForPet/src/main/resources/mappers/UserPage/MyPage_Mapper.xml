@@ -45,6 +45,8 @@
 	from
 		tbl_payment
 	where bookingNumber = #{bookingNumber}
+	</select>
+	
 	<select id="reservationSearch" resultType="BookingDTO">
 	select 
 		a.bookingDate bookingDate, b.title title, b.start start, b.end end, a.progressState progressState 
